@@ -65,8 +65,10 @@ export default function TopNav() {
 
   return (
     <>
+      {/* overflow-x-clip intentionally omitted: it creates a containing block for
+          position:fixed children in Chrome, collapsing the mobile drawer to 0 height */}
       <nav
-        className="sticky top-0 z-50 bg-white/92 backdrop-blur-[12px] border-b border-tp-slate-200 overflow-x-clip"
+        className="sticky top-0 z-50 bg-white/92 backdrop-blur-[12px] border-b border-tp-slate-200"
         role="navigation"
         aria-label="Main navigation"
       >
@@ -140,72 +142,74 @@ export default function TopNav() {
             {mobileOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
           </button>
         </div>
-
-        {/* Mobile drawer */}
-        {mobileOpen && (
-          <div className="xl:hidden fixed inset-0 top-[72px] bg-white z-50 overflow-y-auto flex flex-col">
-            <nav className="flex-1 px-6 py-6 flex flex-col gap-1">
-              {/* Product section */}
-              <button
-                className="flex justify-between items-center py-3 text-left font-display font-semibold text-tp-slate-900"
-                onClick={() => setMobileSection(mobileSection === 'product' ? null : 'product')}
-              >
-                Product
-                <ChevronDownIcon size={16} className={`transition-transform ${mobileSection === 'product' ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileSection === 'product' && (
-                <div className="pl-4 flex flex-col gap-1 mb-2">
-                  {PRODUCT_ITEMS.map((item) => (
-                    <Link key={item.href} href={item.href} className="py-2 text-tp-slate-700 text-sm" onClick={() => setMobileOpen(false)}>
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-
-              {/* Solutions section */}
-              <button
-                className="flex justify-between items-center py-3 text-left font-display font-semibold text-tp-slate-900"
-                onClick={() => setMobileSection(mobileSection === 'solutions' ? null : 'solutions')}
-              >
-                Solutions
-                <ChevronDownIcon size={16} className={`transition-transform ${mobileSection === 'solutions' ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileSection === 'solutions' && (
-                <div className="pl-4 flex flex-col gap-1 mb-2">
-                  {SOLUTIONS_ITEMS.map((item) => (
-                    <Link key={item.href} href={item.href} className="py-2 text-tp-slate-700 text-sm" onClick={() => setMobileOpen(false)}>
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-
-              {[
-                { href: '/pricing', label: 'Pricing' },
-                { href: '/security', label: 'Security' },
-                { href: '/company/about', label: 'Company' },
-              ].map(({ href, label }) => (
-                <Link key={href} href={href} className="py-3 font-display font-semibold text-tp-slate-900" onClick={() => setMobileOpen(false)}>
-                  {label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Mobile CTA bar */}
-            <div className="px-6 py-6 border-t border-tp-slate-200 flex flex-col gap-3">
-              <Link href="/contact" className="btn btn-solid btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
-                Start Free Trial
-              </Link>
-              <Link href="/contact" className="btn btn-outline btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
-                Book a Demo
-              </Link>
-            </div>
-          </div>
-        )}
       </nav>
 
-      {/* Sticky mobile CTA (appears on scroll, managed via CSS) */}
+      {/* Mobile drawer — rendered outside <nav> so position:fixed resolves to the
+          viewport, not the nav element (overflow-x-clip / backdrop-filter on the
+          nav would otherwise create a containing block and collapse the drawer) */}
+      {mobileOpen && (
+        <div className="xl:hidden fixed inset-0 top-[72px] bg-white z-50 overflow-y-auto flex flex-col">
+          <nav className="flex-1 px-6 py-6 flex flex-col gap-1">
+            {/* Product section */}
+            <button
+              className="flex justify-between items-center py-3 text-left font-display font-semibold text-tp-slate-900"
+              onClick={() => setMobileSection(mobileSection === 'product' ? null : 'product')}
+            >
+              Product
+              <ChevronDownIcon size={16} className={`transition-transform ${mobileSection === 'product' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileSection === 'product' && (
+              <div className="pl-4 flex flex-col gap-1 mb-2">
+                {PRODUCT_ITEMS.map((item) => (
+                  <Link key={item.href} href={item.href} className="py-2 text-tp-slate-700 text-sm" onClick={() => setMobileOpen(false)}>
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* Solutions section */}
+            <button
+              className="flex justify-between items-center py-3 text-left font-display font-semibold text-tp-slate-900"
+              onClick={() => setMobileSection(mobileSection === 'solutions' ? null : 'solutions')}
+            >
+              Solutions
+              <ChevronDownIcon size={16} className={`transition-transform ${mobileSection === 'solutions' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileSection === 'solutions' && (
+              <div className="pl-4 flex flex-col gap-1 mb-2">
+                {SOLUTIONS_ITEMS.map((item) => (
+                  <Link key={item.href} href={item.href} className="py-2 text-tp-slate-700 text-sm" onClick={() => setMobileOpen(false)}>
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {[
+              { href: '/pricing', label: 'Pricing' },
+              { href: '/security', label: 'Security' },
+              { href: '/company/about', label: 'Company' },
+            ].map(({ href, label }) => (
+              <Link key={href} href={href} className="py-3 font-display font-semibold text-tp-slate-900" onClick={() => setMobileOpen(false)}>
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile CTA bar */}
+          <div className="px-6 py-6 border-t border-tp-slate-200 flex flex-col gap-3">
+            <Link href="/contact" className="btn btn-solid btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
+              Start Free Trial
+            </Link>
+            <Link href="/contact" className="btn btn-outline btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
+              Book a Demo
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Sticky mobile CTA */}
       <Link
         href="/contact"
         className="fixed bottom-4 right-4 z-[80] btn btn-solid btn-l shadow-tp-xl xl:hidden"
