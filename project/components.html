@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Components — TatvaPractice Design System</title>
+<link rel="stylesheet" href="styles/tokens.css" />
+<style>
+  /* page-only helpers */
+  .doc-hero{background:linear-gradient(180deg,var(--tp-blue-50),#fff);padding:80px 0 56px;border-bottom:1px solid var(--tp-slate-200)}
+  .doc-toc{position:sticky;top:88px;align-self:start}
+  .doc-toc ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
+  .doc-toc a{display:block;padding:6px 12px;border-radius:8px;color:var(--tp-slate-600);border-left:2px solid transparent}
+  .doc-toc a:hover{background:var(--tp-slate-50);color:var(--tp-slate-900)}
+  .doc-toc a.active{color:var(--tp-blue-700);border-left-color:var(--tp-blue-500);background:var(--tp-blue-50)}
+  .doc-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;padding:64px 0}
+  @media(max-width:900px){.doc-layout{grid-template-columns:1fr}.doc-toc{position:static}}
+  .doc-section{padding:32px 0;border-top:1px solid var(--tp-slate-200)}
+  .doc-section:first-child{border-top:0;padding-top:0}
+  .doc-section h2{font-size:28px;line-height:1.2;margin:0 0 8px}
+  .doc-section .lede{color:var(--tp-slate-600);margin:0 0 28px;max-width:60ch}
+  .demo{background:#fff;border:1px solid var(--tp-slate-200);border-radius:16px;padding:32px;margin:16px 0}
+  .demo-tint{background:var(--tp-slate-50)}
+  .demo-dark{background:var(--tp-slate-900);color:#fff}
+  .demo-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .demo-row + .demo-row{margin-top:14px}
+  .swatch{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--tp-slate-600)}
+  .swatch .chip-color{height:64px;border-radius:10px;border:1px solid var(--tp-slate-200)}
+  .swatch .name{font-family:var(--font-display);font-weight:600;color:var(--tp-slate-900);font-size:13px}
+  .swatch .hex{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--tp-slate-500)}
+  .swatch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  @media(max-width:768px){.swatch-grid{grid-template-columns:repeat(2,1fr)}}
+  .ramp{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+  .ramp .swatch .chip-color{height:48px;border-radius:6px}
+  .ramp .swatch .name{font-size:11px}
+  @media(max-width:768px){.ramp{grid-template-columns:repeat(5,1fr)}}
+  .type-row{display:flex;align-items:baseline;gap:24px;padding:14px 0;border-bottom:1px dashed var(--tp-slate-200)}
+  .type-row:last-child{border-bottom:0}
+  .type-row .label{flex:0 0 140px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--tp-slate-500);letter-spacing:.04em;text-transform:uppercase}
+  .type-row .sample{flex:1;min-width:0}
+  .token-table{width:100%;border-collapse:collapse;font-size:14px}
+  .token-table th,.token-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--tp-slate-200)}
+  .token-table th{font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--tp-slate-900);background:var(--tp-slate-50)}
+  .token-table code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--tp-blue-700);background:var(--tp-blue-50);padding:2px 6px;border-radius:4px}
+  .shadow-card{height:120px;border-radius:14px;background:#fff;display:grid;place-items:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--tp-slate-600)}
+  .radius-card{height:96px;background:var(--tp-blue-100);border:1px solid var(--tp-blue-200);display:grid;place-items:end center;padding-bottom:10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--tp-blue-800)}
+  .anchor{scroll-margin-top:88px}
+  .doc-h3{font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--tp-slate-900);margin:24px 0 12px;letter-spacing:-.01em}
+  .voice-line{padding:12px 16px;border-left:3px solid var(--tp-blue-300);background:var(--tp-blue-50);border-radius:0 10px 10px 0;font-family:var(--font-display);color:var(--tp-slate-800);margin:8px 0}
+  .voice-line .label{font-family:var(--font-body);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--tp-blue-700);font-weight:600;margin-right:8px}
+  .grid-meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--tp-slate-500)}
+</style>
+</head>
+<body>
+<div data-partial="nav"></div>
+
+<header class="doc-hero">
+  <div class="tp-wrap">
+    <span class="tp-eyebrow">Design System · v1.0</span>
+    <h1 class="tp-display" style="margin:14px 0 12px">Components reference</h1>
+    <p class="tp-body-xl" style="max-width:60ch">A working catalogue of every token, type style, and component used across the TatvaPractice marketing site. One source of truth for designers and engineers.</p>
+    <div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap">
+      <a class="btn btn-solid btn-m" href="index.html">View live site</a>
+      <a class="btn btn-outline btn-m" href="styles/tokens.css">Open tokens.css</a>
+    </div>
+  </div>
+</header>
+
+<div class="tp-wrap">
+  <div class="doc-layout">
+    <aside class="doc-toc">
+      <ul>
+        <li><a href="#brand">Brand &amp; voice</a></li>
+        <li><a href="#color">Color</a></li>
+        <li><a href="#type">Typography</a></li>
+        <li><a href="#radius">Radius &amp; shadow</a></li>
+        <li><a href="#spacing">Spacing &amp; grid</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#badges">Badges &amp; chips</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#nav">Navigation</a></li>
+        <li><a href="#patterns">Page patterns</a></li>
+        <li><a href="#compliance">Compliance pills</a></li>
+        <li><a href="#bands">Statement &amp; CTA bands</a></li>
+        <li><a href="#placeholders">Placeholders</a></li>
+      </ul>
+    </aside>
+
+    <main>
+
+      <!-- BRAND & VOICE -->
+      <section id="brand" class="doc-section anchor">
+        <h2>Brand &amp; voice</h2>
+        <p class="lede">TatvaPractice helps Indian doctors stop typing and start practising. Voice-first, India-first, built around how clinicians already work.</p>
+
+        <div class="doc-h3">Tone</div>
+        <div class="grid-3">
+          <div class="card-soft">
+            <div class="tp-h5" style="margin-bottom:6px">Confident, not boastful</div>
+            <p class="tp-body-sm" style="margin:0">We say what the product does, in plain language. We don't oversell.</p>
+          </div>
+          <div class="card-soft">
+            <div class="tp-h5" style="margin-bottom:6px">Clinical, not clinical-cold</div>
+            <p class="tp-body-sm" style="margin:0">Precise about workflow. Warm about the doctor and the patient.</p>
+          </div>
+          <div class="card-soft">
+            <div class="tp-h5" style="margin-bottom:6px">India-first</div>
+            <p class="tp-body-sm" style="margin:0">ABDM, ABHA, INR, Indic languages — these are defaults, not afterthoughts.</p>
+          </div>
+        </div>
+
+        <div class="doc-h3">Voice samples</div>
+        <div class="voice-line"><span class="label">Headline</span>Speak. We'll write the prescription.</div>
+        <div class="voice-line"><span class="label">Subhead</span>VoiceRx listens to your consultation and drops a structured Rx into the patient's chart — in your specialty's language.</div>
+        <div class="voice-line"><span class="label">CTA</span>Book a 20-minute demo</div>
+        <div class="voice-line"><span class="label">Microcopy</span>Save it on the phone the doctor already uses.</div>
+      </section>
+
+      <!-- COLOR -->
+      <section id="color" class="doc-section anchor">
+        <h2>Color</h2>
+        <p class="lede">A confident blue–violet primary spine, warm amber accent, and a cool slate neutrals system. Heavy gradients are reserved for two surfaces per page only.</p>
+
+        <div class="doc-h3">Primary — Blue</div>
+        <div class="ramp">
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-50)"></div><span class="name">blue-50</span><span class="hex">#EEEEFF</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-100)"></div><span class="name">blue-100</span><span class="hex">#D8D8FA</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-200)"></div><span class="name">blue-200</span><span class="hex">#B5B4F2</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-300)"></div><span class="name">blue-300</span><span class="hex">#8E8DE8</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-400)"></div><span class="name">blue-400</span><span class="hex">#6C6BDE</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-500)"></div><span class="name">blue-500</span><span class="hex">#4B4AD5</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-600)"></div><span class="name">blue-600</span><span class="hex">#3C3BB5</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-700)"></div><span class="name">blue-700</span><span class="hex">#2E2D96</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-800)"></div><span class="name">blue-800</span><span class="hex">#212077</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-blue-900)"></div><span class="name">blue-900</span><span class="hex">#161558</span></div>
+        </div>
+
+        <div class="doc-h3">Accent — Violet &amp; Amber</div>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-violet-50)"></div><span class="name">violet-50</span><span class="hex">#FAF5FE</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-violet-500)"></div><span class="name">violet-500</span><span class="hex">#A461D8</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-violet-700)"></div><span class="name">violet-700</span><span class="hex">#703A9E</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-amber-500)"></div><span class="name">amber-500</span><span class="hex">#F5B832</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-amber-700)"></div><span class="name">amber-700</span><span class="hex">#B47D10</span></div>
+        </div>
+
+        <div class="doc-h3">Neutrals — Slate</div>
+        <div class="ramp">
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-0)"></div><span class="name">slate-0</span><span class="hex">#FFFFFF</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-50)"></div><span class="name">slate-50</span><span class="hex">#FAFAFB</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-100)"></div><span class="name">slate-100</span><span class="hex">#F1F1F5</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-200)"></div><span class="name">slate-200</span><span class="hex">#E2E2EA</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-300)"></div><span class="name">slate-300</span><span class="hex">#D0D5DD</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-500)"></div><span class="name">slate-500</span><span class="hex">#717179</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-600)"></div><span class="name">slate-600</span><span class="hex">#545460</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-700)"></div><span class="name">slate-700</span><span class="hex">#454551</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-800)"></div><span class="name">slate-800</span><span class="hex">#2C2C35</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-slate-900)"></div><span class="name">slate-900</span><span class="hex">#171725</span></div>
+        </div>
+
+        <div class="doc-h3">Semantic</div>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-success)"></div><span class="name">success</span><span class="hex">#10B981</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-warning)"></div><span class="name">warning</span><span class="hex">#F59E0B</span></div>
+          <div class="swatch"><div class="chip-color" style="background:var(--tp-error)"></div><span class="name">error</span><span class="hex">#E11D48</span></div>
+        </div>
+      </section>
+
+      <!-- TYPE -->
+      <section id="type" class="doc-section anchor">
+        <h2>Typography</h2>
+        <p class="lede">Mulish for display &amp; UI; Inter for body. Tight tracking on headlines, generous line-height in body for clinical readability.</p>
+
+        <div class="demo">
+          <div class="type-row"><span class="label">.tp-display-xl</span><div class="sample"><h1 class="tp-display-xl" style="margin:0">Speak. We'll write the prescription.</h1></div></div>
+          <div class="type-row"><span class="label">.tp-display</span><div class="sample"><h1 class="tp-display" style="margin:0">India-first practice OS</h1></div></div>
+          <div class="type-row"><span class="label">.tp-h1</span><div class="sample"><h2 class="tp-h1" style="margin:0">Built for the way you actually work</h2></div></div>
+          <div class="type-row"><span class="label">.tp-h2</span><div class="sample"><h3 class="tp-h2" style="margin:0">Voice, paper, photo — pick your input</h3></div></div>
+          <div class="type-row"><span class="label">.tp-h3</span><div class="sample"><h4 class="tp-h3" style="margin:0">SmartSync writes as you write</h4></div></div>
+          <div class="type-row"><span class="label">.tp-h4</span><div class="sample"><h5 class="tp-h4" style="margin:0">For solo and multi-doctor clinics</h5></div></div>
+          <div class="type-row"><span class="label">.tp-body-xl</span><div class="sample"><p class="tp-body-xl" style="margin:0">VoiceRx listens to the consultation and drops a structured prescription into the chart — in your specialty's clinical language.</p></div></div>
+          <div class="type-row"><span class="label">.tp-body-lg</span><div class="sample"><p class="tp-body-lg" style="margin:0">Designed for Indian clinics. Built around the phone the doctor already uses.</p></div></div>
+          <div class="type-row"><span class="label">.tp-body</span><div class="sample"><p class="tp-body" style="margin:0">A complete EMR with queue, billing, telehealth, and ABDM-ready records — out of the box.</p></div></div>
+          <div class="type-row"><span class="label">.tp-body-sm</span><div class="sample"><p class="tp-body-sm" style="margin:0">Pricing in INR, GST inclusive. No setup fees.</p></div></div>
+          <div class="type-row"><span class="label">.tp-meta</span><div class="sample"><p class="tp-meta" style="margin:0">Last updated · 14 March 2025</p></div></div>
+          <div class="type-row"><span class="label">.tp-eyebrow</span><div class="sample"><span class="tp-eyebrow">VoiceRx · clinical AI</span></div></div>
+        </div>
+      </section>
+
+      <!-- RADIUS & SHADOW -->
+      <section id="radius" class="doc-section anchor">
+        <h2>Radius &amp; shadow</h2>
+        <p class="lede">Soft, clinical, friendly. Four radii. Four shadows. That's it.</p>
+
+        <div class="doc-h3">Radius</div>
+        <div class="grid-4">
+          <div class="radius-card" style="border-radius:var(--tp-r-12)">--tp-r-12 · 12px</div>
+          <div class="radius-card" style="border-radius:var(--tp-r-20)">--tp-r-20 · 20px</div>
+          <div class="radius-card" style="border-radius:var(--tp-r-24)">--tp-r-24 · 24px</div>
+          <div class="radius-card" style="border-radius:var(--tp-r-42)">--tp-r-42 · 42px (pill)</div>
+        </div>
+
+        <div class="doc-h3">Shadow</div>
+        <div class="grid-4" style="background:var(--tp-slate-50);padding:32px;border-radius:16px;margin-top:8px">
+          <div class="shadow-card" style="box-shadow:var(--tp-shadow-sm)">shadow-sm</div>
+          <div class="shadow-card" style="box-shadow:var(--tp-shadow-md)">shadow-md</div>
+          <div class="shadow-card" style="box-shadow:var(--tp-shadow-lg)">shadow-lg</div>
+          <div class="shadow-card" style="box-shadow:var(--tp-shadow-xl)">shadow-xl</div>
+        </div>
+      </section>
+
+      <!-- SPACING & GRID -->
+      <section id="spacing" class="doc-section anchor">
+        <h2>Spacing &amp; grid</h2>
+        <p class="lede">8-pt spacing rhythm. Page wrap is 1240px. Section padding 96px (desktop) / 56px (mobile).</p>
+        <table class="token-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><code>.tp-wrap</code></td><td>max-width 1240px · padding 0 24px</td><td>Page container — every section content sits inside this</td></tr>
+            <tr><td><code>.tp-section</code></td><td>padding 96px 0 / 56px mobile</td><td>Default vertical rhythm between major sections</td></tr>
+            <tr><td><code>.tp-section-tight</code></td><td>padding 64px 0 / 40px mobile</td><td>Compact rhythm for stacked content blocks</td></tr>
+            <tr><td><code>.section-tint</code></td><td>background slate-50</td><td>Subtle tint band — alternates with white sections</td></tr>
+            <tr><td><code>.grid-2 / .grid-3 / .grid-4 / .grid-6</code></td><td>repeat(N, 1fr) · 24/20/16/12 gap</td><td>Standard column grids — collapse to 1col on mobile</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- BUTTONS -->
+      <section id="buttons" class="doc-section anchor">
+        <h2>Buttons</h2>
+        <p class="lede">Three sizes (S / M / L) × five styles. Primary uses blue-500 solid; on dark bands flip to white-on-dark.</p>
+
+        <div class="doc-h3">Light surfaces</div>
+        <div class="demo">
+          <div class="demo-row">
+            <button class="btn btn-solid btn-l">Book a demo <span class="arr">→</span></button>
+            <button class="btn btn-solid btn-m">Book a demo</button>
+            <button class="btn btn-solid btn-s">Book demo</button>
+          </div>
+          <div class="demo-row">
+            <button class="btn btn-outline btn-l">See pricing</button>
+            <button class="btn btn-outline btn-m">See pricing</button>
+            <button class="btn btn-outline btn-s">See pricing</button>
+          </div>
+          <div class="demo-row">
+            <button class="btn btn-ghost btn-m">Watch video</button>
+            <a class="btn-link" href="#">Learn more <span class="arr">→</span></a>
+          </div>
+        </div>
+
+        <div class="doc-h3">On-dark surfaces</div>
+        <div class="demo demo-dark">
+          <div class="demo-row">
+            <button class="btn btn-on-dark-solid btn-l">Book a demo <span class="arr">→</span></button>
+            <button class="btn btn-on-dark-outline btn-l">Talk to sales</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- BADGES -->
+      <section id="badges" class="doc-section anchor">
+        <h2>Badges &amp; chips</h2>
+        <p class="lede">Badges label state on cards. Chips are inline filters and selectable taxonomy.</p>
+        <div class="demo">
+          <div class="doc-h3" style="margin-top:0">Badges</div>
+          <div class="demo-row">
+            <span class="badge badge-blue">Voice-first</span>
+            <span class="badge badge-violet">AI agent</span>
+            <span class="badge badge-amber">New</span>
+            <span class="badge badge-success">Live</span>
+          </div>
+          <div class="doc-h3">Chips</div>
+          <div class="demo-row">
+            <span class="chip">Cardiology</span>
+            <span class="chip">Pediatrics</span>
+            <span class="chip">Dermatology</span>
+            <span class="chip chip-blue">Selected</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARDS -->
+      <section id="cards" class="doc-section anchor">
+        <h2>Cards</h2>
+        <p class="lede">Three surface treatments — neutral border, soft slate, blue tint. 20px radius, sm shadow, 28px padding.</p>
+        <div class="grid-3">
+          <div class="card">
+            <span class="badge badge-blue" style="margin-bottom:12px">Voice-first</span>
+            <div class="tp-h4" style="margin-bottom:6px">VoiceRx</div>
+            <p class="tp-body-sm" style="margin:0 0 16px">Speak naturally during consult. We structure the Rx, dosage, and follow-up.</p>
+            <a class="btn-link" href="#">Explore <span class="arr">→</span></a>
+          </div>
+          <div class="card-soft">
+            <div class="tp-h4" style="margin-bottom:6px">SmartSync</div>
+            <p class="tp-body-sm" style="margin:0">Hand-write on a tablet. We sync to the digital chart in real time.</p>
+          </div>
+          <div class="card-blue">
+            <div class="tp-h4" style="margin-bottom:6px">SnapRx</div>
+            <p class="tp-body-sm" style="margin:0">Photograph any handwritten prescription — we digitise it in seconds.</p>
+          </div>
+        </div>
+
+        <div class="doc-h3">Stat card</div>
+        <div class="grid-4">
+          <div class="card"><div class="stat"><span class="stat-num">42%</span><span class="stat-lbl">Faster consult notes</span></div></div>
+          <div class="card"><div class="stat"><span class="stat-num">2.3×</span><span class="stat-lbl">Patient throughput</span></div></div>
+          <div class="card"><div class="stat"><span class="stat-num">98%</span><span class="stat-lbl">Voice accuracy</span></div></div>
+          <div class="card"><div class="stat"><span class="stat-num">25+</span><span class="stat-lbl">Specialties supported</span></div></div>
+        </div>
+
+        <div class="doc-h3">Testimonial</div>
+        <div class="grid-2">
+          <div class="tcard">
+            <blockquote>"VoiceRx cut my notes time by half. I see my patients again, not the screen."</blockquote>
+            <div class="who">
+              <div class="ph-doc" style="width:48px;height:48px;font-size:14px">DR</div>
+              <div class="who-meta"><div class="name">Dr Rohan Mehta</div><div class="role">Cardiologist · Mumbai</div></div>
+            </div>
+          </div>
+          <div class="tcard">
+            <blockquote>"My team handles 120 patients a day on TatvaPractice. The queue and billing just work."</blockquote>
+            <div class="who">
+              <div class="ph-doc" style="width:48px;height:48px;font-size:14px">SK</div>
+              <div class="who-meta"><div class="name">Dr Suman Kapoor</div><div class="role">Pediatrician · Bengaluru</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMS -->
+      <section id="forms" class="doc-section anchor">
+        <h2>Forms</h2>
+        <p class="lede">Quiet, low-chrome inputs. 42px height to align with btn-m. Focus uses blue-500 ring.</p>
+        <div class="demo" style="max-width:520px">
+          <div class="field"><label>Full name <span class="req">*</span></label><input type="text" placeholder="Dr Anika Rao" /></div>
+          <div class="field"><label>Clinic name</label><input type="text" placeholder="Aarogya Wellness Clinic" /></div>
+          <div class="field"><label>Specialty</label>
+            <select><option>Cardiology</option><option>Pediatrics</option><option>Dermatology</option><option>General Practice</option></select>
+          </div>
+          <div class="field"><label>Tell us about your practice</label><textarea rows="3" placeholder="Solo clinic, ~40 patients/day, currently using paper records…"></textarea></div>
+          <div style="display:flex;gap:10px;margin-top:6px"><button class="btn btn-solid btn-m">Book demo</button><button class="btn btn-ghost btn-m">Cancel</button></div>
+        </div>
+      </section>
+
+      <!-- NAV -->
+      <section id="nav" class="doc-section anchor">
+        <h2>Navigation</h2>
+        <p class="lede">Sticky top nav with translucent backdrop blur. Mega-dropdown for Product. Footer is always slate-900.</p>
+        <p class="tp-body-sm grid-meta">Top of page is the live nav — see also footer at bottom of this document.</p>
+      </section>
+
+      <!-- PAGE PATTERNS -->
+      <section id="patterns" class="doc-section anchor">
+        <h2>Page patterns</h2>
+        <p class="lede">Reusable section recipes. Compose pages from these — don't reinvent.</p>
+
+        <div class="doc-h3">Steps (process)</div>
+        <div class="demo demo-tint">
+          <div class="steps">
+            <div class="step"><div class="step-n">STEP 01</div><h4 class="tp-h4">Speak</h4><p class="tp-body-sm" style="margin:0">Talk through the case naturally during consult.</p></div>
+            <div class="step"><div class="step-n">STEP 02</div><h4 class="tp-h4">Structure</h4><p class="tp-body-sm" style="margin:0">VoiceRx parses meds, dosage, follow-up.</p></div>
+            <div class="step"><div class="step-n">STEP 03</div><h4 class="tp-h4">Review</h4><p class="tp-body-sm" style="margin:0">One tap confirms or corrects the draft Rx.</p></div>
+            <div class="step"><div class="step-n">STEP 04</div><h4 class="tp-h4">Print &amp; send</h4><p class="tp-body-sm" style="margin:0">ABDM-ready Rx printed, WhatsApped, archived.</p></div>
+          </div>
+        </div>
+
+        <div class="doc-h3">Checks (capability bullets)</div>
+        <div class="demo">
+          <ul class="checks" style="margin:0">
+            <li>ABDM-ready prescriptions out of the box</li>
+            <li>Hindi, Marathi, Tamil, Telugu, Bengali voice support</li>
+            <li>Specialty templates for 25+ Indian medical specialties</li>
+            <li>Works on the doctor's existing Android phone — no extra hardware</li>
+          </ul>
+        </div>
+
+        <div class="doc-h3">FAQ</div>
+        <div class="demo faq">
+          <details open><summary>Does VoiceRx work in Indian languages?<span class="plus">+</span></summary><p>Yes. Hindi, Marathi, Tamil, Telugu, Bengali, Kannada, and Gujarati are supported today. More on the roadmap.</p></details>
+          <details><summary>How does ABDM compliance work?<span class="plus">+</span></summary><p>Prescriptions and records are emitted in FHIR R4 with ABHA linking. We're an ABDM-empanelled HIE-CM partner.</p></details>
+          <details><summary>Can I keep using my paper Rx pad?<span class="plus">+</span></summary><p>Yes — SnapRx photographs your handwritten Rx and digitises it. SmartSync syncs writing on a tablet in real time.</p></details>
+        </div>
+
+        <div class="doc-h3">Specialty cloud</div>
+        <div class="demo">
+          <div class="cloud">
+            <span class="chip">Cardiology</span><span class="chip">Pediatrics</span><span class="chip">Dermatology</span>
+            <span class="chip">Orthopaedics</span><span class="chip">Gynaecology</span><span class="chip">ENT</span>
+            <span class="chip">Ophthalmology</span><span class="chip">Endocrinology</span><span class="chip">Pulmonology</span>
+            <span class="chip">General Medicine</span><span class="chip">Psychiatry</span><span class="chip">Dentistry</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLIANCE -->
+      <section id="compliance" class="doc-section anchor">
+        <h2>Compliance pills</h2>
+        <p class="lede">Vivid, named, above-the-fold. India compliance is a feature — surface it, don't bury it.</p>
+        <div class="demo demo-tint">
+          <div class="compliance-strip" style="border-radius:14px;border:1px solid var(--tp-slate-200)">
+            <div class="row">
+              <span class="cp cp-nha"><span style="width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block"></span> NHA · ABDM partner</span>
+              <span class="cp cp-abdm"><span style="width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block"></span> ABDM-ready</span>
+              <span class="cp cp-abha"><span style="width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block"></span> ABHA linked</span>
+              <span class="cp cp-iso">ISO 27001</span>
+              <span class="cp cp-dpdpa">DPDPA 2023</span>
+              <span class="cp cp-hipaa">HIPAA-aligned</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-h3">Soft variant (in-page)</div>
+        <div class="demo">
+          <div class="demo-row">
+            <span class="compliance compliance-nha"><span class="dot"></span> NHA · ABDM</span>
+            <span class="compliance compliance-abdm"><span class="dot"></span> ABDM-ready</span>
+            <span class="compliance compliance-abha"><span class="dot"></span> ABHA linked</span>
+            <span class="compliance compliance-iso">ISO 27001</span>
+            <span class="compliance compliance-dpdpa">DPDPA 2023</span>
+            <span class="compliance compliance-hipaa">HIPAA-aligned</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- BANDS -->
+      <section id="bands" class="doc-section anchor">
+        <h2>Statement &amp; CTA bands</h2>
+        <p class="lede">The two heaviest gradient surfaces — limit to one mid-page Statement and one Pre-footer CTA per page. Never more.</p>
+
+        <div class="doc-h3">Statement band</div>
+        <div class="statement-band" style="border-radius:24px;padding:64px 24px">
+          <div class="sb-inner">
+            <h2>The phone the doctor already uses, now the EMR they actually want.</h2>
+          </div>
+        </div>
+
+        <div class="doc-h3" style="margin-top:32px">Pre-footer CTA band</div>
+        <div class="cta-band">
+          <h2 class="tp-display" style="margin:0 0 14px">Ready to see it on your patients?</h2>
+          <p class="tp-body-lg" style="color:rgba(255,255,255,.85);max-width:60ch;margin:0 auto 28px">A 20-minute demo with a clinical solutions engineer — bring your specialty's edge cases.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <a class="btn btn-on-dark-solid btn-l" href="contact.html">Book a demo</a>
+            <a class="btn btn-on-dark-outline btn-l" href="pricing.html">See pricing</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLACEHOLDERS -->
+      <section id="placeholders" class="doc-section anchor">
+        <h2>Placeholders</h2>
+        <p class="lede">Every photographic surface ships with a labelled placeholder. Replace at handoff with real product UI or clinical photography.</p>
+        <div class="grid-3">
+          <div class="ph ph-aspect-16-10" data-replace-with="Doctor using VoiceRx on phone, clinical setting"><span class="ph-label">Replace · 16:10</span><span>Doctor on phone</span></div>
+          <div class="ph ph-aspect-4-3" data-replace-with="EMR dashboard screenshot — chart + queue"><span class="ph-label">Replace · 4:3</span><span>EMR screenshot</span></div>
+          <div class="ph ph-aspect-1-1" data-replace-with="Customer headshot — actual clinician"><span class="ph-label">Replace · 1:1</span><span>Headshot</span></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<div data-partial="footer"></div>
+
+<script src="styles/icons.js" defer></script>
+<script src="styles/partials.js" defer></script>
+<script>
+  // TOC scroll-spy
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.doc-toc a');
+    const sections = [...document.querySelectorAll('.doc-section[id]')];
+    const setActive = () => {
+      const y = window.scrollY + 120;
+      let active = sections[0];
+      for (const s of sections) if (s.offsetTop <= y) active = s;
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active.id));
+    };
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+  });
+</script>
+</body>
+</html>

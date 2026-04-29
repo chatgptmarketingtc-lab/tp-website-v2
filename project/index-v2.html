@@ -1,0 +1,1404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TatvaPractice — EHR for Indian clinicians</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+/* —— TOKENS —— SimplePractice-inspired, warm+wellness */
+:root {
+  --cream:   #FBF7F1;
+  --cream-2: #F4ECDF;
+  --cream-3: #EADFC8;
+  --ivory:   #FFFEFB;
+
+  --ink:     #1D2B2A;
+  --ink-2:   #3C4A48;
+  --ink-3:   #5E6B68;
+  --ink-4:   #8D9996;
+
+  --teal:    #2F9AA8;        /* primary */
+  --teal-ink:#1E6E78;
+  --teal-wash:#DFF0F2;
+  --teal-deep:#0E3C44;
+
+  --coral:   #F07B5A;         /* warm accent */
+  --coral-2: #F9C7B5;
+  --sage:    #A8C5A5;
+  --sage-2:  #D9E6D6;
+  --mustard: #E8B755;
+
+  --rule:    #E4DAC7;
+  --rule-2:  #CFC1A6;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(30,40,40,.04), 0 4px 10px -6px rgba(30,40,40,.08);
+  --shadow-md: 0 2px 6px rgba(30,40,40,.05), 0 20px 40px -18px rgba(30,40,40,.14);
+  --shadow-lg: 0 4px 12px rgba(30,40,40,.06), 0 40px 80px -30px rgba(30,40,40,.2);
+
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --max: 1280px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "DM Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  font-size: 16px;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+::selection { background: var(--teal); color: white; }
+
+.serif { font-family: "Fraunces", Georgia, serif; font-weight: 400; letter-spacing: -0.015em; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+/* Buttons — pill, warm */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 22px;
+  border-radius: var(--r-pill);
+  font-size: 15px; font-weight: 600;
+  border: 1px solid transparent;
+  transition: all .2s var(--ease);
+  white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+.btn-primary { background: var(--ink); color: var(--cream); }
+.btn-primary:hover { background: var(--teal-deep); transform: translateY(-1px); }
+.btn-teal { background: var(--teal); color: white; }
+.btn-teal:hover { background: var(--teal-ink); transform: translateY(-1px); }
+.btn-coral { background: var(--coral); color: white; }
+.btn-coral:hover { background: #D65F3E; transform: translateY(-1px); }
+.btn-ghost { background: var(--ivory); color: var(--ink); border-color: var(--rule); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-plain { background: transparent; color: var(--ink); padding: 14px 4px; }
+.btn-plain:hover { color: var(--teal-ink); }
+.btn .arr { transition: transform .2s var(--ease); }
+.btn:hover .arr { transform: translateX(3px); }
+
+/* Chips */
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px 6px 10px;
+  border-radius: var(--r-pill);
+  background: var(--ivory);
+  border: 1px solid var(--rule);
+  font-size: 13px; font-weight: 500;
+  color: var(--ink-2);
+}
+.chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+.chip.teal { background: var(--teal-wash); border-color: transparent; color: var(--teal-ink); }
+.chip.coral { background: var(--coral-2); border-color: transparent; color: #8A3520; }
+.chip.sage { background: var(--sage-2); border-color: transparent; color: #35543A; }
+
+/* ————— ANNOUNCEMENT ————— */
+.promo {
+  background: var(--teal-deep); color: white;
+}
+.promo-inner {
+  display: flex; align-items: center; gap: 16px;
+  height: 44px; font-size: 14px; justify-content: center;
+}
+.promo-icon {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--mustard); color: var(--teal-deep);
+  display: grid; place-items: center; font-weight: 700;
+  font-size: 12px;
+}
+.promo a { color: white; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; font-weight: 600; }
+.promo a:hover { opacity: 0.85; }
+
+/* ————— NAV ————— */
+.nav {
+  position: sticky; top: 0; z-index: 30;
+  background: rgba(251, 247, 241, 0.88);
+  backdrop-filter: saturate(150%) blur(12px);
+  -webkit-backdrop-filter: saturate(150%) blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-inner {
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; gap: 48px;
+  height: 72px;
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
+}
+.logo-mark {
+  width: 32px; height: 32px; border-radius: 10px;
+  background: var(--teal);
+  color: white;
+  display: grid; place-items: center;
+  font-family: "Fraunces", serif;
+  font-size: 20px;
+  padding-bottom: 2px;
+}
+.nav ul {
+  display: flex; gap: 2px; list-style: none; margin: 0; padding: 0;
+  justify-content: center;
+}
+.nav ul a {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 15px; color: var(--ink); font-weight: 500;
+  padding: 10px 14px; border-radius: 8px;
+  transition: all .15s var(--ease);
+}
+.nav ul a:hover { background: var(--cream-2); }
+.nav ul a::after {
+  content: "▾"; font-size: 8px; color: var(--ink-3);
+  margin-left: 2px;
+}
+.nav-actions { display: flex; gap: 8px; align-items: center; }
+
+/* ————— HERO ————— */
+.hero {
+  padding: 56px 0 100px;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+  position: relative; overflow: hidden;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.hero h1 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(48px, 6.4vw, 92px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 24px 0 28px;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
+  font-weight: 400;
+}
+.hero .lede {
+  font-size: 19px; line-height: 1.55;
+  color: var(--ink-2); max-width: 46ch;
+  margin: 0 0 36px;
+}
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.hero-cta .trust {
+  font-size: 13px; color: var(--ink-3); margin-left: 8px;
+}
+
+.hero-art {
+  position: relative;
+  aspect-ratio: 1/1;
+  display: grid; place-items: center;
+}
+.hero-blob {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 55%, var(--teal-wash) 0%, transparent 65%);
+}
+/* Device card — SmartPad mock, tilted friendly */
+.pad-card {
+  position: relative;
+  width: 88%;
+  aspect-ratio: 4/5;
+  background: white;
+  border-radius: 28px;
+  box-shadow: var(--shadow-lg);
+  padding: 20px;
+  transform: rotate(-2deg);
+  z-index: 2;
+}
+.pad-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 12px 14px;
+  border-bottom: 1px solid var(--cream-2);
+}
+.pad-top .pill {
+  background: var(--cream); padding: 5px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 500;
+}
+.pad-top .dot-g { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 0 4px var(--sage-2); }
+.pad-line {
+  padding: 10px 12px;
+}
+.pad-mono {
+  font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-3);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.pad-txt { font-size: 14px; color: var(--ink); }
+.pad-txt b { font-weight: 600; }
+.pad-hl { background: var(--teal-wash); padding: 0 4px; border-radius: 3px; }
+
+.pad-rx {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 8px 12px 0;
+  font-size: 13px;
+}
+.pad-rx ul { list-style: none; padding: 0; margin: 6px 0 0; }
+.pad-rx li { padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+.pad-rx li::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal);
+}
+
+.pad-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 12px 4px;
+  margin-top: 8px;
+  border-top: 1px solid var(--cream-2);
+  font-size: 11px; color: var(--ink-3);
+}
+.pad-foot .live {
+  display: inline-flex; gap: 6px; align-items: center;
+  color: var(--teal-ink); font-weight: 600;
+}
+.pad-foot .live::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); box-shadow: 0 0 0 3px var(--teal-wash);
+}
+
+/* Floating chat bubble */
+.bubble {
+  position: absolute;
+  bottom: 8%; left: -4%;
+  background: white;
+  border-radius: 20px 20px 20px 4px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-md);
+  z-index: 3;
+  max-width: 220px;
+  transform: rotate(-2deg);
+}
+.bubble-mono {
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--teal); font-weight: 700;
+  margin-bottom: 4px;
+}
+.bubble p { margin: 0; font-size: 13px; color: var(--ink); line-height: 1.4; }
+
+/* Floating stat card */
+.stat-float {
+  position: absolute;
+  top: 6%; right: -2%;
+  background: var(--coral);
+  color: white;
+  border-radius: 20px;
+  padding: 16px 20px;
+  z-index: 3;
+  box-shadow: var(--shadow-md);
+  transform: rotate(4deg);
+}
+.stat-float b {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 44px; line-height: 1;
+  font-weight: 500; font-style: italic;
+}
+.stat-float span { font-size: 12px; opacity: 0.92; }
+
+/* Stats bar under hero */
+.hero-stats {
+  margin-top: 72px; display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.hstat {
+  background: var(--ivory);
+  border-radius: var(--r-md);
+  padding: 20px 24px;
+  border: 1px solid var(--rule);
+}
+.hstat b {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-size: 36px; line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.hstat span { font-size: 13px; color: var(--ink-3); }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-art { aspect-ratio: 1/1; max-width: 400px; margin: 0 auto; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .nav ul { display: none; }
+}
+
+/* ————— "WHO WE'RE FOR" CAROUSEL ————— */
+.who {
+  padding: 96px 0;
+}
+.sec-head {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: end;
+  margin-bottom: 48px;
+}
+.sec-head .eyebrow {
+  font-size: 13px; font-weight: 600;
+  color: var(--teal-ink);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.sec-head h2 {
+  font-family: "Fraunces", serif; font-weight: 400;
+  font-size: clamp(36px, 4.6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 14ch;
+}
+.sec-head h2 em { font-style: italic; color: var(--teal); font-weight: 400; }
+.sec-head p { color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 48ch; margin: 0; }
+
+.who-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.who-card {
+  background: var(--ivory);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  border: 1px solid var(--rule);
+  transition: all .25s var(--ease);
+  display: flex; flex-direction: column; gap: 18px;
+  min-height: 320px;
+}
+.who-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--rule-2);
+}
+.who-card .illo {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: grid; place-items: center;
+  font-family: "Fraunces", serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: white;
+}
+.illo.t-teal { background: var(--teal); }
+.illo.t-coral { background: var(--coral); }
+.illo.t-sage { background: #769A72; }
+.illo.t-mustard { background: var(--mustard); color: var(--teal-deep); }
+
+.who-card h3 {
+  font-size: 22px; font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.who-card p { font-size: 14px; color: var(--ink-2); line-height: 1.55; margin: 0; flex: 1; }
+.who-card a {
+  color: var(--teal-ink); font-weight: 600; font-size: 14px;
+  display: inline-flex; gap: 6px; align-items: center;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px; align-self: flex-start;
+}
+.who-card a:hover { color: var(--coral); }
+
+@media (max-width: 1000px) {
+  .who-grid { grid-template-columns: repeat(2, 1fr); }
+  .sec-head { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 600px) { .who-grid { grid-template-columns: 1fr; } }
+
+/* ————— FEATURE SLAB ————— */
+.feature {
+  padding: 96px 0;
+  background: var(--teal-deep);
+  color: var(--cream);
+  border-radius: var(--r-xl);
+  margin: 0 24px;
+  position: relative; overflow: hidden;
+}
+.feature-wrap { max-width: calc(var(--max) - 48px); margin: 0 auto; padding: 0 32px; }
+.feature .eyebrow { color: var(--mustard); }
+.feature h2 { color: var(--cream); }
+.feature h2 em { color: var(--coral-2); }
+.feature p.lede { color: rgba(251,247,241,.7); font-size: 17px; max-width: 48ch; }
+
+.feature-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 48px;
+}
+.fcard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  transition: all .2s var(--ease);
+}
+.fcard:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
+.fcard .ico {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--coral);
+  display: grid; place-items: center;
+  font-family: "Fraunces", serif; font-size: 22px; color: white;
+  margin-bottom: 20px;
+}
+.fcard:nth-child(2) .ico { background: var(--mustard); color: var(--teal-deep); }
+.fcard:nth-child(3) .ico { background: var(--sage); color: var(--teal-deep); }
+.fcard h4 { font-size: 20px; margin: 0 0 10px; font-weight: 600; color: var(--cream); letter-spacing: -0.01em; }
+.fcard p { font-size: 14px; color: rgba(251,247,241,.72); margin: 0 0 16px; line-height: 1.55; }
+.fcard ul { list-style: none; padding: 0; margin: 16px 0 0; font-size: 13px; }
+.fcard ul li { padding: 6px 0 6px 22px; color: rgba(251,247,241,.82); position: relative; }
+.fcard ul li::before {
+  content: "✓"; position: absolute; left: 0;
+  color: var(--coral-2); font-weight: 700;
+}
+
+.feature .sec-head { margin-bottom: 0; }
+.feature .sec-head h2 { max-width: 18ch; }
+
+@media (max-width: 900px) { .feature-grid { grid-template-columns: 1fr; } .feature { margin: 0 16px; padding: 64px 0; } .feature-wrap { padding: 0 16px; } }
+
+/* ————— BIG IMAGE / UI SHOWCASE ————— */
+.showcase {
+  padding: 120px 0;
+}
+.showcase-inner {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 72px; align-items: center;
+}
+.showcase-inner.reverse { grid-template-columns: 1.1fr 1fr; }
+.showcase-inner.reverse .showcase-art { order: -1; }
+
+.showcase h3 {
+  font-family: "Fraunces", serif; font-weight: 400;
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin: 14px 0 22px;
+  max-width: 16ch;
+}
+.showcase h3 em { font-style: italic; color: var(--teal); font-weight: 400; }
+.showcase p { font-size: 17px; color: var(--ink-2); line-height: 1.6; max-width: 46ch; margin: 0 0 20px; }
+.showcase-checks { list-style: none; padding: 0; margin: 0 0 28px; }
+.showcase-checks li { padding: 10px 0 10px 28px; position: relative; font-size: 15px; }
+.showcase-checks li::before {
+  content: "✓"; position: absolute; left: 0; top: 9px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--sage-2); color: #2C5A32;
+  font-size: 11px; font-weight: 700;
+  display: grid; place-items: center;
+}
+
+.showcase-art {
+  background: var(--sage-2);
+  border-radius: 28px;
+  padding: 40px;
+  aspect-ratio: 5/4;
+  position: relative;
+  display: grid; place-items: center;
+  overflow: hidden;
+}
+.showcase-art.coral { background: var(--coral-2); }
+.showcase-art.teal { background: var(--teal-wash); }
+
+.ui-mock {
+  background: white; border-radius: 16px;
+  width: 92%;
+  box-shadow: var(--shadow-lg);
+  padding: 20px;
+  font-size: 13px;
+}
+.ui-mock-top {
+  display: flex; gap: 8px; padding-bottom: 14px; margin-bottom: 14px;
+  border-bottom: 1px solid var(--cream-2);
+}
+.ui-mock-top span {
+  padding: 5px 12px; border-radius: 999px; background: var(--cream);
+  font-size: 12px; font-weight: 500; color: var(--ink-2);
+}
+.ui-mock-top span.sel { background: var(--ink); color: white; }
+
+.ui-row {
+  display: grid; grid-template-columns: 48px 1fr auto;
+  gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--cream-2);
+  align-items: center;
+}
+.ui-row:last-child { border-bottom: 0; }
+.ui-av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; color: white; font-size: 12px; }
+.ui-av.a1 { background: var(--teal); }
+.ui-av.a2 { background: var(--coral); }
+.ui-av.a3 { background: var(--mustard); color: var(--teal-deep); }
+.ui-av.a4 { background: #769A72; }
+.ui-row b { font-weight: 600; font-size: 13px; }
+.ui-row small { display: block; color: var(--ink-3); font-size: 12px; margin-top: 1px; }
+.ui-tag {
+  padding: 3px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 600;
+}
+.ui-tag.ok { background: var(--sage-2); color: #2C5A32; }
+.ui-tag.wait { background: var(--coral-2); color: #8A3520; }
+.ui-tag.up { background: var(--teal-wash); color: var(--teal-ink); }
+
+@media (max-width: 900px) {
+  .showcase-inner, .showcase-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .showcase-inner.reverse .showcase-art { order: 0; }
+}
+
+/* ————— PARTNERS ————— */
+.partners {
+  padding: 64px 0;
+  background: var(--cream-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.partners-inner {
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 64px; align-items: center;
+}
+.partners h4 {
+  font-family: "Fraunces", serif; font-weight: 400;
+  font-size: 26px; line-height: 1.15; margin: 0;
+  letter-spacing: -0.015em;
+}
+.partners h4 em { font-style: italic; color: var(--teal); }
+.partners-logos {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.plogo {
+  background: var(--ivory);
+  border-radius: 12px;
+  padding: 20px 14px;
+  text-align: center;
+  border: 1px solid var(--rule);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+.plogo small {
+  display: block; font-weight: 500; font-size: 10px;
+  color: var(--ink-4); margin-top: 2px; letter-spacing: 0.04em;
+}
+@media (max-width: 900px) {
+  .partners-inner { grid-template-columns: 1fr; gap: 24px; }
+  .partners-logos { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ————— PULLQUOTE ————— */
+.pullquote {
+  padding: 120px 0;
+  text-align: center;
+  background: var(--cream);
+}
+.pullquote blockquote {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(32px, 4.4vw, 56px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 24ch;
+  margin: 0 auto 36px;
+  color: var(--ink);
+}
+.pullquote blockquote::before { content: "“"; color: var(--teal); font-size: 1.2em; line-height: 0; vertical-align: -0.2em; margin-right: 4px; }
+.pullquote blockquote::after { content: "”"; color: var(--teal); font-size: 1.2em; line-height: 0; vertical-align: -0.2em; margin-left: 4px; }
+.q-attr {
+  display: inline-flex; gap: 14px; align-items: center;
+  padding: 10px 18px 10px 10px;
+  background: var(--ivory);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+.q-av {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--coral); color: white;
+  display: grid; place-items: center; font-weight: 700; font-size: 13px;
+}
+.q-name { font-size: 14px; font-weight: 600; text-align: left; }
+.q-role { font-size: 12px; color: var(--ink-3); text-align: left; }
+
+/* ————— TESTIMONIALS ————— */
+.tests {
+  padding: 96px 0;
+}
+.t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tcard {
+  padding: 28px;
+  background: var(--ivory);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 20px;
+  transition: all .2s var(--ease);
+}
+.tcard:hover { border-color: var(--rule-2); }
+.tcard:nth-child(2) { background: var(--teal-wash); border-color: transparent; }
+.tcard:nth-child(3) { background: var(--coral-2); border-color: transparent; }
+.tcard .qmark {
+  font-family: "Fraunces", serif;
+  font-size: 56px; line-height: 0.6; color: var(--teal);
+}
+.tcard:nth-child(3) .qmark { color: #8A3520; }
+.tcard blockquote { margin: 0; font-size: 17px; line-height: 1.45; color: var(--ink); letter-spacing: -0.005em; font-weight: 500; }
+.tcard figcaption { display: flex; gap: 12px; align-items: center; margin-top: auto; }
+.tcard figcaption > div { display: flex; flex-direction: column; }
+.t-av { width: 40px; height: 40px; border-radius: 50%; background: var(--sage); color: var(--teal-deep); display: grid; place-items: center; font-weight: 700; font-size: 12px; }
+.tcard:nth-child(1) .t-av { background: var(--teal); color: white; }
+.tcard:nth-child(3) .t-av { background: #8A3520; color: white; }
+.t-name { font-size: 14px; font-weight: 600; }
+.t-role { font-size: 12px; color: var(--ink-3); }
+.tcard:nth-child(3) .t-role { color: #8A3520; }
+
+@media (max-width: 900px) { .t-grid { grid-template-columns: 1fr; } }
+
+/* ————— PRICING ————— */
+.pricing {
+  padding: 96px 0;
+  background: var(--cream-2);
+}
+.ptoggle {
+  display: inline-flex; background: var(--ivory); padding: 4px;
+  border-radius: 999px; border: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.ptoggle button {
+  background: transparent; border: 0; padding: 8px 18px;
+  font-size: 13px; font-weight: 600;
+  border-radius: 999px;
+  color: var(--ink-3);
+}
+.ptoggle button.on { background: var(--ink); color: white; }
+
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.plan {
+  background: var(--ivory); border-radius: var(--r-lg);
+  padding: 32px; border: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 18px;
+  position: relative;
+}
+.plan.featured { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.plan.featured .p-name, .plan.featured .p-desc, .plan.featured ul { color: rgba(251,247,241,.8); }
+.plan.featured .p-desc { color: rgba(251,247,241,.65); }
+.plan.featured .p-price { color: var(--cream); }
+.plan.featured ul li { border-color: rgba(255,255,255,0.12); }
+.plan-tag {
+  position: absolute; top: -12px; right: 24px;
+  background: var(--coral); color: white;
+  padding: 4px 12px; border-radius: 999px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.p-name { font-size: 14px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.02em; text-transform: uppercase; }
+.p-price { font-family: "Fraunces", serif; font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: -0.02em; }
+.p-price small { font-family: "DM Sans", sans-serif; font-size: 14px; font-weight: 500; color: var(--ink-3); margin-left: 4px; }
+.plan.featured .p-price small { color: rgba(251,247,241,.6); }
+.p-desc { font-size: 14px; color: var(--ink-2); margin: 0; }
+.plan ul { list-style: none; padding: 0; margin: 0; flex: 1; font-size: 14px; }
+.plan ul li { padding: 10px 0 10px 26px; position: relative; border-top: 1px solid var(--rule); }
+.plan ul li:first-child { border-top: 0; }
+.plan ul li::before {
+  content: "✓"; position: absolute; left: 0; top: 11px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--teal-wash); color: var(--teal-ink);
+  font-size: 10px; font-weight: 700;
+  display: grid; place-items: center;
+}
+.plan.featured ul li::before { background: var(--teal); color: var(--ink); }
+.plan .btn { width: 100%; justify-content: center; }
+
+@media (max-width: 900px) { .plans { grid-template-columns: 1fr; } }
+
+/* ————— FAQ ————— */
+.faq { padding: 96px 0; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: start; }
+.faq-list details {
+  border-top: 1px solid var(--rule);
+  padding: 22px 0;
+  cursor: pointer;
+}
+.faq-list details:last-child { border-bottom: 1px solid var(--rule); }
+.faq-list summary {
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 18px; font-weight: 600; letter-spacing: -0.005em;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after {
+  content: "＋"; color: var(--teal-ink); font-weight: 500;
+  transition: transform .2s var(--ease);
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--teal-wash); display: grid; place-items: center;
+  font-size: 14px;
+}
+.faq-list details[open] summary::after { transform: rotate(45deg); background: var(--coral-2); color: #8A3520; }
+.faq-list p { margin: 14px 0 0; color: var(--ink-2); font-size: 15px; line-height: 1.6; max-width: 60ch; }
+@media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ————— BIG CTA ————— */
+.bigcta {
+  padding: 40px 0 120px;
+}
+.bigcta-inner {
+  background: var(--coral);
+  color: white;
+  border-radius: var(--r-xl);
+  padding: 96px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.bigcta-inner::before {
+  content: ""; position: absolute; top: -20%; left: -10%;
+  width: 340px; height: 340px; border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+}
+.bigcta-inner::after {
+  content: ""; position: absolute; bottom: -30%; right: -5%;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+.bigcta h2 {
+  font-family: "Fraunces", serif; font-weight: 400;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.05; letter-spacing: -0.025em;
+  margin: 0 0 18px; max-width: 20ch; margin-inline: auto;
+  position: relative; z-index: 1;
+}
+.bigcta h2 em { font-style: italic; color: var(--cream); }
+.bigcta p {
+  font-size: 18px; opacity: 0.92; max-width: 44ch;
+  margin: 0 auto 32px; position: relative; z-index: 1;
+}
+.bigcta-actions { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+.bigcta .btn-primary { background: white; color: var(--coral); }
+.bigcta .btn-primary:hover { background: var(--cream); }
+.bigcta .btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.3); }
+.bigcta .btn-ghost:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+/* ————— FOOTER ————— */
+.footer {
+  background: var(--ink); color: var(--cream);
+  padding: 80px 0 32px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-brand .logo { color: var(--cream); }
+.footer-tag { font-size: 14px; color: rgba(251,247,241,.6); margin: 20px 0 24px; line-height: 1.55; max-width: 32ch; }
+.footer-col .title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cream); margin-bottom: 16px; }
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col li { padding: 5px 0; font-size: 14px; }
+.footer-col a { color: rgba(251,247,241,.7); }
+.footer-col a:hover { color: var(--cream); }
+.footer-foot {
+  display: flex; justify-content: space-between; gap: 24px;
+  padding-top: 32px;
+  font-size: 12px; color: rgba(251,247,241,.5);
+}
+.footer-foot a { color: inherit; margin: 0 10px; }
+.footer-badges { display: flex; gap: 10px; }
+.fbadge {
+  padding: 8px 12px; border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  font-size: 11px; font-weight: 600;
+  color: rgba(251,247,241,.8);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-foot { flex-direction: column; } }
+
+/* Tweaks */
+#tweaks[aria-hidden="true"] { display: none; }
+.tw-card {
+  position: fixed; bottom: 20px; right: 20px; z-index: 100;
+  background: var(--ivory); border: 1px solid var(--rule-2);
+  border-radius: var(--r-md); padding: 18px;
+  box-shadow: var(--shadow-md);
+  width: 280px;
+}
+.tw-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.tw-head button { background: transparent; border: 0; font-size: 20px; color: var(--ink-3); cursor: pointer; }
+.tw-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12px; }
+.tw-row select, .tw-row input[type="range"] { font-family: inherit; font-size: 12px; padding: 4px 6px; }
+.tw-val { font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<!-- Promo bar -->
+<div class="promo">
+  <div class="wrap promo-inner">
+    <span class="promo-icon">★</span>
+    <span>Free migration when you switch to TatvaPractice before June.</span>
+    <a href="demo.html">Claim the offer →</a>
+  </div>
+</div>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index-v2.html" class="logo">
+      <span class="logo-mark">त</span>
+      <span>TatvaPractice</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#">Who we're for</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="signin.html" class="btn btn-plain">Sign in</a>
+      <a href="signup.html" class="btn btn-coral">Start free trial</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="chip teal"><span class="dot"></span> Trusted by 10,000+ Indian clinicians</div>
+      <h1>The EHR built for how Indian doctors <em>actually</em> practice.</h1>
+      <p class="lede">
+        Voice, handwriting, and AI that drafts — so you can focus on your patients
+        instead of your keyboard. Close every note before they leave the room.
+      </p>
+      <div class="hero-cta">
+        <a href="signup.html" class="btn btn-coral">Start 30-day free trial <span class="arr">→</span></a>
+        <a href="demo.html" class="btn btn-ghost">See a demo</a>
+        <span class="trust">No credit card needed</span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="hero-blob"></div>
+      <div class="pad-card">
+        <div class="pad-top">
+          <div class="pill">Vikram A. · 34M · OPD-3</div>
+          <div class="dot-g"></div>
+        </div>
+        <div class="pad-line">
+          <div class="pad-mono">Chief complaint</div>
+          <div class="pad-txt">Intermittent epigastric pain × 3 weeks, worse post-meals.</div>
+        </div>
+        <div class="pad-line">
+          <div class="pad-mono">Assessment</div>
+          <div class="pad-txt">Likely GERD / functional dyspepsia. <span class="pad-hl">R/o H. pylori.</span></div>
+        </div>
+        <div class="pad-rx">
+          <div class="pad-mono" style="color: var(--teal-ink);">Prescription</div>
+          <ul>
+            <li><b>Pantoprazole 40mg</b> · 1-0-0 · 14 d</li>
+            <li><b>Sucralfate susp</b> · 10ml TDS · 10 d</li>
+            <li>Avoid spicy &amp; late meals</li>
+          </ul>
+        </div>
+        <div class="pad-foot">
+          <span class="live">Auto-saving</span>
+          <span>Generated · voice + SmartPad</span>
+        </div>
+      </div>
+
+      <div class="stat-float">
+        <b>2.1hr</b>
+        <span>saved per OPD day, avg.</span>
+      </div>
+
+      <div class="bubble">
+        <div class="bubble-mono">VoiceRx · Hindi+English</div>
+        <p>"Patient ko pantoprazole 40 subah khali pet for two weeks…"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap hero-stats">
+    <div class="hstat"><b>10,000+</b><span>Clinicians using Tatva</span></div>
+    <div class="hstat"><b>12 lakh+</b><span>Digital prescriptions</span></div>
+    <div class="hstat"><b>9 languages</b><span>Voice &amp; handwriting</span></div>
+    <div class="hstat"><b>4.8 ★</b><span>On Google Play</span></div>
+  </div>
+</section>
+
+<!-- Who we're for -->
+<section class="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Who it's for</div>
+        <h2>Built for every kind of <em>clinician</em>.</h2>
+      </div>
+      <p>Tatva adapts to the templates, languages, and rhythms of your specialty — from solo GPs in Tier-3 towns to multi-doctor hospital OPDs in metros.</p>
+    </div>
+
+    <div class="who-grid">
+      <a class="who-card" href="#">
+        <div class="illo t-teal">Gp</div>
+        <h3>General practitioners</h3>
+        <p>High-volume OPDs with Hindi-English code-switching, walk-ins, and short consults. Close every note the same day.</p>
+        <span style="color: var(--teal-ink); font-weight: 600;">Learn more →</span>
+      </a>
+      <a class="who-card" href="#">
+        <div class="illo t-coral">Pe</div>
+        <h3>Pediatricians</h3>
+        <p>Growth charts, vaccination tracking, and parent-friendly Rx printouts in any regional language you need.</p>
+        <span style="color: var(--teal-ink); font-weight: 600;">Learn more →</span>
+      </a>
+      <a class="who-card" href="#">
+        <div class="illo t-mustard">Dr</div>
+        <h3>Specialists &amp; consultants</h3>
+        <p>Custom templates for cardiology, derma, gynae &amp; more. Drug-interaction flags tuned to Indian formulary.</p>
+        <span style="color: var(--teal-ink); font-weight: 600;">Learn more →</span>
+      </a>
+      <a class="who-card" href="#">
+        <div class="illo t-sage">Ow</div>
+        <h3>Clinic owners</h3>
+        <p>Hour-by-hour visibility into every OPD room. Revenue, occupancy, and clinician output at a glance.</p>
+        <span style="color: var(--teal-ink); font-weight: 600;">Learn more →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Feature slab -->
+<section class="feature">
+  <div class="feature-wrap">
+    <div class="sec-head" style="margin-bottom: 0;">
+      <div>
+        <div class="eyebrow">What's inside</div>
+        <h2>Three inputs. <em>One clean note.</em></h2>
+      </div>
+      <p class="lede">Speak it, write it, or let Tatva draft it. Whichever way your brain works today — Tatva meets you there.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="fcard">
+        <div class="ico">✎</div>
+        <h4>SmartPad</h4>
+        <p>Handwrite on any tablet. Every stroke becomes searchable, structured data — in 9 regional scripts.</p>
+        <ul>
+          <li>Works with iPad + Apple Pencil</li>
+          <li>Drug-name autocorrect</li>
+          <li>Live interaction flags</li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <div class="ico">♪</div>
+        <h4>VoiceRx</h4>
+        <p>Dictate consults in your language. VoiceRx splits history, exam, assessment &amp; Rx into your template.</p>
+        <ul>
+          <li>Hindi–English code-switching</li>
+          <li>Sub-400ms latency on 4G</li>
+          <li>Audio never leaves India</li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <div class="ico">✦</div>
+        <h4>Clinical Assistant</h4>
+        <p>Drafts lab orders, follow-ups, and discharge summaries. You approve. It sends.</p>
+        <ul>
+          <li>Patient-language reminders</li>
+          <li>Learns your prescribing style</li>
+          <li>Azure OpenAI · India region</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Showcase 1 -->
+<section class="showcase">
+  <div class="wrap showcase-inner">
+    <div>
+      <div class="chip sage" style="margin-bottom: 4px;">OPD queue</div>
+      <h3>Every patient, every room, <em>always visible</em>.</h3>
+      <p>Walk-ins, follow-ups, and scheduled appointments flow into one live queue. Your front desk knows what's happening without asking.</p>
+      <ul class="showcase-checks">
+        <li>Drag-and-drop between rooms &amp; doctors</li>
+        <li>SMS &amp; WhatsApp confirmations in your patient's language</li>
+        <li>Token numbers that update on a waiting-room TV</li>
+      </ul>
+      <a href="#" class="btn btn-teal">Explore scheduling <span class="arr">→</span></a>
+    </div>
+    <div class="showcase-art">
+      <div class="ui-mock">
+        <div class="ui-mock-top">
+          <span class="sel">Today</span>
+          <span>This week</span>
+          <span>Dr. Sharma</span>
+        </div>
+        <div class="ui-row">
+          <div class="ui-av a1">VA</div>
+          <div><b>Vikram Acharya</b><small>Follow-up · 09:40</small></div>
+          <div class="ui-tag up">In room</div>
+        </div>
+        <div class="ui-row">
+          <div class="ui-av a2">PK</div>
+          <div><b>Priyanka Kapoor</b><small>New · 09:50</small></div>
+          <div class="ui-tag wait">Waiting 4m</div>
+        </div>
+        <div class="ui-row">
+          <div class="ui-av a3">RS</div>
+          <div><b>Ramesh Subramaniam</b><small>Review · 10:00</small></div>
+          <div class="ui-tag wait">Waiting 9m</div>
+        </div>
+        <div class="ui-row">
+          <div class="ui-av a4">MG</div>
+          <div><b>Meera Ghosh</b><small>New · 10:20</small></div>
+          <div class="ui-tag ok">Confirmed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Showcase 2 -->
+<section class="showcase" style="background: var(--cream-2); padding-top: 120px; padding-bottom: 120px;">
+  <div class="wrap showcase-inner reverse">
+    <div>
+      <div class="chip coral" style="margin-bottom: 4px;">Billing &amp; payments</div>
+      <h3>GST-ready billing, <em>without a spreadsheet</em>.</h3>
+      <p>UPI, card, and cash — reconciled at end of day. Your CA gets a clean monthly export. Your patients get a printable receipt in their language.</p>
+      <ul class="showcase-checks">
+        <li>Auto-generated GST invoices</li>
+        <li>UPI collection via any PSP you already use</li>
+        <li>Daily reconciliation with an audit trail</li>
+      </ul>
+      <a href="#" class="btn btn-teal">Explore billing <span class="arr">→</span></a>
+    </div>
+    <div class="showcase-art coral">
+      <div class="ui-mock">
+        <div style="display: flex; justify-content: space-between; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--cream-2);">
+          <div>
+            <div style="font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Today's revenue</div>
+            <div style="font-family: Fraunces, serif; font-size: 32px; font-weight: 500; letter-spacing: -0.02em;">₹42,800</div>
+          </div>
+          <div class="ui-tag ok">↑ 8% WoW</div>
+        </div>
+        <div class="ui-row" style="grid-template-columns: 1fr auto auto; gap: 14px;">
+          <div><b>UPI · PhonePe</b><small>23 transactions</small></div>
+          <div style="font-weight: 600;">₹18,200</div>
+          <div class="ui-tag up">42%</div>
+        </div>
+        <div class="ui-row" style="grid-template-columns: 1fr auto auto; gap: 14px;">
+          <div><b>Card · Razorpay</b><small>14 transactions</small></div>
+          <div style="font-weight: 600;">₹15,400</div>
+          <div class="ui-tag up">36%</div>
+        </div>
+        <div class="ui-row" style="grid-template-columns: 1fr auto auto; gap: 14px;">
+          <div><b>Cash</b><small>8 transactions</small></div>
+          <div style="font-weight: 600;">₹9,200</div>
+          <div class="ui-tag wait">22%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners -->
+<section class="partners">
+  <div class="wrap partners-inner">
+    <h4>In partnership with <em>India's</em> leading healthcare bodies.</h4>
+    <div class="partners-logos">
+      <div class="plogo">MCI<small>AFFILIATED</small></div>
+      <div class="plogo">ABDM<small>MILESTONE 2</small></div>
+      <div class="plogo">AZURE<small>PARTNER</small></div>
+      <div class="plogo">AIIMS<small>PILOT PROG</small></div>
+      <div class="plogo">IMA<small>MEMBER</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pullquote -->
+<section class="pullquote">
+  <div class="wrap">
+    <blockquote>My consults used to end at 9pm when I finished charting. Now they end when my last patient walks out.</blockquote>
+    <div class="q-attr">
+      <div class="q-av">RV</div>
+      <div>
+        <div class="q-name">Dr. Rashmi Venkatesh</div>
+        <div class="q-role">Consultant physician · Bengaluru</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="tests">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">What clinicians say</div>
+        <h2>Real doctors. <em>Real days</em>.</h2>
+      </div>
+      <p>We didn't pay for these. We just asked doctors to describe how their day changed after month one on Tatva.</p>
+    </div>
+    <div class="t-grid">
+      <figure class="tcard">
+        <div class="qmark">“</div>
+        <blockquote>The SmartPad converted my 28 years of scribbled handwriting into legible, searchable records in two days.</blockquote>
+        <figcaption>
+          <div class="t-av">AP</div>
+          <div>
+            <div class="t-name">Dr. Anand Pillai</div>
+            <div class="t-role">Cardiologist · Kochi</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="tcard">
+        <div class="qmark">“</div>
+        <blockquote>VoiceRx understands my code-switched Hindi-English. I dictate; it writes the note. That's the whole pitch.</blockquote>
+        <figcaption>
+          <div class="t-av">SV</div>
+          <div>
+            <div class="t-name">Dr. Siddharth Verma</div>
+            <div class="t-role">Internal medicine · Jaipur</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="tcard">
+        <div class="qmark">“</div>
+        <blockquote>My Marathi-speaking patients get prescriptions they can read. Follow-up compliance doubled.</blockquote>
+        <figcaption>
+          <div class="t-av">MK</div>
+          <div>
+            <div class="t-name">Dr. Meera Kulkarni</div>
+            <div class="t-role">Pediatrician · Pune</div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Pricing</div>
+        <h2>Honest pricing. <em>No setup fee</em>.</h2>
+      </div>
+      <p>Per-doctor, monthly. 30-day money-back. Cancel any time. Billed in INR. GST extra.</p>
+    </div>
+
+    <div class="ptoggle">
+      <button class="on">Monthly</button>
+      <button>Yearly · save 20%</button>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="p-name">Solo</div>
+        <div class="p-price">₹1,499<small>/mo</small></div>
+        <p class="p-desc">Single doctor OPDs &amp; visiting consultants.</p>
+        <ul>
+          <li>SmartPad + VoiceRx</li>
+          <li>Up to 500 patients</li>
+          <li>WhatsApp reminders</li>
+          <li>Email support</li>
+        </ul>
+        <a href="signup.html" class="btn btn-ghost">Start free trial <span class="arr">→</span></a>
+      </div>
+      <div class="plan featured">
+        <div class="plan-tag">Most popular</div>
+        <div class="p-name">Clinic</div>
+        <div class="p-price">₹3,999<small>/mo · per doctor</small></div>
+        <p class="p-desc">Multi-doctor practices &amp; small hospitals.</p>
+        <ul>
+          <li>Everything in Solo</li>
+          <li>Unlimited patients &amp; staff</li>
+          <li>Owner dashboard + analytics</li>
+          <li>Priority chat support</li>
+        </ul>
+        <a href="signup.html" class="btn btn-coral">Start free trial <span class="arr">→</span></a>
+      </div>
+      <div class="plan">
+        <div class="p-name">Hospital</div>
+        <div class="p-price">Custom</div>
+        <p class="p-desc">25+ doctor groups, chains &amp; networks.</p>
+        <ul>
+          <li>Everything in Clinic</li>
+          <li>Dedicated Azure region</li>
+          <li>Custom templates + SSO</li>
+          <li>Named implementation lead</li>
+        </ul>
+        <a href="demo.html" class="btn btn-ghost">Contact sales <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <div class="chip teal" style="margin-bottom: 12px;"><span class="dot"></span> Questions?</div>
+      <h2 style="font-family:Fraunces, serif; font-weight:400; font-size: clamp(36px, 4.4vw, 60px); line-height: 1.05; letter-spacing:-0.02em; margin: 0 0 18px; max-width: 12ch;">Answers, <em style="color: var(--teal); font-style: italic;">up front</em>.</h2>
+      <p style="color: var(--ink-2); font-size: 16px; max-width: 40ch;">Still curious? Email <a style="color: var(--teal-ink); border-bottom: 1px solid; padding-bottom: 1px;" href="mailto:hello@tatva.health">hello@tatva.health</a> — a real human replies within a working day.</p>
+    </div>
+    <div class="faq-list">
+      <details open><summary>Will my handwriting actually work?</summary><p>Yes. SmartPad is trained on Indian clinical handwriting — including the illegible kind. Most doctors reach 95%+ recognition inside a week.</p></details>
+      <details><summary>Does VoiceRx work in my regional language?</summary><p>English, Hindi, Tamil, Telugu, Kannada, Marathi, Bengali, Gujarati, Malayalam — including code-switching between any two mid-sentence.</p></details>
+      <details><summary>Where is my patient data stored?</summary><p>In Microsoft Azure's Mumbai and Pune regions, encrypted at rest. Audio for VoiceRx is processed in-region and never used to train shared models.</p></details>
+      <details><summary>Can I move my existing records in?</summary><p>Yes. We migrate from most major Indian EMRs, paper registers, and Excel sheets. A migration engineer handles it during your onboarding week.</p></details>
+      <details><summary>What happens if the internet drops?</summary><p>Tatva runs offline. Notes queue locally and sync silently the moment you're back online.</p></details>
+      <details><summary>Is Tatva ABDM certified?</summary><p>Yes, at Milestone 2. Patients can link their Health ID and carry their records across any ABDM-enabled facility.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Big CTA -->
+<section class="bigcta">
+  <div class="wrap">
+    <div class="bigcta-inner">
+      <h2>Close your next note <em>before</em> your patient reaches the door.</h2>
+      <p>30 days free. No credit card. Migration and training included.</p>
+      <div class="bigcta-actions">
+        <a href="signup.html" class="btn btn-primary">Start free trial <span class="arr">→</span></a>
+        <a href="demo.html" class="btn btn-ghost">Book a walkthrough</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a href="index-v2.html" class="logo">
+        <span class="logo-mark">त</span>
+        <span>TatvaPractice</span>
+      </a>
+      <p class="footer-tag">AI-native EMR for Indian clinicians. Built in Bengaluru. Hosted in Mumbai.</p>
+      <div class="footer-badges">
+        <span class="fbadge">ABDM</span>
+        <span class="fbadge">ISO 27001</span>
+        <span class="fbadge">DPDP</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="title">Product</div>
+      <ul>
+        <li><a href="product.html">SmartPad</a></li>
+        <li><a href="product.html#voicerx">VoiceRx</a></li>
+        <li><a href="product.html#assistant">Assistant</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="title">Company</div>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="resources.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="title">Support</div>
+      <ul>
+        <li><a href="#">Help center</a></li>
+        <li><a href="#">Status</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="title">Get started</div>
+      <ul>
+        <li><a href="signup.html">Free trial</a></li>
+        <li><a href="demo.html">Book a demo</a></li>
+        <li><a href="signin.html">Sign in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-foot">
+    <span>© 2026 Tatva Health Pvt. Ltd. · HSR Layout, Bengaluru</span>
+    <span><a href="#">Privacy</a>·<a href="#">Terms</a>·<a href="#">DPDP</a></span>
+  </div>
+</footer>
+
+<div id="tweaks" aria-hidden="true"></div>
+<script>
+(function(){
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "primaryTone": "teal",
+    "roundness": 22,
+    "grainy": false
+  }/*EDITMODE-END*/;
+  let state = { ...TWEAK_DEFAULTS };
+  const panel = document.getElementById('tweaks');
+
+  const tones = {
+    teal:   { c: "#2F9AA8", ink: "#1E6E78", wash: "#DFF0F2", deep: "#0E3C44" },
+    forest: { c: "#3D7A5E", ink: "#265140", wash: "#D9EADC", deep: "#183326" },
+    plum:   { c: "#7C4A79", ink: "#54305D", wash: "#EDD9EC", deep: "#2E1832" },
+    clay:   { c: "#C26A47", ink: "#8F4727", wash: "#F4DAC9", deep: "#5A2F19" },
+  };
+
+  function apply(){
+    const t = tones[state.primaryTone] || tones.teal;
+    document.documentElement.style.setProperty('--teal', t.c);
+    document.documentElement.style.setProperty('--teal-ink', t.ink);
+    document.documentElement.style.setProperty('--teal-wash', t.wash);
+    document.documentElement.style.setProperty('--teal-deep', t.deep);
+    document.documentElement.style.setProperty('--r-lg', state.roundness + 'px');
+    document.documentElement.style.setProperty('--r-xl', (state.roundness + 10) + 'px');
+    document.body.dataset.grain = state.grainy ? 'on' : 'off';
+  }
+
+  function render(){
+    panel.innerHTML = `
+      <div class="tw-card">
+        <div class="tw-head"><span>Tweaks</span><button id="tw-close">×</button></div>
+        <div class="tw-row">
+          <span>Tone</span>
+          <select id="tw-tone">
+            <option value="teal" ${state.primaryTone==='teal'?'selected':''}>Teal (default)</option>
+            <option value="forest" ${state.primaryTone==='forest'?'selected':''}>Forest</option>
+            <option value="plum" ${state.primaryTone==='plum'?'selected':''}>Plum</option>
+            <option value="clay" ${state.primaryTone==='clay'?'selected':''}>Clay</option>
+          </select>
+          <span></span>
+        </div>
+        <div class="tw-row">
+          <span>Roundness</span>
+          <input type="range" min="8" max="36" value="${state.roundness}" id="tw-r">
+          <span class="tw-val">${state.roundness}px</span>
+        </div>
+      </div>`;
+    document.getElementById('tw-close').onclick = () => deactivate();
+    document.getElementById('tw-tone').onchange = e => { state.primaryTone = e.target.value; persist({primaryTone: state.primaryTone}); apply(); };
+    document.getElementById('tw-r').oninput = e => { state.roundness = +e.target.value; persist({roundness: state.roundness}); apply(); render(); };
+  }
+  function persist(edits){ try { window.parent.postMessage({type:'__edit_mode_set_keys', edits}, '*'); } catch(e){} }
+  function activate(){ panel.setAttribute('aria-hidden','false'); render(); }
+  function deactivate(){ panel.setAttribute('aria-hidden','true'); panel.innerHTML=''; }
+
+  window.addEventListener('message', e => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode') activate();
+    if (d.type === '__deactivate_edit_mode') deactivate();
+  });
+  try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch(e){}
+  apply();
+})();
+</script>
+
+</body>
+</html>

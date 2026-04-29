@@ -1,0 +1,215 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>VoiceRx . TatvaPractice</title><style>/* TatvaPractice Design System — from brand guide */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* TP Blue — Primary */
+  --tp-blue-50:#EEEEFF; --tp-blue-100:#D8D8FA; --tp-blue-200:#B5B4F2; --tp-blue-300:#8E8DE8; --tp-blue-400:#6C6BDE;
+  --tp-blue-500:#4B4AD5; --tp-blue-600:#3C3BB5; --tp-blue-700:#2E2D96; --tp-blue-800:#212077; --tp-blue-900:#161558;
+
+  /* TP Violet — Secondary (AI / info only) */
+  --tp-violet-50:#FAF5FE; --tp-violet-100:#EDDFF7; --tp-violet-200:#DBBFEF; --tp-violet-300:#C89FE7; --tp-violet-400:#BA7DE9;
+  --tp-violet-500:#A461D8; --tp-violet-600:#8A4DBB; --tp-violet-700:#703A9E; --tp-violet-800:#572A81; --tp-violet-900:#3E1C64;
+
+  /* TP Amber — Tertiary (rare) */
+  --tp-amber-50:#FFFBEB; --tp-amber-100:#FFF4CC; --tp-amber-200:#FFE8AE; --tp-amber-300:#FEDC85; --tp-amber-400:#FED15E;
+  --tp-amber-500:#F5B832; --tp-amber-600:#D99B1A; --tp-amber-700:#B47D10; --tp-amber-800:#8F6008; --tp-amber-900:#6A4504;
+
+  /* TP Slate (neutrals) */
+  --tp-slate-0:#FFFFFF; --tp-slate-50:#FAFAFB; --tp-slate-100:#F1F1F5; --tp-slate-200:#E2E2EA; --tp-slate-300:#D0D5DD;
+  --tp-slate-400:#A2A2A8; --tp-slate-500:#717179; --tp-slate-600:#545460; --tp-slate-700:#454551; --tp-slate-800:#2C2C35; --tp-slate-900:#171725;
+
+  /* Semantic */
+  --tp-error:#E11D48; --tp-warning:#F59E0B; --tp-success:#10B981;
+
+  /* Shadows */
+  --tp-shadow-xs: 0 1px 2px 0 rgba(23,23,37,0.04);
+  --tp-shadow-sm: 0 1px 3px 0 rgba(23,23,37,0.08), 0 1px 2px -1px rgba(23,23,37,0.06);
+  --tp-shadow-md: 0 4px 8px -2px rgba(23,23,37,0.08), 0 2px 4px -2px rgba(23,23,37,0.06);
+  --tp-shadow-lg: 0 12px 24px -4px rgba(23,23,37,0.08), 0 4px 8px -4px rgba(23,23,37,0.04);
+  --tp-shadow-xl: 0 20px 40px -8px rgba(23,23,37,0.12), 0 8px 16px -6px rgba(23,23,37,0.06);
+  --tp-shadow-2xl: 0 32px 64px -12px rgba(23,23,37,0.20);
+
+  /* Radii */
+  --tp-r-2:2px; --tp-r-4:4px; --tp-r-6:6px; --tp-r-8:8px; --tp-r-10:10px; --tp-r-12:12px; --tp-r-14:14px;
+  --tp-r-16:16px; --tp-r-18:18px; --tp-r-20:20px; --tp-r-24:24px; --tp-r-42:42px; --tp-r-84:84px;
+
+  /* Type */
+  --tp-font-display: 'Mulish', system-ui, sans-serif;
+  --tp-font-body: 'Inter', system-ui, sans-serif;
+  --tp-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --tp-max: 1240px;
+  --tp-ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--tp-slate-100);
+  color: var(--tp-slate-700);
+  font-family: var(--tp-font-body);
+  font-size: 16px; line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* Type */
+.tp-display-xl { font-family: var(--tp-font-display); font-size: clamp(40px, 6vw, 56px); line-height: 1.14; letter-spacing: -0.03em; font-weight: 800; color: var(--tp-slate-900); margin: 0; }
+.tp-display    { font-family: var(--tp-font-display); font-size: clamp(34px, 4.5vw, 48px); line-height: 1.17; letter-spacing: -0.02em; font-weight: 700; color: var(--tp-slate-900); margin: 0; }
+.tp-h1         { font-family: var(--tp-font-display); font-size: 36px; line-height: 44px; letter-spacing: -0.02em; font-weight: 700; color: var(--tp-slate-900); margin: 0; }
+.tp-h2         { font-family: var(--tp-font-display); font-size: 30px; line-height: 38px; letter-spacing: -0.01em; font-weight: 600; color: var(--tp-slate-900); margin: 0; }
+.tp-h3         { font-family: var(--tp-font-display); font-size: 24px; line-height: 32px; letter-spacing: -0.01em; font-weight: 600; color: var(--tp-slate-900); margin: 0; }
+.tp-h4         { font-family: var(--tp-font-display); font-size: 20px; line-height: 28px; font-weight: 600; color: var(--tp-slate-900); margin: 0; }
+.tp-h5         { font-family: var(--tp-font-display); font-size: 16px; line-height: 24px; font-weight: 600; color: var(--tp-slate-900); margin: 0; }
+.tp-h6         { font-family: var(--tp-font-display); font-size: 14px; line-height: 20px; letter-spacing: 0.01em; font-weight: 600; color: var(--tp-slate-900); margin: 0; }
+.tp-body-xl    { font-family: var(--tp-font-body); font-size: 20px; line-height: 32px; letter-spacing: -0.01em; color: var(--tp-slate-700); margin: 0; }
+.tp-body-lg    { font-family: var(--tp-font-body); font-size: 18px; line-height: 28px; color: var(--tp-slate-700); margin: 0; }
+.tp-body-base  { font-family: var(--tp-font-body); font-size: 16px; line-height: 24px; color: var(--tp-slate-700); margin: 0; }
+.tp-body-sm    { font-family: var(--tp-font-body); font-size: 14px; line-height: 20px; color: var(--tp-slate-600); margin: 0; }
+.tp-body-xs    { font-family: var(--tp-font-body); font-size: 12px; line-height: 16px; color: var(--tp-slate-500); margin: 0; }
+.tp-mono       { font-family: var(--tp-font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--tp-slate-500); }
+.tp-eyebrow    { font-family: var(--tp-font-display); font-size: 13px; line-height: 18px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--tp-blue-600); display: inline-flex; align-items: center; gap: 10px; }
+.tp-eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; opacity: 0.6; }
+
+.tp-wrap { max-width: var(--tp-max); margin: 0 auto; padding: 0 24px; }
+
+/* Buttons */
+.tp-btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--tp-font-display); font-weight: 600; border-radius: var(--tp-r-12); border: 1px solid transparent; cursor: pointer; transition: all .15s var(--tp-ease); text-decoration: none; white-space: nowrap; }
+.tp-btn-sm { height: 36px; padding: 0 14px; font-size: 13px; }
+.tp-btn-md { height: 42px; padding: 0 16px; font-size: 14px; }
+.tp-btn-lg { height: 48px; padding: 0 20px; font-size: 15px; }
+.tp-btn-solid { background: var(--tp-blue-500); color: #fff; box-shadow: var(--tp-shadow-sm); }
+.tp-btn-solid:hover { background: var(--tp-blue-600); }
+.tp-btn-solid:focus-visible { outline: 2px solid var(--tp-blue-300); outline-offset: 2px; }
+.tp-btn-outline { background: transparent; color: var(--tp-blue-600); border-color: var(--tp-blue-500); }
+.tp-btn-outline:hover { background: var(--tp-blue-50); }
+.tp-btn-ghost { background: transparent; color: var(--tp-slate-700); }
+.tp-btn-ghost:hover { background: var(--tp-slate-100); color: var(--tp-slate-900); }
+.tp-btn-neutral { background: var(--tp-slate-900); color: #fff; }
+.tp-btn-neutral:hover { background: var(--tp-slate-800); }
+.tp-btn-link { background: transparent; color: var(--tp-blue-600); padding: 0; height: auto; border-radius: 0; text-decoration: underline; text-underline-offset: 3px; }
+.tp-btn-on-dark-solid { background: #fff; color: var(--tp-slate-900); }
+.tp-btn-on-dark-solid:hover { background: var(--tp-slate-50); }
+.tp-btn-on-dark-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
+.tp-btn-on-dark-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+.tp-btn .arr { display: inline-block; transition: transform .2s; }
+.tp-btn:hover .arr { transform: translateX(3px); }
+
+/* Cards */
+.tp-card { background: var(--tp-slate-0); border: 1px solid var(--tp-slate-200); border-radius: var(--tp-r-18); padding: 18px; box-shadow: var(--tp-shadow-sm); }
+.tp-card-lg { padding: 32px; border-radius: var(--tp-r-20); }
+.tp-card-xl { padding: 48px; border-radius: var(--tp-r-24); }
+.tp-card-dark { background: var(--tp-slate-900); color: var(--tp-slate-100); border-color: var(--tp-slate-800); }
+
+/* Badges */
+.tp-badge { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 8px; border-radius: var(--tp-r-4); font-family: var(--tp-font-body); font-size: 12px; font-weight: 500; }
+.tp-badge-blue { background: var(--tp-blue-50); color: var(--tp-blue-700); }
+.tp-badge-violet { background: var(--tp-violet-50); color: var(--tp-violet-700); }
+.tp-badge-slate { background: var(--tp-slate-100); color: var(--tp-slate-700); }
+.tp-badge-amber { background: var(--tp-amber-50); color: var(--tp-amber-800); }
+.tp-badge-success { background: #ECFDF5; color: #047857; }
+
+.tp-chip { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: var(--tp-r-42); background: var(--tp-slate-0); border: 1px solid var(--tp-slate-200); font-size: 13px; color: var(--tp-slate-700); }
+
+/* Nav with dropdowns */
+.tp-nav { position: sticky; top: 0; z-index: 50; background: rgba(250,250,251,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--tp-slate-200); }
+.tp-nav-inner { display: flex; align-items: center; gap: 40px; height: 68px; }
+.tp-logo { display: flex; align-items: center; gap: 10px; font-family: var(--tp-font-display); font-weight: 700; font-size: 18px; color: var(--tp-slate-900); letter-spacing: -0.01em; }
+.tp-logo-mark { width: 32px; height: 32px; border-radius: var(--tp-r-10); background: var(--tp-blue-500); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 15px; box-shadow: var(--tp-shadow-sm); }
+.tp-nav nav { position: relative; }
+.tp-nav nav ul.tp-nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+.tp-nav-item { position: relative; }
+.tp-nav-link { font-family: var(--tp-font-body); font-size: 14px; color: var(--tp-slate-600); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 8px 0; }
+.tp-nav-link:hover, .tp-nav-link.active { color: var(--tp-slate-900); }
+.tp-nav-link .chev { opacity: 0.6; transition: transform .2s; }
+.tp-nav-item:hover .chev { transform: rotate(180deg); }
+
+.tp-dropdown { position: absolute; top: calc(100% + 4px); left: -16px; min-width: 320px; background: var(--tp-slate-0); border: 1px solid var(--tp-slate-200); border-radius: var(--tp-r-16); box-shadow: var(--tp-shadow-lg); padding: 12px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .15s var(--tp-ease); z-index: 60; }
+.tp-nav-item:hover .tp-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.tp-dropdown a { display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 10px; border-radius: var(--tp-r-10); align-items: flex-start; }
+.tp-dropdown a:hover { background: var(--tp-slate-50); }
+.tp-dropdown .dd-ico { width: 32px; height: 32px; border-radius: var(--tp-r-8); display: grid; place-items: center; background: var(--tp-blue-50); color: var(--tp-blue-600); }
+.tp-dropdown .dd-title { font-family: var(--tp-font-display); font-weight: 600; font-size: 14px; color: var(--tp-slate-900); line-height: 1.3; }
+.tp-dropdown .dd-desc { font-size: 12px; color: var(--tp-slate-500); margin-top: 2px; line-height: 1.4; }
+
+.tp-nav-cta { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+
+/* Sections */
+.tp-section { padding: 96px 0; }
+.tp-section-sm { padding: 64px 0; }
+.tp-section-head { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+.tp-section-head .tp-display { margin-top: 16px; }
+.tp-section-head .tp-body-lg { margin: 20px auto 0; color: var(--tp-slate-600); }
+
+/* Hero */
+.tp-hero { padding: 64px 0 80px; }
+.tp-hero-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+.tp-hero-head .tp-display-xl { margin-top: 20px; }
+.tp-hero-head .tp-body-xl { margin: 24px auto 0; max-width: 620px; color: var(--tp-slate-600); }
+.tp-hero-cta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 32px; }
+
+/* Stat num */
+.tp-stat-num { font-family: var(--tp-font-display); font-weight: 800; font-size: clamp(48px, 6vw, 80px); line-height: 1; letter-spacing: -0.03em; color: var(--tp-slate-900); }
+.tp-stat-num small { font-size: 0.4em; font-weight: 700; letter-spacing: -0.01em; margin-left: 4px; color: var(--tp-slate-500); }
+
+/* Dark slab */
+.tp-dark { background: var(--tp-slate-900); color: var(--tp-slate-100); border-radius: var(--tp-r-24); padding: 80px 56px; position: relative; overflow: hidden; }
+.tp-dark::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(520px 360px at 88% 8%, rgba(75,74,213,0.35), transparent 60%), radial-gradient(520px 360px at 5% 100%, rgba(164,97,216,0.22), transparent 60%); }
+.tp-dark > * { position: relative; z-index: 1; }
+.tp-dark .tp-h1, .tp-dark .tp-h2, .tp-dark .tp-h3, .tp-dark .tp-h4, .tp-dark .tp-display, .tp-dark .tp-display-xl { color: #fff; }
+.tp-dark .tp-body-lg, .tp-dark .tp-body-base, .tp-dark .tp-body-xl { color: var(--tp-slate-300); }
+.tp-dark .tp-eyebrow { color: var(--tp-blue-300); }
+.tp-dark .tp-mono { color: var(--tp-slate-400); }
+
+/* Grids */
+.tp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tp-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tp-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Pillars */
+.tp-pillar { background: var(--tp-slate-0); border: 1px solid var(--tp-slate-200); border-radius: var(--tp-r-24); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; box-shadow: var(--tp-shadow-sm); }
+.tp-pillar.reverse .tp-pillar-vis { order: -1; }
+.tp-pillar-num { color: var(--tp-blue-600); margin-bottom: 16px; }
+.tp-pillar p { max-width: 44ch; }
+.tp-pillar-vis { background: var(--tp-slate-50); border: 1px solid var(--tp-slate-200); border-radius: var(--tp-r-16); aspect-ratio: 4/3; display: grid; place-items: center; color: var(--tp-slate-500); padding: 24px; }
+
+.tp-bullets { list-style: none; padding: 0; margin: 20px 0; }
+.tp-bullets li { padding: 10px 0; border-top: 1px solid var(--tp-slate-200); font-size: 14px; color: var(--tp-slate-700); display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
+.tp-bullets li:last-child { border-bottom: 1px solid var(--tp-slate-200); }
+.tp-bullets li::before { content: "✓"; display: inline-block; flex-shrink: 0; width: 16px; height: 16px; border-radius: var(--tp-r-42); background: var(--tp-blue-50); color: var(--tp-blue-600); font-size: 10px; font-weight: 700; line-height: 16px; text-align: center; margin-top: 2px; }
+
+/* Forms */
+.tp-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.tp-field label { font-family: var(--tp-font-body); font-size: 13px; font-weight: 500; color: var(--tp-slate-700); }
+.tp-input, .tp-field input, .tp-field select, .tp-field textarea {
+  font-family: var(--tp-font-body); font-size: 14px;
+  height: 42px; padding: 0 12px;
+  background: var(--tp-slate-0); color: var(--tp-slate-900);
+  border: 1px solid var(--tp-slate-300); border-radius: var(--tp-r-10);
+  transition: all .15s var(--tp-ease);
+}
+.tp-field textarea { height: auto; padding: 10px 12px; resize: vertical; }
+.tp-field input:focus, .tp-field select:focus, .tp-field textarea:focus { outline: none; border-color: var(--tp-blue-500); box-shadow: 0 0 0 3px var(--tp-blue-100); }
+
+/* Footer */
+.tp-footer { background: var(--tp-slate-900); color: var(--tp-slate-300); padding: 80px 0 32px; }
+.tp-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--tp-slate-800); }
+.tp-footer .tp-logo { color: #fff; }
+.tp-footer h5 { color: #fff; font-family: var(--tp-font-display); font-size: 14px; font-weight: 600; margin: 0 0 14px; }
+.tp-footer ul { list-style: none; padding: 0; margin: 0; font-size: 14px; }
+.tp-footer ul li { padding: 6px 0; }
+.tp-footer ul a { color: var(--tp-slate-400); }
+.tp-footer ul a:hover { color: #fff; }
+.tp-footer-tag { margin-top: 20px; color: var(--tp-slate-400); font-size: 14px; line-height: 1.55; max-width: 34ch; }
+.tp-footer-foot { padding-top: 24px; display: flex; justify-content: space-between; font-family: var(--tp-font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--tp-slate-500); }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .tp-pillar, .tp-grid-3, .tp-grid-4, .tp-grid-2 { grid-template-columns: 1fr; }
+  .tp-footer-grid { grid-template-columns: 1fr 1fr; }
+  .tp-dark { padding: 48px 24px; }
+  .tp-pillar { padding: 32px; }
+  .tp-nav nav ul.tp-nav-list { display: none; }
+}
+</style></head><body><header class="tp-nav"><div class="tp-wrap tp-nav-inner"><a href="index-tp.html" class="tp-logo"><span class="tp-logo-mark">त</span><span>TatvaPractice</span></a><nav><ul class="tp-nav-list"><li class="tp-nav-item"><span class="tp-nav-link">Solution <span class="chev">&#9662;</span></span><div class="tp-dropdown"><a href="solutions-clinics.html"><span class="dd-ico">H</span><span><span class="dd-title">For Clinics</span><span class="dd-desc">Complete practice management for solo and small clinics</span></span></a><a href="solutions-hospitals.html"><span class="dd-ico">B</span><span><span class="dd-title">For Hospitals</span><span class="dd-desc">Enterprise-grade EMR for multi-location networks</span></span></a></div></li><li class="tp-nav-item"><span class="tp-nav-link active">Features <span class="chev">&#9662;</span></span><div class="tp-dropdown"><a href="features-voicerx.html"><span class="dd-ico">V</span><span><span class="dd-title">VoiceRx</span><span class="dd-desc">Voice-to-prescription in any language</span></span></a><a href="features-snaprx.html"><span class="dd-ico">S</span><span><span class="dd-title">SnapRx</span><span class="dd-desc">Photo-to-prescription with AI OCR</span></span></a><a href="features-smartsync.html"><span class="dd-ico">M</span><span><span class="dd-title">SmartSync</span><span class="dd-desc">Seamless data sync across devices</span></span></a><a href="features-doctor-agent.html"><span class="dd-ico">D</span><span><span class="dd-title">Doctor Agent</span><span class="dd-desc">AI assistant for clinical workflows</span></span></a><a href="features-receptionist-ai.html"><span class="dd-ico">R</span><span><span class="dd-title">Receptionist AI</span><span class="dd-desc">Automated front-desk management</span></span></a></div></li><li class="tp-nav-item"><a href="pricing-tp.html" class="tp-nav-link">Pricing</a></li><li class="tp-nav-item"><a href="about-tp.html" class="tp-nav-link">About Us</a></li><li class="tp-nav-item"><a href="demo-tp.html" class="tp-nav-link">Contact</a></li></ul></nav><div class="tp-nav-cta"><a href="demo-tp.html" class="tp-btn tp-btn-md tp-btn-outline">Book Demo</a><a href="signup.html" class="tp-btn tp-btn-md tp-btn-solid">Start Free Trial</a></div></div></header><section class="tp-hero"><div class="tp-wrap"><div class="tp-hero-head"><span class="tp-eyebrow">Features / VoiceRx</span><h1 class="tp-display-xl">Dictate in any language.<br>Get a clean prescription.</h1><p class="tp-body-xl">VoiceRx listens to the way doctors actually talk in Indian OPDs: code-switched, fast, full of shorthand. It writes a clean, structured prescription you can sign in one tap.</p><div class="tp-hero-cta"><a href="signup.html" class="tp-btn tp-btn-lg tp-btn-solid">Start Free Trial <span class="arr">&rarr;</span></a><a href="demo-tp.html" class="tp-btn tp-btn-lg tp-btn-outline">Book a demo</a></div></div><div class="tp-card tp-card-xl tp-card-dark" style="max-width:900px;margin:0 auto;position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:radial-gradient(600px 300px at 50% 0%,rgba(75,74,213,0.35),transparent 60%);"></div><div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;"><div><span class="tp-badge tp-badge-violet" style="background:rgba(164,97,216,0.2);color:#E3CBFF;">Recording . Hinglish</span><p style="color:var(--tp-slate-300);margin-top:20px;font-family:var(--tp-font-display);font-size:20px;line-height:1.5;">"Patient ko morning mein ek Amlong 5 dena, evening mein Atorva 10, aur BP check karo weekly."</p><div style="display:flex;gap:6px;align-items:center;height:20px;margin-top:24px;"><span style="display:block;width:2px;height:4px;background:#fff;border-radius:1px;opacity:0.4;"></span><span style="display:block;width:2px;height:16.912409636191413px;background:#fff;border-radius:1px;opacity:0.8304136545397136;"></span><span style="display:block;width:2px;height:21.992324854747093px;background:#fff;border-radius:1px;opacity:0.9997441618249031;"></span><span style="display:block;width:2px;height:16.158337249920713px;background:#fff;border-radius:1px;opacity:0.8052779083306905;"></span><span style="display:block;width:2px;height:5.0507345816964415px;background:#fff;border-radius:1px;opacity:0.4350244860565481;"></span><span style="display:block;width:2px;height:17.622444915542708px;background:#fff;border-radius:1px;opacity:0.8540814971847569;"></span><span style="display:block;width:2px;height:21.93096295904513px;background:#fff;border-radius:1px;opacity:0.9976987653015044;"></span><span style="display:block;width:2px;height:15.362799481701774px;background:#fff;border-radius:1px;opacity:0.7787599827233925;"></span><span style="display:block;width:2px;height:6.097885687308885px;background:#fff;border-radius:1px;opacity:0.4699295229102962;"></span><span style="display:block;width:2px;height:18.286021549284754px;background:#fff;border-radius:1px;opacity:0.8762007183094919;"></span><span style="display:block;width:2px;height:21.80844843922087px;background:#fff;border-radius:1px;opacity:0.993614947974029;"></span><span style="display:block;width:2px;height:14.528509472051711px;background:#fff;border-radius:1px;opacity:0.750950315735057;"></span><span style="display:block;width:2px;height:7.137882062013665px;background:#fff;border-radius:1px;opacity:0.5045960687337888;"></span><span style="display:block;width:2px;height:18.90087644354177px;background:#fff;border-radius:1px;opacity:0.8966958814513922;"></span><span style="display:block;width:2px;height:21.625199124723704px;background:#fff;border-radius:1px;opacity:0.9875066374907902;"></span><span style="display:block;width:2px;height:13.65831252400783px;background:#fff;border-radius:1px;opacity:0.721943750800261;"></span><span style="display:block;width:2px;height:8.167176851827701px;background:#fff;border-radius:1px;opacity:0.5389058950609233;"></span><span style="display:block;width:2px;height:19.464912667416943px;background:#fff;border-radius:1px;opacity:0.915497088913898;"></span><span style="display:block;width:2px;height:21.381839977886994px;background:#fff;border-radius:1px;opacity:0.9793946659295665;"></span><span style="display:block;width:2px;height:12.755176399368366px;background:#fff;border-radius:1px;opacity:0.6918392133122788;"></span><span style="display:block;width:2px;height:9.182259699971176px;background:#fff;border-radius:1px;opacity:0.5727419899990391;"></span><span style="display:block;width:2px;height:19.97620660446708px;background:#fff;border-radius:1px;opacity:0.9325402201489027;"></span><span style="display:block;width:2px;height:21.079200962526233px;background:#fff;border-radius:1px;opacity:0.9693066987508744;"></span><span style="display:block;width:2px;height:11.822181197294084px;background:#fff;border-radius:1px;opacity:0.6607393732431361;"></span><span style="display:block;width:2px;height:10.179668718758176px;background:#fff;border-radius:1px;opacity:0.6059889572919392;"></span><span style="display:block;width:2px;height:20.433014513097298px;background:#fff;border-radius:1px;opacity:0.9477671504365766;"></span><span style="display:block;width:2px;height:20.71831421339033px;background:#fff;border-radius:1px;opacity:0.9572771404463443;"></span><span style="display:block;width:2px;height:10.862508849788922px;background:#fff;border-radius:1px;opacity:0.6287502949929641;"></span><span style="display:block;width:2px;height:11.15600229618585px;background:#fff;border-radius:1px;opacity:0.6385334098728617;"></span><span style="display:block;width:2px;height:20.833778473501724px;background:#fff;border-radius:1px;opacity:0.9611259491167241;"></span><span style="display:block;width:2px;height:20.30041051611923px;background:#fff;border-radius:1px;opacity:0.9433470172039743;"></span><span style="display:block;width:2px;height:9.879432269885001px;background:#fff;border-radius:1px;opacity:0.5959810756628333;"></span><span style="display:block;width:2px;height:12.107930696957007px;background:#fff;border-radius:1px;opacity:0.6702643565652335;"></span><span style="display:block;width:2px;height:21.177131700868564px;background:#fff;border-radius:1px;opacity:0.9725710566956188;"></span><span style="display:block;width:2px;height:19.826915109713006px;background:#fff;border-radius:1px;opacity:0.9275638369904335;"></span><span style="display:block;width:2px;height:8.876304189541642px;background:#fff;border-radius:1px;opacity:0.5625434729847214;"></span><span style="display:block;width:2px;height:13.032207418370335px;background:#fff;border-radius:1px;opacity:0.7010735806123445;"></span><span style="display:block;width:2px;height:21.461903206729335px;background:#fff;border-radius:1px;opacity:0.9820634402243112;"></span><span style="display:block;width:2px;height:19.29944282582787px;background:#fff;border-radius:1px;opacity:0.9099814275275957;"></span><span style="display:block;width:2px;height:7.856545725325915px;background:#fff;border-radius:1px;opacity:0.5285515241775305;"></span></div></div><div style="background:#fff;border-radius:var(--tp-r-12);padding:24px;color:var(--tp-slate-900);"><span class="tp-mono" style="color:var(--tp-blue-600);">Structured Rx</span><div style="margin-top:14px;font-size:14px;font-family:var(--tp-font-mono);"><div style="padding:8px 0;border-bottom:1px solid var(--tp-slate-200);"><b>Amlodipine 5mg</b> &mdash; 1-0-0 &times; 30 days</div><div style="padding:8px 0;border-bottom:1px solid var(--tp-slate-200);"><b>Atorvastatin 10mg</b> &mdash; 0-0-1 &times; 30 days</div><div style="padding:8px 0;">BP check weekly</div></div></div></div></div></div></section><section class="tp-section"><div class="tp-wrap"><div class="tp-section-head"><span class="tp-eyebrow">How it works</span><h2 class="tp-display">Understanding, not just transcription.</h2><p class="tp-body-lg">VoiceRx is trained on 100,000+ Indian clinical conversations. It does not just spell words correctly, it gets the medicine right.</p></div><div class="tp-grid-3"><div class="tp-card tp-card-lg"><span class="tp-mono">01</span><h3 class="tp-h3" style="margin-top:14px;">9 Indian languages</h3><p class="tp-body-base" style="margin-top:10px;">Hindi, English, Marathi, Gujarati, Tamil, Telugu, Kannada, Bengali, Punjabi. Code-switch freely.</p></div><div class="tp-card tp-card-lg"><span class="tp-mono">02</span><h3 class="tp-h3" style="margin-top:14px;">Clinical context</h3><p class="tp-body-base" style="margin-top:10px;">Knows your usual molecules, dosages, and patient history. Autocorrects in the right direction.</p></div><div class="tp-card tp-card-lg"><span class="tp-mono">03</span><h3 class="tp-h3" style="margin-top:14px;">Doctor-reviewed</h3><p class="tp-body-base" style="margin-top:10px;">Every draft lands in your queue. You approve, edit, or reject in one tap.</p></div><div class="tp-card tp-card-lg"><span class="tp-mono">04</span><h3 class="tp-h3" style="margin-top:14px;">Works offline</h3><p class="tp-body-base" style="margin-top:10px;">Recording is captured on-device. Transcription finishes when the network returns.</p></div><div class="tp-card tp-card-lg"><span class="tp-mono">05</span><h3 class="tp-h3" style="margin-top:14px;">Privacy by design</h3><p class="tp-body-base" style="margin-top:10px;">Audio never leaves India-region Azure. Encrypted at rest. Deleted after 30 days by default.</p></div><div class="tp-card tp-card-lg"><span class="tp-mono">06</span><h3 class="tp-h3" style="margin-top:14px;">Template-aware</h3><p class="tp-body-base" style="margin-top:10px;">If you have a prescribing template for follow-ups, VoiceRx starts from it, not from scratch.</p></div></div></div></section><section class="tp-section"><div class="tp-wrap"><div class="tp-dark" style="text-align:center;"><h2 class="tp-display" style="max-width:22ch;margin:0 auto 32px;">Your voice. Clean prescriptions. Every consult.</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;"><a href="signup.html" class="tp-btn tp-btn-lg tp-btn-on-dark-solid">Start Free Trial <span class="arr">&rarr;</span></a><a href="demo-tp.html" class="tp-btn tp-btn-lg tp-btn-on-dark-outline">Book a demo</a></div></div></div></section><footer class="tp-footer"><div class="tp-wrap tp-footer-grid"><div><a href="index-tp.html" class="tp-logo"><span class="tp-logo-mark">त</span><span>TatvaPractice</span></a><p class="tp-footer-tag">AI-native EMR designed for how Indian doctors actually practice, across languages, devices, and workflows.</p><div style="display:flex; gap:8px; margin-top:20px;"><span class="tp-badge" style="background: var(--tp-slate-800); color: var(--tp-slate-300);">ABDM M2</span><span class="tp-badge" style="background: var(--tp-slate-800); color: var(--tp-slate-300);">DPDP Ready</span></div></div><div><h5>Solutions</h5><ul><li><a href="solutions-clinics.html">For Clinics</a></li><li><a href="solutions-hospitals.html">For Hospitals</a></li></ul></div><div><h5>Features</h5><ul><li><a href="features-voicerx.html">VoiceRx</a></li><li><a href="features-snaprx.html">SnapRx</a></li><li><a href="features-smartsync.html">SmartSync</a></li><li><a href="features-doctor-agent.html">Doctor Agent</a></li><li><a href="features-receptionist-ai.html">Receptionist AI</a></li></ul></div><div><h5>Company</h5><ul><li><a href="about-tp.html">About</a></li><li><a href="resources-tp.html">Resources</a></li><li><a href="pricing-tp.html">Pricing</a></li><li><a href="#">Careers</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="demo-tp.html">Book a demo</a></li><li><a href="mailto:hello@tatva.health">hello@tatva.health</a></li><li><a href="signin.html">Sign in</a></li></ul></div></div><div class="tp-wrap tp-footer-foot"><span>(c) 2026 Tatva Health Pvt. Ltd.</span><span>v 2.0</span><span>Privacy . Terms . DPDP</span></div></footer></body></html>

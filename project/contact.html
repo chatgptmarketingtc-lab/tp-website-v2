@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Talk to us — TatvaPractice</title>
+<meta name="description" content="Tell us about your practice and we will get back within 1 working day. No call centre — you talk to a real product specialist." />
+<link rel="canonical" href="https://tatvapractice.com/contact" />
+<link rel="stylesheet" href="styles/tokens.css" /></head><body>
+
+<div data-tp="nav"></div>
+
+<section class="tp-section" style="padding-top:80px">
+  <div class="tp-wrap">
+    <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:64px" class="grid-2">
+      <div>
+        <span class="tp-eyebrow">Talk to us</span>
+        <h1 class="tp-display" style="margin:18px 0 18px">Tell us about your practice.</h1>
+        <p class="tp-body-xl" style="max-width:520px">We will get back within 1 working day. No call centre. You will talk to a real product specialist.</p>
+
+        <form class="card" style="padding:32px;margin-top:32px" action="/api/contact" method="post">
+          <div class="grid-2" style="gap:14px">
+            <div class="field"><label>Name <span class="req">*</span></label><input type="text" name="name" required placeholder="Dr. Rajesh Patel" /></div>
+            <div class="field"><label>Designation</label><select name="designation"><option>Doctor</option><option>Practice Manager</option><option>Hospital Admin</option><option>Other</option></select></div>
+          </div>
+          <div class="grid-2" style="gap:14px">
+            <div class="field"><label>Clinic / hospital name</label><input type="text" name="org" placeholder="HeartCare Clinic" /></div>
+            <div class="field"><label>City</label><input type="text" name="city" placeholder="Ahmedabad" /></div>
+          </div>
+          <div class="grid-2" style="gap:14px">
+            <div class="field"><label>Phone <span class="req">*</span></label><input type="tel" name="phone" required placeholder="+91 99XXX XXXXX" /></div>
+            <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required placeholder="rajesh@heartcare.in" /></div>
+          </div>
+          <div class="field"><label>Practice size</label><select name="size"><option>Solo</option><option>2–10 doctors</option><option>11–50 doctors</option><option>50+ doctors</option></select></div>
+          <div class="field"><label>What would you like to discuss? <span class="tp-meta" style="margin-left:6px">280 char max</span></label><textarea name="message" rows="4" maxlength="280" placeholder="Quick context about your practice and what you are looking for…"></textarea></div>
+          <label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--tp-slate-600);margin:8px 0 16px"><input type="checkbox" required style="margin-top:3px"/> I agree to TatvaPractice contacting me about my enquiry. We will not share your details with third parties.</label>
+          <button class="btn btn-solid btn-l" type="submit" style="width:100%">Send message <span class="arr">→</span></button>
+        </form>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="card" style="padding:28px"><h3 class="tp-h3">Direct line</h3><p class="tp-body-lg" style="margin-top:6px;color:var(--tp-blue-700);font-family:var(--font-display);font-weight:700">+91 99740 42363</p><p class="tp-meta" style="margin-top:4px">Mon–Sat · 9 AM – 8 PM IST</p></div>
+        <div class="card" style="padding:28px"><h3 class="tp-h3">Email</h3><p class="tp-body-lg" style="margin-top:6px;color:var(--tp-blue-700);font-family:var(--font-display);font-weight:700">hello@tatvapractice.com</p><p class="tp-meta" style="margin-top:4px">Support: support@tatvacare.in · Partnerships: partners@tatvapractice.com</p></div>
+        <div class="card" style="padding:28px"><h3 class="tp-h3">WhatsApp us</h3><p class="tp-body-sm" style="margin-top:6px">Quick questions? Tap below.</p><a class="btn btn-outline btn-m" href="https://wa.me/919974042363" target="_blank" rel="noopener" style="margin-top:14px">Open WhatsApp <span class="arr">→</span></a></div>
+        <div class="card-blue" style="padding:28px"><h3 class="tp-h3" style="color:var(--tp-blue-800)">We respond within 1 working day.</h3><p class="tp-body-sm" style="margin-top:6px;color:var(--tp-blue-800)">No call centre. You will talk to a real product specialist who has worked with clinics like yours.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section class="tp-section section-tint">
+  <div class="tp-wrap">
+    <div style="text-align:center;max-width:680px;margin:0 auto 40px">
+      <span class="tp-eyebrow" style="justify-content:center">Find us</span>
+      <h2 class="tp-h1" style="margin-top:14px">Two offices. One mission.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px" class="grid-2">
+      <article class="office-card">
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:8px;background:var(--tp-blue-50);color:var(--tp-blue-700);display:grid;place-items:center"><i data-icon="map-pin" data-size="18"></i></span><h4 class="tp-h3">Bengaluru</h4><span class="badge" style="margin-left:auto;background:var(--tp-blue-50);color:var(--tp-blue-700);border:1px solid var(--tp-blue-100)">HQ</span></div>
+        <p class="office-addr">Digicare Health Solutions Pvt. Ltd.<br/>Incubex HSR27, 1500, 19th Main Rd,<br/>1st Sector, HSR Layout,<br/>Bengaluru, Karnataka — 560102</p>
+        <div class="office-map" data-placeholder="map-bengaluru" data-replace-with="Embedded Google Map of Bengaluru office"><span class="pin"><i data-icon="map-pin" data-size="14"></i> HSR Layout</span></div>
+        <a class="office-link" href="https://maps.google.com/?q=Incubex+HSR27+1500+19th+Main+Rd+HSR+Layout+Bengaluru" target="_blank" rel="noopener">Get directions <i data-icon="arrow-up-right" data-size="14"></i></a>
+      </article>
+      <article class="office-card">
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:8px;background:var(--tp-blue-50);color:var(--tp-blue-700);display:grid;place-items:center"><i data-icon="map-pin" data-size="18"></i></span><h4 class="tp-h3">Ahmedabad</h4></div>
+        <p class="office-addr">Digicare Health Solutions Pvt. Ltd.<br/>4th Floor, Plot No. 115/5,<br/>TP Scheme No. 51, off Ambli-Bopal Road,<br/>Ahmedabad, Gujarat — 380058</p>
+        <div class="office-map" data-placeholder="map-ahmedabad" data-replace-with="Embedded Google Map of Ahmedabad office"><span class="pin"><i data-icon="map-pin" data-size="14"></i> Ambli-Bopal</span></div>
+        <a class="office-link" href="https://maps.google.com/?q=Plot+115%2F5+TP+Scheme+51+Ambli-Bopal+Road+Ahmedabad" target="_blank" rel="noopener">Get directions <i data-icon="arrow-up-right" data-size="14"></i></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div data-tp="cta"></div>
+<div data-tp="footer"></div>
+<script src="styles/partials.js"></script>
+</body></html>

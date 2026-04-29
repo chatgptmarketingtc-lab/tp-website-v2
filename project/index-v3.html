@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TatvaPractice — Practice at the speed of thought</title>
+<style>/* V3 — Wispr Flow × Tatva indigo */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Cream paper, warm ink, Tatva indigo/violet */
+  --cream: oklch(97% 0.022 92);
+  --cream-2: oklch(95% 0.03 90);
+  --cream-3: oklch(92% 0.035 88);
+  --paper: #ffffff;
+
+  --ink: oklch(22% 0.04 285);
+  --ink-2: oklch(38% 0.035 285);
+  --ink-3: oklch(55% 0.03 285);
+  --ink-4: oklch(70% 0.025 285);
+
+  --indigo: oklch(38% 0.18 285);
+  --indigo-2: oklch(30% 0.18 285);
+  --indigo-deep: oklch(22% 0.14 285);
+  --violet: oklch(62% 0.2 300);
+  --lilac: oklch(88% 0.05 295);
+  --lilac-wash: oklch(95% 0.025 295);
+
+  --warm-rule: oklch(88% 0.02 88);
+  --warm-rule-strong: oklch(78% 0.025 88);
+
+  --ok: oklch(55% 0.14 155);
+  --warn: oklch(72% 0.14 65);
+
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --r-sm: 10px;
+  --r-md: 18px;
+  --r-lg: 28px;
+  --r-xl: 44px;
+
+  --max: 1240px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 16px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.v3-wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.v3-mono { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.v3-serif { font-family: var(--font-serif); font-weight: 400; }
+.v3-serif-i { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
+
+.v3-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; font-family: var(--font-display); font-size: 14px; font-weight: 500; border: 1px solid transparent; white-space: nowrap; cursor: pointer; transition: all .15s var(--ease); text-decoration: none; }ent; cursor: pointer; transition: all .18s var(--ease); }
+.v3-btn.primary { background: var(--ink); color: var(--cream); }
+.v3-btn.primary:hover { background: var(--indigo-deep); transform: translateY(-1px); }
+.v3-btn.indigo { background: var(--indigo); color: white; }
+.v3-btn.indigo:hover { background: var(--indigo-2); transform: translateY(-1px); }
+.v3-btn.ghost { background: transparent; color: var(--ink); border-color: var(--warm-rule-strong); }
+.v3-btn.ghost:hover { background: var(--cream-2); border-color: var(--ink); }
+.v3-btn.paper { background: var(--cream); color: var(--ink); }
+.v3-btn.paper:hover { background: white; }
+.v3-btn .arr::after { content: "→"; display: inline-block; transition: transform .2s; }
+.v3-btn:hover .arr::after { transform: translateX(3px); }
+
+.v3-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); display: inline-flex; align-items: center; gap: 10px; }
+.v3-eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--ink-3); }
+
+.v3-card { background: var(--paper); border-radius: var(--r-lg); padding: 32px; border: 1px solid var(--warm-rule); }
+.v3-card.cream { background: var(--cream-2); }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 400; letter-spacing: -0.01em; }
+p { margin: 0; }
+
+.v3-h1 { font-family: var(--font-serif); font-size: clamp(48px, 7vw, 104px); line-height: 0.96; letter-spacing: -0.03em; font-weight: 400; }
+.v3-h2 { font-family: var(--font-serif); font-size: clamp(38px, 4.6vw, 68px); line-height: 1.02; letter-spacing: -0.02em; }
+.v3-h3 { font-family: var(--font-serif); font-size: clamp(26px, 2.6vw, 38px); line-height: 1.1; letter-spacing: -0.015em; }
+
+.v3-lede { font-size: 18px; line-height: 1.55; color: var(--ink-2); max-width: 52ch; }
+
+.v3-grain { position: relative; }
+.v3-grain::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply; opacity: 0.4;
+  border-radius: inherit;
+}
+
+/* Nav */
+.v3-nav { padding: 20px 0; position: sticky; top: 0; z-index: 50; background: color-mix(in oklch, var(--cream) 85%, transparent); backdrop-filter: blur(12px); }
+.v3-nav-inner { display: flex; align-items: center; gap: 40px; }
+.v3-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-serif); font-size: 20px; letter-spacing: -0.02em; }
+.v3-logo-mark { width: 32px; height: 32px; border-radius: 10px; background: var(--indigo); color: var(--cream); display: grid; place-items: center; font-size: 15px; font-weight: 500; }
+.v3-nav nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; font-size: 14px; color: var(--ink-2); }
+.v3-nav nav a:hover { color: var(--ink); }
+.v3-nav-cta { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+
+/* Hero */
+.v3-hero { padding: 48px 0 80px; }
+.v3-hero-head { text-align: center; margin: 0 auto 48px; }
+.v3-hero-head h1 { max-width: 18ch; margin-left: auto; margin-right: auto; }
+.v3-hero-head .v3-lede { max-width: 52ch; margin: 24px auto 0; text-align: center; font-size: 19px; }
+.v3-hero-cta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 32px; }
+
+.v3-hero-stage { display: grid; grid-template-columns: 1fr 1.6fr; gap: 20px; align-items: stretch; }
+.v3-stat-card { background: var(--cream-2); border-radius: var(--r-xl); padding: 48px 40px; position: relative; min-height: 460px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
+.v3-stat-card .v3-mono { margin-bottom: 24px; }
+.v3-stat-num { font-family: var(--font-serif); font-size: clamp(72px, 9vw, 128px); line-height: 1; letter-spacing: -0.04em; font-weight: 400; }
+.v3-stat-num small { font-family: var(--font-serif); font-style: italic; font-size: 0.4em; letter-spacing: -0.02em; margin-left: 6px; vertical-align: baseline; }
+.v3-stat-sub { color: var(--ink-3); font-size: 13px; margin-top: 20px; max-width: 18ch; line-height: 1.4; }
+
+.v3-bubble { position: absolute; bottom: 28px; left: 28px; width: 52px; height: 52px; border-radius: 50%; background: var(--violet); display: grid; place-items: center; color: white; font-size: 22px; box-shadow: 0 12px 30px -10px color-mix(in oklch, var(--violet) 50%, transparent); }
+
+.v3-photo-card { border-radius: var(--r-xl); overflow: hidden; position: relative; min-height: 460px; background: linear-gradient(135deg, var(--indigo-deep), var(--indigo) 40%, var(--violet) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.v3-photo-card::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,220,180,0.35), transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(180,140,255,0.3), transparent 50%),
+    linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.25));
+}
+.v3-photo-card .pc-label { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.82); font-size: 13px; z-index: 2; font-family: var(--font-display); }
+.v3-photo-num { font-family: var(--font-serif); font-size: clamp(88px, 11vw, 160px); color: white; line-height: 0.9; letter-spacing: -0.04em; z-index: 2; position: relative; }
+.v3-photo-num small { font-family: var(--font-serif); font-style: italic; font-size: 0.35em; letter-spacing: -0.02em; margin-left: 8px; font-weight: 400; }
+
+/* Curved text overlay */
+.v3-curve-wrap { position: absolute; left: -10%; right: -10%; top: 52%; z-index: 3; overflow: visible; height: 60px; }
+.v3-curve-text { font-family: var(--font-display); font-size: 15px; color: rgba(255,255,255,0.75); white-space: nowrap; animation: curve-scroll 28s linear infinite; }
+@keyframes curve-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.v3-mic-pill { position: absolute; bottom: 32%; left: 50%; transform: translateX(-50%); z-index: 4; width: 120px; height: 48px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.7); display: grid; place-items: center; color: white; }
+.v3-mic-pill .bars { display: flex; gap: 3px; align-items: center; height: 18px; }
+.v3-mic-pill .bars i { display: block; width: 2px; background: white; border-radius: 1px; animation: wave 1.2s ease-in-out infinite; }
+.v3-mic-pill .bars i:nth-child(1) { height: 6px; animation-delay: .0s; }
+.v3-mic-pill .bars i:nth-child(2) { height: 14px; animation-delay: .1s; }
+.v3-mic-pill .bars i:nth-child(3) { height: 9px; animation-delay: .2s; }
+.v3-mic-pill .bars i:nth-child(4) { height: 18px; animation-delay: .3s; }
+.v3-mic-pill .bars i:nth-child(5) { height: 10px; animation-delay: .4s; }
+.v3-mic-pill .bars i:nth-child(6) { height: 14px; animation-delay: .5s; }
+.v3-mic-pill .bars i:nth-child(7) { height: 7px; animation-delay: .6s; }
+@keyframes wave { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(1.2); } }
+
+/* Ticker */
+.v3-ticker { margin-top: 56px; padding: 28px 0; border-top: 1px solid var(--warm-rule); border-bottom: 1px solid var(--warm-rule); display: flex; gap: 28px; align-items: center; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.v3-ticker-track { display: flex; gap: 48px; white-space: nowrap; animation: tick 42s linear infinite; font-family: var(--font-serif); font-size: 22px; font-style: italic; color: var(--ink-2); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Sections */
+.v3-section { padding: 120px 0; }
+.v3-section-head { text-align: center; max-width: 22ch; margin: 0 auto 64px; }
+.v3-section-head .v3-lede { margin: 20px auto 0; text-align: center; font-size: 17px; }
+
+/* Pillars (cream cards) */
+.v3-pillar-stack { display: grid; gap: 20px; }
+.v3-pillar { background: var(--paper); border-radius: var(--r-xl); padding: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; border: 1px solid var(--warm-rule); }
+.v3-pillar.dark { background: var(--indigo-deep); color: var(--cream); border-color: transparent; }
+.v3-pillar.dark h3, .v3-pillar.dark .v3-pillar-num { color: var(--cream); }
+.v3-pillar.dark p { color: color-mix(in oklch, var(--cream) 80%, transparent); }
+.v3-pillar.dark .v3-pillar-vis { background: color-mix(in oklch, white 8%, transparent); }
+.v3-pillar.reverse { grid-template-columns: 1fr 1fr; }
+.v3-pillar.reverse .v3-pillar-vis { order: -1; }
+.v3-pillar-num { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.12em; margin-bottom: 20px; }
+.v3-pillar h3 { margin-bottom: 20px; max-width: 14ch; }
+.v3-pillar p { color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 42ch; margin-bottom: 24px; }
+.v3-pillar-bullets { list-style: none; padding: 0; margin: 0 0 24px; font-size: 14px; color: var(--ink-2); }
+.v3-pillar-bullets li { padding: 10px 0; border-top: 1px solid var(--warm-rule); }
+.v3-pillar-bullets li:last-child { border-bottom: 1px solid var(--warm-rule); }
+.v3-pillar.dark .v3-pillar-bullets li { border-color: color-mix(in oklch, white 12%, transparent); color: color-mix(in oklch, var(--cream) 80%, transparent); }
+.v3-pillar-vis { background: var(--cream-2); border-radius: var(--r-lg); aspect-ratio: 4/3; display: grid; place-items: center; color: var(--ink-3); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-align: center; padding: 20px; }
+
+/* Dark section (feature slab) */
+.v3-dark-slab { background: var(--indigo-deep); border-radius: var(--r-xl); padding: 96px 64px; color: var(--cream); position: relative; overflow: hidden; }
+.v3-dark-slab::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(600px 400px at 85% 10%, color-mix(in oklch, var(--violet) 40%, transparent), transparent 70%),
+    radial-gradient(500px 300px at 0% 100%, color-mix(in oklch, var(--violet) 30%, transparent), transparent 70%);
+}
+.v3-dark-slab > * { position: relative; z-index: 1; }
+.v3-dark-slab h2 { color: var(--cream); }
+.v3-dark-slab .v3-lede { color: color-mix(in oklch, var(--cream) 75%, transparent); }
+.v3-dark-slab .v3-eyebrow { color: color-mix(in oklch, var(--cream) 60%, transparent); }
+.v3-dark-slab .v3-eyebrow::before { background: color-mix(in oklch, var(--cream) 60%, transparent); }
+
+/* Quote */
+.v3-quote { text-align: center; padding: 140px 0; }
+.v3-quote blockquote { font-family: var(--font-serif); font-size: clamp(32px, 4.4vw, 60px); line-height: 1.15; letter-spacing: -0.02em; max-width: 24ch; margin: 0 auto 32px; color: var(--ink); font-weight: 400; }
+.v3-quote blockquote em { font-style: italic; }
+.v3-q-attr { display: flex; align-items: center; gap: 14px; justify-content: center; }
+.v3-q-av { width: 44px; height: 44px; border-radius: 50%; background: var(--cream-3); display: grid; place-items: center; color: var(--ink); font-size: 12px; font-weight: 500; }
+
+/* Stats strip */
+.v3-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.v3-stat { padding: 40px 32px; border-right: 1px solid var(--warm-rule); text-align: left; }
+.v3-stat:last-child { border-right: 0; }
+.v3-stat .v3-stat-num { font-size: clamp(56px, 7vw, 96px); text-align: left; }
+.v3-stat-cap { color: var(--ink-3); font-size: 14px; margin-top: 12px; max-width: 24ch; line-height: 1.45; }
+
+/* Audience cards */
+.v3-aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.v3-aud { background: var(--paper); border-radius: var(--r-lg); padding: 36px; border: 1px solid var(--warm-rule); transition: all .2s var(--ease); }
+.v3-aud:hover { transform: translateY(-3px); border-color: var(--indigo); }
+.v3-aud-ico { width: 48px; height: 48px; border-radius: 14px; background: var(--lilac-wash); color: var(--indigo); display: grid; place-items: center; font-family: var(--font-serif); font-style: italic; font-size: 22px; margin-bottom: 24px; }
+.v3-aud h4 { font-family: var(--font-serif); font-size: 24px; letter-spacing: -0.015em; margin-bottom: 10px; }
+.v3-aud p { color: var(--ink-2); font-size: 14px; line-height: 1.5; max-width: 30ch; margin-bottom: 18px; }
+.v3-aud ul { list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--ink-2); }
+.v3-aud ul li { padding: 8px 0; border-top: 1px solid var(--warm-rule); }
+
+/* Testimonials */
+.v3-t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.v3-t-card { background: var(--paper); border-radius: var(--r-lg); padding: 32px; border: 1px solid var(--warm-rule); display: flex; flex-direction: column; gap: 24px; }
+.v3-t-card blockquote { font-family: var(--font-serif); font-style: italic; font-size: 22px; line-height: 1.25; margin: 0; color: var(--ink); flex: 1; }
+.v3-t-attr { display: flex; gap: 12px; align-items: center; }
+.v3-t-av { width: 40px; height: 40px; border-radius: 50%; background: var(--cream-3); color: var(--ink); font-size: 11px; display: grid; place-items: center; font-weight: 500; }
+.v3-t-name { font-size: 14px; font-weight: 500; }
+
+/* Pricing */
+.v3-plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.v3-plan { background: var(--paper); border-radius: var(--r-lg); padding: 36px; border: 1px solid var(--warm-rule); display: flex; flex-direction: column; gap: 20px; position: relative; }
+.v3-plan.featured { background: var(--indigo-deep); color: var(--cream); border-color: transparent; }
+.v3-plan.featured p, .v3-plan.featured ul li { color: color-mix(in oklch, var(--cream) 80%, transparent); }
+.v3-plan.featured .v3-mono { color: color-mix(in oklch, var(--cream) 70%, transparent); }
+.v3-plan-name { font-family: var(--font-serif); font-size: 28px; letter-spacing: -0.015em; }
+.v3-plan-price { font-family: var(--font-serif); font-size: 44px; letter-spacing: -0.025em; line-height: 1; }
+.v3-plan-price small { font-family: var(--font-display); font-size: 14px; color: var(--ink-3); margin-left: 4px; font-weight: 400; }
+.v3-plan.featured .v3-plan-price small { color: color-mix(in oklch, var(--cream) 70%, transparent); }
+.v3-plan p { font-size: 14px; color: var(--ink-2); }
+.v3-plan ul { list-style: none; padding: 0; margin: 0; font-size: 14px; }
+.v3-plan ul li { padding: 10px 0; border-top: 1px solid var(--warm-rule); color: var(--ink-2); }
+.v3-plan.featured ul li { border-color: color-mix(in oklch, white 12%, transparent); }
+.v3-plan-tag { position: absolute; top: -12px; right: 28px; background: var(--violet); color: white; padding: 4px 12px; border-radius: 999px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; }
+
+/* FAQ */
+.v3-faq-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+.v3-faq-list { border-top: 1px solid var(--warm-rule); }
+.v3-faq-list details { border-bottom: 1px solid var(--warm-rule); padding: 24px 0; cursor: pointer; }
+.v3-faq-list summary { list-style: none; font-family: var(--font-serif); font-size: 22px; letter-spacing: -0.01em; display: flex; justify-content: space-between; }
+.v3-faq-list summary::-webkit-details-marker { display: none; }
+.v3-faq-list summary::after { content: "+"; font-family: var(--font-serif); font-size: 26px; color: var(--ink-3); }
+.v3-faq-list details[open] summary::after { content: "−"; }
+.v3-faq-list p { margin-top: 12px; color: var(--ink-2); font-size: 15px; line-height: 1.55; max-width: 60ch; }
+
+/* CTA */
+.v3-cta-final { padding: 48px 0 120px; }
+.v3-cta-inner { background: var(--indigo-deep); color: var(--cream); border-radius: var(--r-xl); padding: 96px 64px; text-align: center; position: relative; overflow: hidden; }
+.v3-cta-inner::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(500px 300px at 20% 20%, color-mix(in oklch, var(--violet) 45%, transparent), transparent 60%),
+    radial-gradient(600px 400px at 100% 100%, color-mix(in oklch, var(--violet) 35%, transparent), transparent 70%);
+}
+.v3-cta-inner > * { position: relative; z-index: 1; }
+.v3-cta-inner h2 { color: var(--cream); max-width: 20ch; margin: 20px auto 40px; }
+.v3-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* Footer */
+.v3-footer { background: var(--ink); color: color-mix(in oklch, var(--cream) 75%, transparent); padding: 80px 0 32px; }
+.v3-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid color-mix(in oklch, var(--cream) 15%, transparent); }
+.v3-footer .v3-logo { color: var(--cream); }
+.v3-footer .v3-logo-mark { background: var(--cream); color: var(--ink); }
+.v3-footer ul { list-style: none; padding: 0; margin: 12px 0 0; font-size: 14px; }
+.v3-footer ul li { padding: 6px 0; }
+.v3-footer h5 { color: var(--cream); font-family: var(--font-display); font-size: 13px; font-weight: 500; margin: 0; }
+.v3-footer-tag { margin: 20px 0; color: color-mix(in oklch, var(--cream) 60%, transparent); font-size: 14px; line-height: 1.5; max-width: 30ch; }
+.v3-footer-foot { padding-top: 24px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: color-mix(in oklch, var(--cream) 50%, transparent); }
+
+/* Page hero (non-home) */
+.v3-page-hero { padding: 64px 0 80px; text-align: center; }
+.v3-page-hero .v3-h1 { max-width: 16ch; margin: 18px auto 24px; font-size: clamp(48px, 6vw, 88px); }
+.v3-page-hero .v3-lede { margin: 0 auto; text-align: center; }
+.v3-breadcrumb { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+
+/* Forms */
+.v3-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.v3-field label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.v3-field input, .v3-field select, .v3-field textarea { font-family: var(--font-display); font-size: 15px; padding: 14px 16px; border: 1px solid var(--warm-rule-strong); border-radius: var(--r-sm); background: var(--paper); color: var(--ink); }
+.v3-field input:focus, .v3-field select:focus, .v3-field textarea:focus { outline: none; border-color: var(--ink); }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .v3-hero-stage, .v3-pillar, .v3-pillar.reverse { grid-template-columns: 1fr; }
+  .v3-pillar.reverse .v3-pillar-vis { order: 0; }
+  .v3-stats, .v3-aud-grid, .v3-t-grid, .v3-plan-grid { grid-template-columns: 1fr; }
+  .v3-faq-grid { grid-template-columns: 1fr; }
+  .v3-footer-grid { grid-template-columns: 1fr 1fr; }
+  .v3-dark-slab, .v3-cta-inner { padding: 56px 28px; }
+  .v3-pillar { padding: 32px; }
+}
+</style>
+</head>
+<body>
+
+<header class="v3-nav">
+  <div class="v3-wrap v3-nav-inner">
+    <a href="index-v3.html" class="v3-logo">
+      <span class="v3-logo-mark">त</span>
+      <span>TatvaPractice</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="product-v3.html">Product</a></li>
+        <li><a href="pricing-v3.html">Pricing</a></li>
+        <li><a href="resources-v3.html">Resources</a></li>
+        <li><a href="about-v3.html">About</a></li>
+      </ul>
+    </nav>
+    <div class="v3-nav-cta">
+      <a href="signin.html" class="v3-btn ghost">Sign in</a>
+      <a href="demo-v3.html" class="v3-btn primary">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="v3-hero">
+  <div class="v3-wrap">
+    <div class="v3-hero-head">
+      <div class="v3-eyebrow" style="display:inline-flex;">AI-native EMR · Built in Bengaluru</div>
+      <h1 class="v3-h1" style="margin-top: 20px;">
+        Practice at the<br/>
+        <em class="v3-serif-i">speed of thought.</em>
+      </h1>
+      <p class="v3-lede">
+        Tatva listens to your consult and drafts the note, the prescription, and the follow-up.
+        You do the medicine. We do the paperwork.
+      </p>
+      <div class="v3-hero-cta">
+        <a href="demo-v3.html" class="v3-btn indigo">Book a demo <span class="arr"></span></a>
+        <a href="product-v3.html" class="v3-btn ghost">See how it works</a>
+      </div>
+    </div>
+
+    <div class="v3-hero-stage">
+      <div class="v3-stat-card">
+        <div class="v3-mono">Paper records</div>
+        <div class="v3-stat-num">5<small>hrs</small></div>
+        <div class="v3-stat-sub">spent charting across an 8-hour OPD</div>
+        <div class="v3-bubble">✻</div>
+      </div>
+      <div class="v3-photo-card">
+        <span class="pc-label">With Tatva</span>
+        <div class="v3-photo-num">0<small>min</small></div>
+        <div class="v3-curve-wrap">
+          <div class="v3-curve-text">
+            Ms Priya — 34F — epigastric pain × 3 weeks — likely GERD — pantoprazole 40 once daily — review in 10 days — &nbsp;&nbsp;
+            Ms Priya — 34F — epigastric pain × 3 weeks — likely GERD — pantoprazole 40 once daily — review in 10 days — &nbsp;&nbsp;
+          </div>
+        </div>
+        <div class="v3-mic-pill">
+          <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="v3-ticker">
+      <div class="v3-ticker-track">
+        <span>Apollo-affiliated</span><span>·</span>
+        <span>Fortis Network</span><span>·</span>
+        <span>Manipal Group</span><span>·</span>
+        <span>Narayana Health</span><span>·</span>
+        <span>Max Healthcare</span><span>·</span>
+        <span>Aster Clinics</span><span>·</span>
+        <span>KIMS Hospitals</span><span>·</span>
+        <span>Columbia Asia</span><span>·</span>
+        <span>AIIMS Alumni</span><span>·</span>
+        <span>Apollo-affiliated</span><span>·</span>
+        <span>Fortis Network</span><span>·</span>
+        <span>Manipal Group</span><span>·</span>
+        <span>Narayana Health</span><span>·</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="v3-section" style="padding: 40px 0 80px;">
+  <div class="v3-wrap">
+    <div class="v3-stats">
+      <div class="v3-stat">
+        <div class="v3-mono" style="margin-bottom:16px;">Clinicians</div>
+        <div class="v3-stat-num">10k<small>+</small></div>
+        <div class="v3-stat-cap">Indian doctors close their notes with Tatva.</div>
+      </div>
+      <div class="v3-stat">
+        <div class="v3-mono" style="margin-bottom:16px;">Prescriptions</div>
+        <div class="v3-stat-num">12<small>L+</small></div>
+        <div class="v3-stat-cap">Digital scripts written this year. In 9 languages.</div>
+      </div>
+      <div class="v3-stat">
+        <div class="v3-mono" style="margin-bottom:16px;">Time back</div>
+        <div class="v3-stat-num">3<small>hrs</small></div>
+        <div class="v3-stat-cap">Average charting time returned to the doctor each day.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="v3-section">
+  <div class="v3-wrap">
+    <div class="v3-section-head">
+      <div class="v3-eyebrow">Three ways to close a note</div>
+      <h2 class="v3-h2" style="margin-top: 20px;">Speak it. Write it. <em class="v3-serif-i">Or let Tatva draft it.</em></h2>
+      <p class="v3-lede">We meet clinicians where they already are — on paper, at a mic, or reviewing drafts after the patient leaves.</p>
+    </div>
+
+    <div class="v3-pillar-stack">
+      <article class="v3-pillar">
+        <div>
+          <div class="v3-pillar-num">01 · VoiceRx</div>
+          <h3 class="v3-h3">Dictate naturally. Get a structured note.</h3>
+          <p>Describe the consult the way you'd tell a colleague. VoiceRx separates history, exam, assessment, and plan — then formats the Rx in your template.</p>
+          <ul class="v3-pillar-bullets">
+            <li>Hindi, Tamil, Marathi, Bengali — 9 languages with code-switching</li>
+            <li>Sub-400ms latency on 4G</li>
+            <li>Audio stays in India, never used to train shared models</li>
+          </ul>
+        </div>
+        <div class="v3-pillar-vis">VOICERX · WAVEFORM → STRUCTURED NOTE</div>
+      </article>
+
+      <article class="v3-pillar reverse dark">
+        <div>
+          <div class="v3-pillar-num">02 · SmartPad</div>
+          <h3 class="v3-h3">Handwrite like you always have. Digitize instantly.</h3>
+          <p>Write on any iPad or Wacom pad. Every stroke lives as both ink and structured data — searchable, printable, stored.</p>
+          <ul class="v3-pillar-bullets">
+            <li>Handwriting recognition in 9 Indian scripts</li>
+            <li>Drug-name autocorrect trained on Indian brands</li>
+            <li>Interaction flags as you write</li>
+          </ul>
+        </div>
+        <div class="v3-pillar-vis">SMARTPAD · INK → DIGITAL RX</div>
+      </article>
+
+      <article class="v3-pillar">
+        <div>
+          <div class="v3-pillar-num">03 · Clinical Assistant</div>
+          <h3 class="v3-h3">An AI that remembers. And follows up.</h3>
+          <p>Tatva drafts lab orders, follow-up messages, and discharge summaries. You approve — it sends, in the language your patient speaks.</p>
+          <ul class="v3-pillar-bullets">
+            <li>Follow-up WhatsApp in patient's language</li>
+            <li>Learns your prescribing patterns, never overrides them</li>
+            <li>Azure OpenAI · India region</li>
+          </ul>
+        </div>
+        <div class="v3-pillar-vis">ASSISTANT · DRAFTS QUEUE</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DARK SLAB -->
+<section class="v3-section" style="padding: 40px 0;">
+  <div class="v3-wrap">
+    <div class="v3-dark-slab">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+        <div>
+          <div class="v3-eyebrow">The full platform</div>
+          <h2 class="v3-h2" style="margin-top: 18px;">A complete OPD, <em class="v3-serif-i">end to end.</em></h2>
+          <p class="v3-lede" style="color: color-mix(in oklch, var(--cream) 80%, transparent); margin-top: 24px;">
+            Scheduling, consulting, prescribing, billing, follow-up — one calm surface, built on ABDM rails and Microsoft Azure OpenAI.
+          </p>
+          <div style="margin-top: 32px;">
+            <a href="product-v3.html" class="v3-btn paper">Tour the product <span class="arr"></span></a>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: color-mix(in oklch, white 10%, transparent); border-radius: 18px; overflow: hidden;">
+          <li style="background: var(--indigo-deep); padding: 24px;"><div class="v3-mono" style="color: color-mix(in oklch, var(--cream) 60%, transparent);">01</div><div style="font-family:var(--font-serif); font-size: 22px; margin-top: 10px;">Appointments</div></li>
+          <li style="background: var(--indigo-deep); padding: 24px;"><div class="v3-mono" style="color: color-mix(in oklch, var(--cream) 60%, transparent);">02</div><div style="font-family:var(--font-serif); font-size: 22px; margin-top: 10px;">Consultation</div></li>
+          <li style="background: var(--indigo-deep); padding: 24px;"><div class="v3-mono" style="color: color-mix(in oklch, var(--cream) 60%, transparent);">03</div><div style="font-family:var(--font-serif); font-size: 22px; margin-top: 10px;">Prescription</div></li>
+          <li style="background: var(--indigo-deep); padding: 24px;"><div class="v3-mono" style="color: color-mix(in oklch, var(--cream) 60%, transparent);">04</div><div style="font-family:var(--font-serif); font-size: 22px; margin-top: 10px;">Labs &amp; imaging</div></li>
+          <li style="background: var(--indigo-deep); padding: 24px;"><div class="v3-mono" style="color: color-mix(in oklch, var(--cream) 60%, transparent);">05</div><div style="font-family:var(--font-serif); font-size: 22px; margin-top: 10px;">Billing</div></li>
+          <li style="background: var(--indigo-deep); padding: 24px;"><div class="v3-mono" style="color: color-mix(in oklch, var(--cream) 60%, transparent);">06</div><div style="font-family:var(--font-serif); font-size: 22px; margin-top: 10px;">Follow-up</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="v3-quote">
+  <div class="v3-wrap">
+    <blockquote>"My consults used to end at 9pm. Now they end when <em>my last patient walks out.</em>"</blockquote>
+    <div class="v3-q-attr">
+      <div class="v3-q-av">RV</div>
+      <div>
+        <div style="font-size: 14px; font-weight: 500;">Dr. Rashmi Venkatesh</div>
+        <div class="v3-mono">Consultant physician · Bengaluru</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCES -->
+<section class="v3-section" style="padding-top: 40px;">
+  <div class="v3-wrap">
+    <div class="v3-section-head">
+      <div class="v3-eyebrow">Built for every practice size</div>
+      <h2 class="v3-h2" style="margin-top: 20px;">Whether you see 20 patients <em class="v3-serif-i">or 2,000.</em></h2>
+    </div>
+    <div class="v3-aud-grid">
+      <div class="v3-aud">
+        <div class="v3-aud-ico">S</div>
+        <h4>Solo doctors</h4>
+        <p>Visiting consultants, single-clinic practitioners, and home-visit GPs.</p>
+        <ul>
+          <li>SmartPad + VoiceRx</li>
+          <li>WhatsApp reminders</li>
+          <li>Up to 500 patients</li>
+        </ul>
+      </div>
+      <div class="v3-aud">
+        <div class="v3-aud-ico">C</div>
+        <h4>Multi-doctor clinics</h4>
+        <p>Group practices, polyclinics, and specialty centers with 2–25 clinicians.</p>
+        <ul>
+          <li>Unlimited patients + staff roles</li>
+          <li>Owner dashboard &amp; analytics</li>
+          <li>Multi-location support</li>
+        </ul>
+      </div>
+      <div class="v3-aud">
+        <div class="v3-aud-ico">H</div>
+        <h4>Hospitals &amp; chains</h4>
+        <p>25+ doctor groups, chains, and multi-specialty hospital networks.</p>
+        <ul>
+          <li>SSO · HL7/FHIR · dedicated region</li>
+          <li>Custom templates + workflows</li>
+          <li>Named implementation lead</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="v3-section" style="padding-top: 40px;">
+  <div class="v3-wrap">
+    <div class="v3-section-head">
+      <div class="v3-eyebrow">Doctors, in their words</div>
+      <h2 class="v3-h2" style="margin-top: 20px;">What clinicians <em class="v3-serif-i">actually say.</em></h2>
+    </div>
+    <div class="v3-t-grid">
+      <figure class="v3-t-card">
+        <blockquote>"My Marathi-speaking patients get a prescription they can read. Follow-up compliance doubled."</blockquote>
+        <div class="v3-t-attr"><div class="v3-t-av">MK</div><div><div class="v3-t-name">Dr. Meera Kulkarni</div><div class="v3-mono">Pediatrician · Pune</div></div></div>
+      </figure>
+      <figure class="v3-t-card">
+        <blockquote>"VoiceRx understands my code-switched Hindi-English. I dictate; it writes. That's the whole pitch."</blockquote>
+        <div class="v3-t-attr"><div class="v3-t-av">SV</div><div><div class="v3-t-name">Dr. Siddharth Verma</div><div class="v3-mono">Internal medicine · Jaipur</div></div></div>
+      </figure>
+      <figure class="v3-t-card">
+        <blockquote>"SmartPad turned 28 years of my scribbled handwriting into searchable records in two days."</blockquote>
+        <div class="v3-t-attr"><div class="v3-t-av">AP</div><div><div class="v3-t-name">Dr. Anand Pillai</div><div class="v3-mono">Cardiologist · Kochi</div></div></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="v3-section" style="padding-top: 40px;">
+  <div class="v3-wrap">
+    <div class="v3-section-head">
+      <div class="v3-eyebrow">Honest pricing</div>
+      <h2 class="v3-h2" style="margin-top: 20px;">No setup fees. <em class="v3-serif-i">No lock-ins.</em></h2>
+    </div>
+    <div class="v3-plan-grid">
+      <div class="v3-plan">
+        <div class="v3-mono">Solo</div>
+        <div class="v3-plan-name">For single-doctor OPDs</div>
+        <div class="v3-plan-price">₹1,499<small>/mo</small></div>
+        <p>Up to 500 patients. SmartPad + VoiceRx. WhatsApp reminders.</p>
+        <ul><li>1 doctor, 1 location</li><li>Email support</li><li>14-day free trial</li></ul>
+        <a href="pricing-v3.html" class="v3-btn ghost">See details</a>
+      </div>
+      <div class="v3-plan featured">
+        <div class="v3-plan-tag">Most popular</div>
+        <div class="v3-mono">Clinic</div>
+        <div class="v3-plan-name">For multi-doctor practices</div>
+        <div class="v3-plan-price">₹3,999<small>/mo per doctor</small></div>
+        <p>Unlimited patients. Owner dashboard. Clinical Assistant included.</p>
+        <ul><li>Up to 25 doctors</li><li>Priority chat support</li><li>Multi-location</li></ul>
+        <a href="signup.html" class="v3-btn paper">Start 14-day trial</a>
+      </div>
+      <div class="v3-plan">
+        <div class="v3-mono">Hospital</div>
+        <div class="v3-plan-name">For chains &amp; networks</div>
+        <div class="v3-plan-price">Talk to us</div>
+        <p>Dedicated Azure region, SSO, HL7/FHIR APIs, custom templates.</p>
+        <ul><li>25+ doctors</li><li>Named implementation lead</li><li>1-hour support SLA</li></ul>
+        <a href="demo-v3.html" class="v3-btn ghost">Contact sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="v3-section">
+  <div class="v3-wrap">
+    <div class="v3-faq-grid">
+      <div>
+        <div class="v3-eyebrow">Frequent questions</div>
+        <h2 class="v3-h2" style="margin-top: 18px;">Answers, <em class="v3-serif-i">up front.</em></h2>
+        <p class="v3-lede" style="margin-top: 20px;">Still curious? Email <a href="mailto:hello@tatva.health" style="text-decoration: underline;">hello@tatva.health</a> — a real human replies within a working day.</p>
+      </div>
+      <div class="v3-faq-list">
+        <details open><summary>Will my handwriting actually work?</summary><p>Yes. SmartPad is trained on Indian clinical handwriting — including the illegible kind. Most doctors reach 95%+ recognition inside a week.</p></details>
+        <details><summary>Does VoiceRx work in my language?</summary><p>English, Hindi, Tamil, Telugu, Kannada, Marathi, Bengali, Gujarati, Malayalam — including code-switching between any two of them mid-sentence.</p></details>
+        <details><summary>Where is my patient data stored?</summary><p>In Microsoft Azure's Mumbai and Pune regions, encrypted at rest. Audio is processed in-region and never trains shared models.</p></details>
+        <details><summary>Can I migrate existing records?</summary><p>Yes — from most major Indian EMRs, paper registers, and Excel sheets. A migration engineer handles it during your onboarding week.</p></details>
+        <details><summary>Is Tatva ABDM certified?</summary><p>Yes, at Milestone 2. Patients can link their Health ID and carry their records across any ABDM-enabled facility.</p></details>
+        <details><summary>What if the internet drops mid-OPD?</summary><p>Tatva runs offline. Notes are queued locally and sync silently the moment you're back online.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="v3-cta-final">
+  <div class="v3-wrap">
+    <div class="v3-cta-inner">
+      <div class="v3-eyebrow" style="color: color-mix(in oklch, var(--cream) 70%, transparent);">Twenty minutes. One OPD. See it yourself.</div>
+      <h2 class="v3-h2">Close your next note <em class="v3-serif-i">before your patient reaches the door.</em></h2>
+      <div class="v3-cta-actions">
+        <a href="demo-v3.html" class="v3-btn paper">Book a demo <span class="arr"></span></a>
+        <a href="signup.html" class="v3-btn ghost" style="color: var(--cream); border-color: color-mix(in oklch, var(--cream) 25%, transparent);">Start a 14-day trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="v3-footer">
+  <div class="v3-wrap v3-footer-grid">
+    <div>
+      <a href="index-v3.html" class="v3-logo"><span class="v3-logo-mark">त</span><span>TatvaPractice</span></a>
+      <p class="v3-footer-tag">AI-native EMR for Indian clinicians.<br/>Built in Bengaluru. Hosted in Mumbai.</p>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <ul><li><a href="product-v3.html">Overview</a></li><li><a href="pricing-v3.html">Pricing</a></li><li><a href="dashboard.html">Dashboard</a></li></ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul><li><a href="about-v3.html">About</a></li><li><a href="resources-v3.html">Resources</a></li><li><a href="#">Careers</a></li></ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul><li><a href="demo-v3.html">Book a demo</a></li><li><a href="mailto:hello@tatva.health">hello@tatva.health</a></li><li>HSR Layout, Bengaluru</li></ul>
+    </div>
+  </div>
+  <div class="v3-wrap v3-footer-foot">
+    <span>© 2026 Tatva Health Pvt. Ltd.</span>
+    <span>v 2.0 · April 2026</span>
+    <span>Privacy · Terms · DPDP</span>
+  </div>
+</footer>
+
+</body></html>
