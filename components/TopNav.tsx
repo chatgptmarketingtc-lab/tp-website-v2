@@ -66,19 +66,19 @@ export default function TopNav() {
   return (
     <>
       <nav
-        className="sticky top-0 z-50 bg-white/92 backdrop-blur-[12px] border-b border-tp-slate-200"
+        className="sticky top-0 z-50 bg-white/92 backdrop-blur-[12px] border-b border-tp-slate-200 overflow-x-clip"
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-wrap mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center gap-10 h-[72px]">
+        <div className="max-w-wrap mx-auto w-full px-6 flex items-center flex-nowrap gap-4 h-[72px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-display font-bold text-[22px] leading-none text-tp-slate-900 tracking-[-0.01em] no-underline">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0 font-display font-bold text-[22px] leading-none text-tp-slate-900 tracking-[-0.01em] no-underline">
             <span className="w-7 h-7 rounded-lg bg-tp-blue-500 text-white grid place-items-center font-display font-extrabold text-base leading-none shadow-tp-sm flex-shrink-0">T</span>
             TatvaPractice
           </Link>
 
-          {/* Desktop nav */}
-          <ul className="hidden lg:flex list-none m-0 p-0 gap-7" role="list">
+          {/* Desktop nav — visible at xl (1280px+) to ensure single-row fit */}
+          <ul className="hidden xl:flex flex-nowrap list-none m-0 p-0 gap-5" role="list">
             {/* Product dropdown */}
             <li className="relative group">
               <button
@@ -125,7 +125,7 @@ export default function TopNav() {
           </ul>
 
           {/* CTA group */}
-          <div className="ml-auto hidden lg:flex gap-2.5 items-center">
+          <div className="ml-auto hidden xl:flex flex-nowrap flex-shrink-0 gap-2 items-center">
             <Link href="/contact" className="btn btn-ghost btn-m">Sign in</Link>
             <Link href="/contact" className="btn btn-outline btn-m">Book a Demo</Link>
             <Link href="/contact" className="btn btn-solid btn-m">Start Free Trial</Link>
@@ -133,7 +133,7 @@ export default function TopNav() {
 
           {/* Hamburger */}
           <button
-            className="ml-auto lg:hidden p-2 text-tp-slate-700 hover:text-tp-slate-900"
+            className="ml-auto xl:hidden p-2 text-tp-slate-700 hover:text-tp-slate-900"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
@@ -143,7 +143,7 @@ export default function TopNav() {
 
         {/* Mobile drawer */}
         {mobileOpen && (
-          <div className="lg:hidden fixed inset-0 top-[72px] bg-white z-50 overflow-y-auto flex flex-col">
+          <div className="xl:hidden fixed inset-0 top-[72px] bg-white z-50 overflow-y-auto flex flex-col">
             <nav className="flex-1 px-6 py-6 flex flex-col gap-1">
               {/* Product section */}
               <button
@@ -208,7 +208,7 @@ export default function TopNav() {
       {/* Sticky mobile CTA (appears on scroll, managed via CSS) */}
       <Link
         href="/contact"
-        className="fixed bottom-4 right-4 z-[80] btn btn-solid btn-l shadow-tp-xl lg:hidden"
+        className="fixed bottom-4 right-4 z-[80] btn btn-solid btn-l shadow-tp-xl xl:hidden"
       >
         Book Demo
       </Link>
