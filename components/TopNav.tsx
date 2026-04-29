@@ -78,7 +78,7 @@ export default function TopNav() {
           </Link>
 
           {/* Desktop nav — visible at xl (1280px+) to ensure single-row fit */}
-          <ul className="hidden xl:flex flex-nowrap list-none m-0 p-0 gap-5" role="list">
+          <ul className="hidden xl:flex flex-nowrap items-center list-none m-0 p-0 gap-5" role="list">
             {/* Product dropdown */}
             <li className="relative group">
               <button
