@@ -1,0 +1,218 @@
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import {
+  MicIcon, PenLineIcon, CameraIcon, BrainIcon, FilePenIcon, GridIcon,
+  StethoscopeIcon, Building2Icon, CirclePlusIcon,
+  ChevronDownIcon, MenuIcon, XIcon,
+} from './icons'
+
+type NavDropItem = {
+  href: string
+  icon: React.FC<{ size?: number }>
+  title: string
+  desc: string
+}
+
+const PRODUCT_ITEMS: NavDropItem[] = [
+  { href: '/product/voicerx',    icon: MicIcon,      title: 'VoiceRx',       desc: 'Speak. We\'ll write the prescription.' },
+  { href: '/product/smartsync',  icon: PenLineIcon,  title: 'SmartSync',     desc: 'Write naturally. Save digitally.' },
+  { href: '/product/snaprx',     icon: CameraIcon,   title: 'SnapRx',        desc: 'Photograph any Rx. We digitise it.' },
+  { href: '/product/ai-agents',  icon: BrainIcon,    title: 'AI Agents',     desc: 'DoctorAgent, Amaya, Receptionist.' },
+  { href: '/product/emr',        icon: FilePenIcon,  title: 'Core EMR',      desc: 'Records, queue, billing, telehealth.' },
+  { href: '/product',            icon: GridIcon,     title: 'Full overview', desc: 'Every module, one workflow.' },
+]
+
+const SOLUTIONS_ITEMS: NavDropItem[] = [
+  { href: '/solutions/clinics',           icon: StethoscopeIcon, title: 'For Clinics',   desc: 'Solo & multi-doctor clinics.' },
+  { href: '/solutions/hospitals',         icon: Building2Icon,   title: 'For Hospitals', desc: 'Multi-location & enterprise.' },
+  { href: '/solutions/clinics/specialty', icon: CirclePlusIcon,  title: 'By specialty',  desc: '25+ specialties supported.' },
+]
+
+function Dropdown({ items, cols = 1 }: { items: NavDropItem[]; cols?: number }) {
+  return (
+    <div
+      className="absolute top-[calc(100%-4px)] left-[-16px] bg-white border border-tp-slate-200 rounded-2xl shadow-tp-lg p-2.5 z-[60]"
+      style={{ minWidth: cols === 2 ? '560px' : '340px', display: 'grid', gridTemplateColumns: cols === 2 ? '1fr 1fr' : '1fr', gap: '4px' }}
+    >
+      {items.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className="grid items-start gap-3 p-3 px-4 rounded-lg hover:bg-tp-slate-50 transition-colors"
+          style={{ gridTemplateColumns: '32px 1fr' }}
+        >
+          <span className="w-8 h-8 rounded-lg bg-tp-blue-50 text-tp-blue-700 grid place-items-center flex-shrink-0">
+            <item.icon size={18} />
+          </span>
+          <span className="flex flex-col gap-1 min-w-0">
+            <span className="font-display font-semibold text-sm text-tp-slate-900 leading-tight">{item.title}</span>
+            <span className="font-body font-normal text-[13px] text-tp-slate-600 leading-snug">{item.desc}</span>
+          </span>
+        </Link>
+      ))}
+    </div>
+  )
+}
+
+export default function TopNav() {
+  const pathname = usePathname()
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileSection, setMobileSection] = useState<string | null>(null)
+
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/')
+
+  return (
+    <>
+      <nav
+        className="sticky top-0 z-50 bg-white/92 backdrop-blur-[12px] border-b border-tp-slate-200"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="max-w-wrap mx-auto px-6 flex items-center gap-10 h-[72px]">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 font-display font-bold text-[22px] leading-none text-tp-slate-900 tracking-[-0.01em] no-underline">
+            <span className="w-7 h-7 rounded-lg bg-tp-blue-500 text-white grid place-items-center font-display font-extrabold text-base leading-none shadow-tp-sm flex-shrink-0">T</span>
+            TatvaPractice
+          </Link>
+
+          {/* Desktop nav */}
+          <ul className="hidden lg:flex list-none m-0 p-0 gap-7" role="list">
+            {/* Product dropdown */}
+            <li className="relative group">
+              <button
+                className={`flex items-center gap-1 py-2.5 text-sm font-medium transition-colors ${isActive('/product') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}
+                aria-haspopup="true"
+              >
+                Product
+                <ChevronDownIcon size={14} className="opacity-60 transition-transform duration-150 group-hover:rotate-180" />
+              </button>
+              <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-[-4px] group-hover:translate-y-0 transition-all duration-150">
+                <Dropdown items={PRODUCT_ITEMS} cols={2} />
+              </div>
+            </li>
+
+            {/* Solutions dropdown */}
+            <li className="relative group">
+              <button
+                className={`flex items-center gap-1 py-2.5 text-sm font-medium transition-colors ${isActive('/solutions') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}
+                aria-haspopup="true"
+              >
+                Solutions
+                <ChevronDownIcon size={14} className="opacity-60 transition-transform duration-150 group-hover:rotate-180" />
+              </button>
+              <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-[-4px] group-hover:translate-y-0 transition-all duration-150">
+                <Dropdown items={SOLUTIONS_ITEMS} />
+              </div>
+            </li>
+
+            <li>
+              <Link href="/pricing" className={`py-2.5 text-sm font-medium transition-colors ${isActive('/pricing') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}>
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link href="/security" className={`py-2.5 text-sm font-medium transition-colors ${isActive('/security') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}>
+                Security
+              </Link>
+            </li>
+            <li>
+              <Link href="/company/about" className={`py-2.5 text-sm font-medium transition-colors ${isActive('/company') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}>
+                Company
+              </Link>
+            </li>
+          </ul>
+
+          {/* CTA group */}
+          <div className="ml-auto hidden lg:flex gap-2.5 items-center">
+            <Link href="/contact" className="btn btn-ghost btn-m">Sign in</Link>
+            <Link href="/contact" className="btn btn-outline btn-m">Book a Demo</Link>
+            <Link href="/contact" className="btn btn-solid btn-m">Start Free Trial</Link>
+          </div>
+
+          {/* Hamburger */}
+          <button
+            className="ml-auto lg:hidden p-2 text-tp-slate-700 hover:text-tp-slate-900"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          >
+            {mobileOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile drawer */}
+        {mobileOpen && (
+          <div className="lg:hidden fixed inset-0 top-[72px] bg-white z-50 overflow-y-auto flex flex-col">
+            <nav className="flex-1 px-6 py-6 flex flex-col gap-1">
+              {/* Product section */}
+              <button
+                className="flex justify-between items-center py-3 text-left font-display font-semibold text-tp-slate-900"
+                onClick={() => setMobileSection(mobileSection === 'product' ? null : 'product')}
+              >
+                Product
+                <ChevronDownIcon size={16} className={`transition-transform ${mobileSection === 'product' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileSection === 'product' && (
+                <div className="pl-4 flex flex-col gap-1 mb-2">
+                  {PRODUCT_ITEMS.map((item) => (
+                    <Link key={item.href} href={item.href} className="py-2 text-tp-slate-700 text-sm" onClick={() => setMobileOpen(false)}>
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {/* Solutions section */}
+              <button
+                className="flex justify-between items-center py-3 text-left font-display font-semibold text-tp-slate-900"
+                onClick={() => setMobileSection(mobileSection === 'solutions' ? null : 'solutions')}
+              >
+                Solutions
+                <ChevronDownIcon size={16} className={`transition-transform ${mobileSection === 'solutions' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileSection === 'solutions' && (
+                <div className="pl-4 flex flex-col gap-1 mb-2">
+                  {SOLUTIONS_ITEMS.map((item) => (
+                    <Link key={item.href} href={item.href} className="py-2 text-tp-slate-700 text-sm" onClick={() => setMobileOpen(false)}>
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {[
+                { href: '/pricing', label: 'Pricing' },
+                { href: '/security', label: 'Security' },
+                { href: '/company/about', label: 'Company' },
+              ].map(({ href, label }) => (
+                <Link key={href} href={href} className="py-3 font-display font-semibold text-tp-slate-900" onClick={() => setMobileOpen(false)}>
+                  {label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Mobile CTA bar */}
+            <div className="px-6 py-6 border-t border-tp-slate-200 flex flex-col gap-3">
+              <Link href="/contact" className="btn btn-solid btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
+                Start Free Trial
+              </Link>
+              <Link href="/contact" className="btn btn-outline btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
+                Book a Demo
+              </Link>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Sticky mobile CTA (appears on scroll, managed via CSS) */}
+      <Link
+        href="/contact"
+        className="fixed bottom-4 right-4 z-[80] btn btn-solid btn-l shadow-tp-xl lg:hidden"
+      >
+        Book Demo
+      </Link>
+    </>
+  )
+}
