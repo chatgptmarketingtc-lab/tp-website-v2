@@ -109,6 +109,9 @@
   .ph {
     @apply relative rounded-tp-hero border border-tp-slate-200 bg-gradient-to-br from-tp-slate-50 to-white shadow-tp-lg overflow-hidden grid place-items-center text-tp-slate-500;
   }
+  .ph-aspect-16-10 { aspect-ratio: 16 / 10; }
+  .ph-aspect-4-3   { aspect-ratio: 4 / 3; }
+  .ph-aspect-1-1   { aspect-ratio: 1 / 1; }
   .ph-label {
     @apply absolute top-3 left-3 font-body text-[11px] tracking-[0.06em] uppercase text-tp-slate-500 bg-white px-2 py-1 rounded-[6px] border border-tp-slate-200;
   }
