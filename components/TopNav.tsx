@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import {
   MicIcon, PenLineIcon, CameraIcon, BrainIcon, FilePenIcon, GridIcon,
-  StethoscopeIcon, Building2Icon, CirclePlusIcon,
+  StethoscopeIcon, Building2Icon,
   ChevronDownIcon, MenuIcon, XIcon,
 } from './icons'
 
@@ -26,9 +26,8 @@ const PRODUCT_ITEMS: NavDropItem[] = [
 ]
 
 const SOLUTIONS_ITEMS: NavDropItem[] = [
-  { href: '/solutions/clinics',           icon: StethoscopeIcon, title: 'For Clinics',   desc: 'Solo & multi-doctor clinics.' },
-  { href: '/solutions/hospitals',         icon: Building2Icon,   title: 'For Hospitals', desc: 'Multi-location & enterprise.' },
-  { href: '/solutions/clinics/specialty', icon: CirclePlusIcon,  title: 'By specialty',  desc: '25+ specialties supported.' },
+  { href: '/solutions/clinics',   icon: StethoscopeIcon, title: 'For Clinics',   desc: 'Solo & multi-doctor clinics.' },
+  { href: '/solutions/hospitals', icon: Building2Icon,   title: 'For Hospitals', desc: 'Multi-location & enterprise.' },
 ]
 
 function Dropdown({ items, cols = 1 }: { items: NavDropItem[]; cols?: number }) {
@@ -71,7 +70,7 @@ export default function TopNav() {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-wrap mx-auto px-6 flex items-center gap-10 h-[72px]">
+        <div className="max-w-wrap mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center gap-10 h-[72px]">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-display font-bold text-[22px] leading-none text-tp-slate-900 tracking-[-0.01em] no-underline">
             <span className="w-7 h-7 rounded-lg bg-tp-blue-500 text-white grid place-items-center font-display font-extrabold text-base leading-none shadow-tp-sm flex-shrink-0">T</span>
