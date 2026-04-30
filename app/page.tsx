@@ -332,11 +332,12 @@ export default function HomePage() {
 
       {/* ── STATEMENT BAND ── */}
       <StatementBand>
-        <p className="font-display font-bold m-0 text-white" style={{ fontSize: 'clamp(36px,4.4vw,56px)', lineHeight: 1.15 }}>
-          <span className="block font-extrabold" style={{ fontSize: 'clamp(48px,6vw,76px)', letterSpacing: '-0.01em' }}>
-            10,000+ doctors. 12 lakh+ digital prescriptions. 200+ Indian cities.
-          </span>
-          <span className="block mt-[18px]">We didn&apos;t get here by accident.</span>
+        <p
+          className="font-display font-bold"
+          style={{ fontSize: 'clamp(24px,3vw,40px)', lineHeight: 1.2, letterSpacing: '-0.02em' }}
+        >
+          10,000+ doctors. 12 lakh+ digital prescriptions. 200+ Indian cities.
+          <span className="block mt-[14px]">We didn&apos;t get here by accident.</span>
         </p>
       </StatementBand>
 
