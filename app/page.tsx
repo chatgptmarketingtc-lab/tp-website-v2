@@ -238,7 +238,7 @@ export default function HomePage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid gap-16 items-center md:grid-cols-2">
             {/* SmartSync stylized card */}
-            <div className="relative">
+            <div className="relative pb-6">
               <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
                 {/* Header row */}
                 <div className="flex justify-between items-center mb-4">
@@ -301,7 +301,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Floating badge */}
-              <div className="absolute right-[-18px] bottom-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <div className="absolute bottom-[-16px] left-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
                 <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">↑</span>
                 <div>
                   <div className="font-display font-semibold text-[13px] text-tp-slate-900">Synced in 2.1s</div>
@@ -350,7 +350,7 @@ export default function HomePage() {
               <Link href="/product/ai-agents" className="btn-link mt-4 inline-flex">Meet the agents <span className="arr">→</span></Link>
             </div>
             {/* DoctorAgent stylized card */}
-            <div className="relative">
+            <div className="relative pb-6">
               <div className="rounded-tp-hero border border-tp-slate-200 shadow-tp-lg overflow-hidden flex">
                 {/* Sidebar — identical primitive to VoiceRx hero, hidden on mobile */}
                 <div className="hidden sm:flex flex-col flex-shrink-0 bg-tp-blue-900 text-white p-[18px] px-3.5" style={{ width: '130px' }}>
@@ -399,7 +399,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Floating badge */}
-              <div className="absolute left-[-18px] bottom-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <div className="absolute bottom-[-16px] left-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
                 <span className="w-7 h-7 rounded-full bg-tp-violet-50 text-tp-violet-700 grid place-items-center text-sm flex-shrink-0">●</span>
                 <div>
                   <div className="font-display font-semibold text-[13px] text-tp-slate-900">DDx generated in 1.4s</div>
