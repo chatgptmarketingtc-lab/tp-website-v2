@@ -339,7 +339,7 @@ export default function HomePage() {
                 Your clinical co-pilot, plus a virtual front desk.
               </h2>
               <p className="text-[18px] leading-7 text-tp-slate-600">
-                DoctorAgent helps you think through differentials. Amaya structures your notes. The Receptionist Agent handles reminders, queues, and WhatsApp comms.
+                Amaya is your doctor&apos;s AI agent — DDx, drug-interaction alerts, SOAP notes, and lab interpretation. Mira is your patient&apos;s agent — scheduling, reminders, and WhatsApp comms.
               </p>
               <ul className="checks mt-4">
                 <li>DDx engine grounded in Indian clinical protocols</li>
@@ -349,7 +349,7 @@ export default function HomePage() {
               </ul>
               <Link href="/product/ai-agents" className="btn-link mt-4 inline-flex">Meet the agents <span className="arr">→</span></Link>
             </div>
-            {/* DoctorAgent stylized card */}
+            {/* Amaya stylized card */}
             <div className="relative pb-6">
               <div className="rounded-tp-hero border border-tp-slate-200 shadow-tp-lg overflow-hidden flex">
                 {/* Sidebar — identical primitive to VoiceRx hero, hidden on mobile */}
@@ -373,7 +373,7 @@ export default function HomePage() {
                       <div className="font-display font-bold text-tp-slate-900 text-sm">Mrs. Anita Sharma · 38y · F</div>
                       <div className="text-[11px] text-tp-slate-500">Diabetes review · OPD #12 · 11:42 AM</div>
                     </div>
-                    <span className="badge badge-violet flex-shrink-0">● DoctorAgent · ready</span>
+                    <span className="badge badge-violet flex-shrink-0">● Amaya · ready</span>
                   </div>
                   {/* Symptom chips */}
                   <div className="flex gap-1.5 flex-wrap">
