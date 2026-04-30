@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
@@ -13,21 +14,24 @@ export const metadata: Metadata = {
   },
 }
 
+// TODO: 6 imageSrc values are null pending headshot delivery.
+// When provided, save to /public/team/[firstname-lastname].jpg
+// and update the corresponding entry.
 const leaders = [
-  { name: 'Manoj Balaji', role: 'CEO', initials: 'MB', linkedin: 'https://www.linkedin.com/in/manoj-balaji-8415136/' },
-  { name: 'Javed Khan', role: 'CTO', initials: 'JK', linkedin: 'https://www.linkedin.com/in/javed-khan-931b6aa/' },
-  { name: 'Siddharth Rajagopal', role: 'Head of Product', initials: 'SR', linkedin: 'https://www.linkedin.com/in/sid1691/' },
-  { name: 'Abhishek Verma', role: 'Head of Business', initials: 'AV', linkedin: 'https://www.linkedin.com/in/abhishekverma15/' },
-  { name: 'Russell Mascarenhas', role: 'Head of Marketing', initials: 'RM', linkedin: 'https://www.linkedin.com/in/russellmascarenhas/' },
-  { name: 'Dr. Mihir Gharia', role: 'Head of Medical Affairs', initials: 'MG', linkedin: 'https://www.linkedin.com/in/dr-mihir-gharia-24960617/' },
-  { name: 'Somraj Keshori', role: 'Head of Operations', initials: 'SK', linkedin: 'https://www.linkedin.com/in/somraj-keshori-123104a/' },
-  { name: 'Dharmesh Ratanghayra', role: 'Head of Finance', initials: 'DR', linkedin: 'https://www.linkedin.com/in/dharmesh-ratanghayra-97945416/' },
-  { name: 'Nutan Mishra', role: 'Head of Human Resources', initials: 'NM', linkedin: 'https://www.linkedin.com/in/nutan-pathak-a2381323/' },
+  { name: 'Manoj Balaji',        role: 'CEO',                      initials: 'MB', imageSrc: '/team/manoj-balaji.jpg',          linkedin: 'https://www.linkedin.com/in/manoj-balaji-8415136/' },
+  { name: 'Javed Khan',          role: 'CTO',                      initials: 'JK', imageSrc: null,                               linkedin: 'https://www.linkedin.com/in/javed-khan-931b6aa/' },
+  { name: 'Siddharth Rajagopal', role: 'Head of Product',          initials: 'SR', imageSrc: null,                               linkedin: 'https://www.linkedin.com/in/sid1691/' },
+  { name: 'Abhishek Verma',      role: 'Head of Business',         initials: 'AV', imageSrc: '/team/abhishek-verma.jpg',         linkedin: 'https://www.linkedin.com/in/abhishekverma15/' },
+  { name: 'Russell Mascarenhas', role: 'Head of Marketing',        initials: 'RM', imageSrc: '/team/russell-mascarenhas.jpg',    linkedin: 'https://www.linkedin.com/in/russellmascarenhas/' },
+  { name: 'Dr. Mihir Gharia',    role: 'Head of Medical Affairs',  initials: 'MG', imageSrc: '/team/mihir-gharia.jpg',           linkedin: 'https://www.linkedin.com/in/dr-mihir-gharia-24960617/' },
+  { name: 'Somraj Keshori',      role: 'Head of Operations',       initials: 'SK', imageSrc: '/team/somraj-keshori.jpg',         linkedin: 'https://www.linkedin.com/in/somraj-keshori-123104a/' },
+  { name: 'Dharmesh Ratanghayra',role: 'Head of Finance',          initials: 'DR', imageSrc: null,                               linkedin: 'https://www.linkedin.com/in/dharmesh-ratanghayra-97945416/' },
+  { name: 'Nutan Mishra',        role: 'Head of Human Resources',  initials: 'NM', imageSrc: null,                               linkedin: 'https://www.linkedin.com/in/nutan-pathak-a2381323/' },
 ]
 
 const directors = [
-  { name: 'Mr. Madhav Kulkarni', initials: 'MK', linkedin: 'https://www.linkedin.com/in/madhav-s-kulkarni-b286b4123/' },
-  { name: 'Mr. Manubhai Patel', initials: 'MP', linkedin: 'https://www.linkedin.com/in/patel-manubhai-51420b62/' },
+  { name: 'Mr. Madhav Kulkarni', initials: 'MK', imageSrc: null, linkedin: 'https://www.linkedin.com/in/madhav-s-kulkarni-b286b4123/' },
+  { name: 'Mr. Manubhai Patel',  initials: 'MP', imageSrc: null, linkedin: 'https://www.linkedin.com/in/patel-manubhai-51420b62/' },
 ]
 
 const values = [
@@ -112,20 +116,26 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {leaders.map((leader) => (
               <article key={leader.name} className="leader-card">
-                <div
-                  className="leader-photo"
-                  data-placeholder="team-photo"
-                  data-replace-with={`${leader.name} — professional headshot`}
-                >
-                  <span>{leader.initials}</span>
+                <div className="leader-photo bg-tp-blue-50" data-placeholder="team-photo">
+                  {leader.imageSrc ? (
+                    <Image
+                      src={leader.imageSrc}
+                      alt={leader.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <span>{leader.initials}</span>
+                  )}
                 </div>
-                <div className="leader-meta">
+                <div className="mt-4">
                   <h4 className="font-display font-semibold text-[20px] leading-7 text-tp-slate-900">
                     {leader.name}
                   </h4>
-                  <p className="leader-role">{leader.role}</p>
+                  <p className="text-sm text-tp-slate-500 mt-0.5">{leader.role}</p>
                   <a
-                    className="leader-link"
+                    className="inline-flex items-center gap-1.5 text-sm text-tp-blue-600 hover:text-tp-blue-700 mt-2"
                     href={leader.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -159,20 +169,29 @@ export default async function AboutPage() {
                 className="flex items-center gap-4 bg-white border border-tp-slate-200 rounded-[16px] p-[18px]"
               >
                 <div
-                  className="leader-photo"
+                  className="leader-photo bg-tp-blue-50 flex-shrink-0"
                   style={{ width: '88px', height: '88px', minWidth: '88px', borderRadius: '14px', fontSize: '24px' }}
                   data-placeholder="team-photo"
-                  data-replace-with={`${dir.name} — professional headshot`}
                 >
-                  <span>{dir.initials}</span>
+                  {dir.imageSrc ? (
+                    <Image
+                      src={dir.imageSrc}
+                      alt={dir.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="88px"
+                    />
+                  ) : (
+                    <span>{dir.initials}</span>
+                  )}
                 </div>
-                <div className="leader-meta">
+                <div>
                   <h4 className="font-display font-semibold text-[18px] leading-6 text-tp-slate-900">
                     {dir.name}
                   </h4>
-                  <p className="leader-role">Director</p>
+                  <p className="text-sm text-tp-slate-500 mt-0.5">Director</p>
                   <a
-                    className="leader-link"
+                    className="inline-flex items-center gap-1.5 text-sm text-tp-blue-600 hover:text-tp-blue-700 mt-2"
                     href={dir.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"

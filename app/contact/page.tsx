@@ -390,7 +390,7 @@ export default function ContactPage() {
               </div>
               <a
                 className="office-link"
-                href="https://maps.google.com/?q=Incubex+HSR27+1500+19th+Main+Rd+HSR+Layout+Bengaluru"
+                href="https://www.google.com/maps/search/?api=1&query=Incubex+HSR27+1500+19th+Main+Rd+1st+Sector+HSR+Layout+Bengaluru+560102"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -427,7 +427,7 @@ export default function ContactPage() {
               </div>
               <a
                 className="office-link"
-                href="https://maps.google.com/?q=Plot+115%2F5+TP+Scheme+51+Ambli-Bopal+Road+Ahmedabad"
+                href="https://www.google.com/maps/search/?api=1&query=4th+Floor+Plot+No+115+5+TP+Scheme+No+51+Ambli-Bopal+Road+Ahmedabad+380058"
                 target="_blank"
                 rel="noopener noreferrer"
               >
