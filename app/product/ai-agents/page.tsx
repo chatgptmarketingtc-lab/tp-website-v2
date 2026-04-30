@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
@@ -439,14 +438,81 @@ export default async function AIAgentsPage() {
                 <li>No-show recovery loops with one-tap rebook</li>
               </ul>
             </div>
-            <div className="relative rounded-tp-hero overflow-hidden aspect-video bg-tp-slate-200">
-              <Image
-                src="/assets/mocks/ai-receptionist.png"
-                alt="Configure Your AI Receptionist screen with Mira virtual receptionist setup, doctor list, and live phone preview"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 55vw"
-              />
+            {/* Mira stylized card */}
+            <div className="relative pb-6">
+              <div className="rounded-tp-hero border border-tp-slate-200 shadow-tp-lg overflow-hidden flex">
+                {/* Dark sidebar — same shell as Amaya, shared patient context */}
+                <div className="hidden sm:flex flex-col flex-shrink-0 bg-tp-blue-900 text-white p-[18px] px-3.5" style={{ width: '120px' }}>
+                  <div className="flex items-center gap-2 font-display font-bold text-[13px]">
+                    <span className="w-[22px] h-[22px] rounded-[6px] bg-tp-blue-500 grid place-items-center text-[11px]">T</span> TP
+                  </div>
+                  <div className="mt-[18px] flex flex-col gap-1.5 text-[11px] text-white/70">
+                    <div className="bg-tp-blue-500 py-[7px] px-2.5 rounded-[7px] text-white">Today&apos;s queue</div>
+                    <div className="py-[7px] px-2.5">Patients</div>
+                    <div className="py-[7px] px-2.5">Lab</div>
+                    <div className="py-[7px] px-2.5">Billing</div>
+                    <div className="py-[7px] px-2.5">Analytics</div>
+                  </div>
+                </div>
+                {/* Main panel */}
+                <div className="flex-1 bg-white p-[14px] px-4 flex flex-col gap-2.5">
+                  {/* Header */}
+                  <div className="flex justify-between items-start gap-2">
+                    <div>
+                      <div className="font-display font-bold text-tp-slate-900 text-sm">OPD floor · Live</div>
+                      <div className="text-[11px] text-tp-slate-500">12 patients in queue · avg wait 14 min</div>
+                    </div>
+                    <span className="badge badge-violet flex-shrink-0">● Mira · ready</span>
+                  </div>
+                  {/* Queue rows */}
+                  <div className="bg-tp-slate-50 border border-tp-slate-100 rounded-xl p-2.5 flex flex-col gap-1.5">
+                    <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide mb-0.5">Today&apos;s queue</div>
+                    {[
+                      { name: 'Mr. Rajesh K.',  time: '09:00', label: '● in consult',              cls: 'text-tp-blue-700 bg-tp-blue-50 border border-tp-blue-100' },
+                      { name: 'Mrs. Anita S.',  time: '09:15', label: '● waiting · 2 min',          cls: 'text-amber-700 bg-amber-50 border border-amber-100' },
+                      { name: 'Mr. Vikram J.',  time: '09:30', label: '● confirmed via WhatsApp',   cls: 'text-emerald-700 bg-emerald-50 border border-emerald-100' },
+                      { name: 'Mrs. Kavya M.',  time: '09:45', label: '⚠ no-show · rebook sent',   cls: 'text-red-600 bg-red-50 border border-red-100' },
+                    ].map(({ name, time, label, cls }) => (
+                      <div key={name} className="flex items-center gap-2 text-[11px]">
+                        <span className="font-semibold text-tp-slate-800 flex-1 truncate">{name}</span>
+                        <span className="text-tp-slate-400 flex-shrink-0">{time}</span>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-md flex-shrink-0 ${cls}`}>{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {/* WhatsApp comms + Pre-consult prep */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="rounded-xl p-2.5" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
+                      <div className="text-[10px] font-semibold text-emerald-700 mb-1">WhatsApp comms</div>
+                      <div className="text-[11px] text-emerald-800 mb-1.5">Sent to 8 patients today</div>
+                      <div className="text-[10px] italic text-emerald-700 leading-relaxed mb-1.5">
+                        &ldquo;Hi Anita, your appointment with Dr. Rao is at 9:15 today. Reply YES to confirm.&rdquo;
+                      </div>
+                      <div className="text-[10px] text-emerald-600">8 confirmed · 2 rescheduled · 1 rebooked</div>
+                    </div>
+                    <div className="rounded-xl p-2.5" style={{ background: '#FAF5FE', border: '1px solid rgba(164,97,216,0.2)' }}>
+                      <div className="text-[10px] font-semibold text-tp-violet-700 mb-1">Pre-consult prep</div>
+                      <div className="text-[11px] text-tp-violet-800 mb-1.5">Symptom intake ready · Dr. Rao · 4 patients</div>
+                      <div className="flex flex-col gap-1">
+                        {['Symptoms collected', 'Triaged', 'Notes shared with doctor'].map((step) => (
+                          <div key={step} className="flex items-center gap-1 text-[10px] text-tp-violet-700">
+                            <span className="text-emerald-500 font-bold flex-shrink-0">✓</span>
+                            <span>{step}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Floating overlay */}
+              <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+                <span className="w-7 h-7 rounded-full bg-emerald-50 text-emerald-600 grid place-items-center text-sm flex-shrink-0">●</span>
+                <div>
+                  <div className="font-display font-semibold text-[13px] text-tp-slate-900">Front desk on autopilot</div>
+                  <div className="text-[11px] text-tp-slate-500">staff focuses on patients in the room</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
