@@ -237,15 +237,77 @@ export default function HomePage() {
       <section className="py-24 bg-tp-slate-100" aria-labelledby="smartsync-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid gap-16 items-center md:grid-cols-2">
-            {/* SmartSync image/mock */}
-            <div className="relative rounded-tp-hero overflow-hidden shadow-tp-lg border border-tp-slate-200">
-              <Image
-                src="/assets/mocks/smartsync.png"
-                alt="SmartSync — handwritten Rx digitised into structured digital record"
-                width={980}
-                height={612}
-                className="w-full h-auto object-cover object-top-left"
-              />
+            {/* SmartSync stylized card */}
+            <div className="relative pb-6">
+              <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
+                {/* Header row */}
+                <div className="flex justify-between items-center mb-4">
+                  <div>
+                    <div className="font-display font-bold text-tp-slate-900 text-sm">Sunita Mehta · 45F</div>
+                    <div className="text-[11px] text-tp-slate-500">Diabetes review · SmartSync capture</div>
+                  </div>
+                  <span className="badge badge-violet">● SmartSync · live</span>
+                </div>
+                {/* Two-panel split — stacks on mobile */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* Left: handwritten Rx */}
+                  <div className="rounded-[14px] p-4 flex flex-col gap-2.5" style={{ background: '#FFFBEB', border: '1px solid #FDE68A' }}>
+                    <div className="text-[10px] font-semibold text-amber-700 uppercase tracking-wide">Handwritten Rx</div>
+                    <div className="text-[12px] leading-relaxed text-tp-slate-700 flex flex-col gap-0.5" style={{ fontFamily: 'cursive' }}>
+                      <span>Pt: Sunita Mehta 45F</span>
+                      <span>Dx: T2DM + HTN</span>
+                      <span>R/ Metformin 500mg BD × 30d</span>
+                      <span>&nbsp;&nbsp;&nbsp;Telma 40 OD × 30d</span>
+                      <span>FBS, HbA1c — 4 wks</span>
+                    </div>
+                    {/* Scan progress */}
+                    <div className="mt-1 flex items-center gap-2">
+                      <div className="flex-1 h-1 rounded-full bg-tp-blue-100 overflow-hidden">
+                        <div className="h-full bg-tp-blue-500 rounded-full" style={{ width: '78%' }} />
+                      </div>
+                      <span className="text-[10px] text-tp-blue-600 font-medium whitespace-nowrap">Scanning…</span>
+                    </div>
+                  </div>
+                  {/* Right: digitized Rx */}
+                  <div className="bg-white border border-tp-slate-200 rounded-[14px] p-4 flex flex-col gap-2.5">
+                    <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Digitized Rx</div>
+                    <div>
+                      <div className="text-[10px] text-tp-slate-400 mb-1">Symptoms</div>
+                      <div className="flex gap-1 flex-wrap">
+                        <span className="badge badge-blue" style={{ height: '20px', padding: '0 7px', fontSize: '10px' }}>Fatigue</span>
+                        <span className="badge badge-blue" style={{ height: '20px', padding: '0 7px', fontSize: '10px' }}>Thirst ↑</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-tp-slate-400 mb-0.5">Diagnosis</div>
+                      <div className="text-[11px] font-semibold text-tp-slate-900">T2DM · Hypertension</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-tp-slate-400 mb-1.5">Medication</div>
+                      <div className="grid text-[11px]" style={{ gridTemplateColumns: '1fr auto auto', gap: '5px 6px' }}>
+                        <span className="font-semibold text-tp-slate-900">Metformin 500</span>
+                        <span className="text-tp-slate-500">BD · 30d</span>
+                        <span className="badge badge-success" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>✓</span>
+                        <span className="font-semibold text-tp-slate-900">Telma 40</span>
+                        <span className="text-tp-slate-500">OD · 30d</span>
+                        <span className="badge badge-success" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>✓</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 justify-end mt-auto pt-1">
+                      <button className="btn btn-outline btn-s">Edit</button>
+                      <button className="btn btn-solid btn-s">Save Rx</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Floating badge */}
+              <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+                <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">↑</span>
+                <div>
+                  <div className="font-display font-semibold text-[13px] text-tp-slate-900">Synced in 2.1s</div>
+                  <div className="text-[11px] text-tp-slate-500">offline-ready</div>
+                </div>
+              </div>
             </div>
             <div>
               <span className="badge badge-violet">AI · SmartSync</span>
@@ -287,15 +349,63 @@ export default function HomePage() {
               </ul>
               <Link href="/product/ai-agents" className="btn-link mt-4 inline-flex">Meet the agents <span className="arr">→</span></Link>
             </div>
-            {/* AI Agents mock */}
-            <div className="relative rounded-tp-hero overflow-hidden shadow-tp-lg border border-tp-slate-200">
-              <Image
-                src="/assets/mocks/doctor-agent-ddx.png"
-                alt="DoctorAgent panel showing Differential Diagnosis interface"
-                width={980}
-                height={612}
-                className="w-full h-auto object-cover object-top-left"
-              />
+            {/* DoctorAgent stylized card */}
+            <div className="relative pb-6">
+              <div className="rounded-tp-hero border border-tp-slate-200 shadow-tp-lg overflow-hidden flex">
+                {/* Sidebar — identical primitive to VoiceRx hero, hidden on mobile */}
+                <div className="hidden sm:flex flex-col flex-shrink-0 bg-tp-blue-900 text-white p-[18px] px-3.5" style={{ width: '130px' }}>
+                  <div className="flex items-center gap-2 font-display font-bold text-[13px]">
+                    <span className="w-[22px] h-[22px] rounded-[6px] bg-tp-blue-500 grid place-items-center text-[11px]">T</span> TP
+                  </div>
+                  <div className="mt-[18px] flex flex-col gap-1.5 text-[11px] text-white/70">
+                    <div className="bg-tp-blue-500 py-[7px] px-2.5 rounded-[7px] text-white">Today&apos;s queue</div>
+                    <div className="py-[7px] px-2.5">Patients</div>
+                    <div className="py-[7px] px-2.5">Lab</div>
+                    <div className="py-[7px] px-2.5">Billing</div>
+                    <div className="py-[7px] px-2.5">Analytics</div>
+                  </div>
+                </div>
+                {/* Main panel */}
+                <div className="flex-1 bg-white p-[14px] px-4 flex flex-col gap-2.5">
+                  {/* Patient header */}
+                  <div className="flex justify-between items-start gap-2">
+                    <div>
+                      <div className="font-display font-bold text-tp-slate-900 text-sm">Mrs. Anita Sharma · 38y · F</div>
+                      <div className="text-[11px] text-tp-slate-500">Diabetes review · OPD #12 · 11:42 AM</div>
+                    </div>
+                    <span className="badge badge-violet flex-shrink-0">● DoctorAgent · ready</span>
+                  </div>
+                  {/* Symptom chips */}
+                  <div className="flex gap-1.5 flex-wrap">
+                    <span className="badge badge-blue" style={{ height: '22px', fontSize: '11px', padding: '0 9px' }}>Fatigue</span>
+                    <span className="badge badge-blue" style={{ height: '22px', fontSize: '11px', padding: '0 9px' }}>Frequent urination</span>
+                    <span className="badge badge-blue" style={{ height: '22px', fontSize: '11px', padding: '0 9px' }}>Blurred vision</span>
+                  </div>
+                  {/* DDx suggestion */}
+                  <div className="bg-tp-blue-50 border border-dashed border-tp-blue-200 rounded-xl p-3">
+                    <div className="text-[10px] font-semibold text-tp-blue-700 uppercase tracking-wide mb-1.5">DDx suggestion</div>
+                    <div className="text-[11px] text-tp-blue-800 leading-relaxed font-display">Consider HbA1c trend — values rising despite current regimen. SGLT2 candidate if eGFR &gt; 45.</div>
+                  </div>
+                  {/* Drug interaction warning */}
+                  <div className="rounded-xl p-3" style={{ background: '#FFFBEB', border: '1px solid #FDE68A' }}>
+                    <div className="text-[10px] font-semibold text-amber-700 uppercase tracking-wide mb-1.5">Drug interaction</div>
+                    <div className="text-[11px] text-amber-800 leading-relaxed">Glimepiride + Metformin — monitor for hypoglycaemia</div>
+                  </div>
+                  {/* Action row */}
+                  <div className="flex gap-2 justify-end mt-auto pt-1">
+                    <button className="btn btn-outline btn-s">View history</button>
+                    <button className="btn btn-solid btn-s">Accept DDx</button>
+                  </div>
+                </div>
+              </div>
+              {/* Floating badge */}
+              <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+                <span className="w-7 h-7 rounded-full bg-tp-violet-50 text-tp-violet-700 grid place-items-center text-sm flex-shrink-0">●</span>
+                <div>
+                  <div className="font-display font-semibold text-[13px] text-tp-slate-900">DDx generated in 1.4s</div>
+                  <div className="text-[11px] text-tp-slate-500">clinical co-pilot · active</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
