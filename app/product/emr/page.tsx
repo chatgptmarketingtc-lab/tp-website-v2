@@ -136,11 +136,83 @@ export default async function CoreEMRPage() {
             </Link>
           </div>
 
-          <div
-            className="ph ph-aspect-16-10 mt-12 max-w-[980px] mx-auto"
-            data-placeholder="ui-screenshot"
-            data-replace-with="Core EMR consult screen showing patient timeline with SOAP notes, Rx history, and lab results"
-          >
+          {/* Core EMR hero card — patient timeline */}
+          <div className="relative pb-6 mt-12 max-w-[980px] mx-auto">
+            <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
+              {/* Patient header */}
+              <div className="flex justify-between items-center mb-4">
+                <div>
+                  <div className="font-display font-bold text-tp-slate-900 text-sm">Mrs. Lakshmi Iyer · 62F · Internal Medicine</div>
+                  <div className="text-[11px] text-tp-slate-500">First visit: Jun 2018 · 47 visits · 12 active conditions</div>
+                </div>
+                <span className="badge badge-violet">● Core EMR · synced</span>
+              </div>
+              {/* Timeline + quick view */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                {/* Timeline column */}
+                <div className="flex-1 flex flex-col gap-0">
+                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide mb-2">Patient Timeline</div>
+                  {([
+                    { date: 'Jun 2018', label: 'First visit · DM-2 diagnosed', dot: 'bg-tp-blue-400', text: 'text-tp-blue-700' },
+                    { date: 'Mar 2020', label: 'HbA1c trending up · Rx revised', dot: 'bg-amber-400', text: 'text-amber-700' },
+                    { date: 'Aug 2022', label: 'COVID booster · vaccination', dot: 'bg-emerald-400', text: 'text-emerald-700' },
+                    { date: 'Jan 2024', label: 'Lab panel · CKD stage 2 flagged', dot: 'bg-red-400', text: 'text-red-700' },
+                    { date: 'Apr 2026', label: 'Telehealth · Rx renewal', dot: 'bg-purple-400', text: 'text-purple-700' },
+                  ] as const).map(({ date, label, dot, text }, i) => (
+                    <div key={date} className="flex items-start gap-2.5">
+                      {/* Dot + connecting line */}
+                      <div className="flex flex-col items-center flex-shrink-0 w-3.5">
+                        {i > 0 && <div className="w-px bg-tp-slate-200" style={{ height: '8px' }} />}
+                        <div className={`w-3 h-3 rounded-full ${dot} flex-shrink-0`} />
+                        {i < 4 && <div className="w-px bg-tp-slate-200 flex-1" style={{ minHeight: '12px' }} />}
+                      </div>
+                      {/* Entry chip */}
+                      <div className="rounded-lg bg-tp-slate-50 border border-tp-slate-100 px-2.5 py-1.5 mb-1.5 flex-1">
+                        <div className="text-[10px] text-tp-slate-400 font-mono leading-none mb-0.5">{date}</div>
+                        <div className={`text-[11px] font-semibold leading-tight ${text}`}>{label}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Quick view panel */}
+                <div className="sm:w-[210px] flex-shrink-0 flex flex-col gap-2">
+                  {/* Tabs */}
+                  <div className="flex flex-wrap gap-1">
+                    {(['Patient history', 'SOAP notes', 'Labs', 'Billing'] as const).map((tab, i) => (
+                      <button
+                        key={tab}
+                        className={`text-[10px] px-2 py-1 rounded-md border leading-none ${i === 0 ? 'bg-tp-blue-600 text-white border-tp-blue-600' : 'bg-white text-tp-slate-500 border-tp-slate-200'}`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
+                  </div>
+                  {/* Active tab content */}
+                  <div className="rounded-[14px] border border-tp-slate-200 bg-white p-3 flex flex-col gap-2 flex-1">
+                    <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Recent entries</div>
+                    {([
+                      { label: 'Metformin 500mg · BD', note: 'active', flag: false },
+                      { label: 'Telmisartan 40mg · OD', note: 'active', flag: false },
+                      { label: 'HbA1c: 7.8% · Jan 2024', note: 'lab', flag: false },
+                      { label: 'eGFR: 52 · CKD stage 2', note: 'flag', flag: true },
+                    ] as const).map(({ label, note, flag }) => (
+                      <div key={label} className="flex justify-between items-start text-[11px] gap-1">
+                        <span className="text-tp-slate-700 leading-tight">{label}</span>
+                        <span className={`text-[10px] flex-shrink-0 ${flag ? 'text-amber-600 font-semibold' : 'text-tp-slate-400'}`}>{note}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Floating overlay */}
+            <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">≡</span>
+              <div>
+                <div className="font-display font-semibold text-[13px] text-tp-slate-900">8 years of care · one timeline</div>
+                <div className="text-[11px] text-tp-slate-500">47 visits · 12 conditions</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -141,11 +141,66 @@ export default async function SmartSyncPage() {
             </Link>
           </div>
 
-          <div
-            className="ph ph-aspect-16-10 mt-12 max-w-[980px] mx-auto"
-            data-placeholder="ui-screenshot"
-            data-replace-with="SmartSync session showing handwritten Rx being digitised in real time"
-          >
+          {/* SmartSync hero card — multi-branch sync */}
+          <div className="relative pb-6 mt-12 max-w-[980px] mx-auto">
+            <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
+              {/* Header row */}
+              <div className="flex justify-between items-center mb-4">
+                <div>
+                  <div className="font-display font-bold text-tp-slate-900 text-sm">Ms. Reema Pawar · 34F</div>
+                  <div className="text-[11px] text-tp-slate-500">Hypertension follow-up · SmartSync capture</div>
+                </div>
+                <span className="badge badge-violet">● SmartSync · multi-branch</span>
+              </div>
+              {/* Two-panel with sync divider */}
+              <div className="flex flex-col sm:flex-row gap-3 items-stretch">
+                {/* Left — Mumbai branch */}
+                <div className="flex-1 rounded-[14px] border border-tp-slate-200 bg-white p-4 flex flex-col gap-2.5">
+                  <span className="badge badge-blue w-fit" style={{ height: '20px', padding: '0 8px', fontSize: '10px' }}>Mumbai · Bandra Clinic</span>
+                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Rx Draft</div>
+                  <div className="grid text-[11px]" style={{ gridTemplateColumns: '1fr auto', gap: '5px 10px' }}>
+                    <span className="font-semibold text-tp-slate-900">Telma 40 mg · OD · 30d</span>
+                    <span className="text-tp-slate-400 whitespace-nowrap text-[10px]">11:38 AM</span>
+                    <span className="font-semibold text-tp-slate-900">Amlodipine 5 mg · OD · 30d</span>
+                    <span className="text-tp-slate-400 whitespace-nowrap text-[10px]">11:39 AM</span>
+                  </div>
+                  <div className="text-[10px] text-tp-slate-400 border-t border-tp-slate-100 pt-1.5 mt-auto">Edited 11:42 AM by Dr. Rao</div>
+                </div>
+                {/* Center sync divider — hidden on mobile */}
+                <div className="hidden sm:flex flex-col items-center justify-center gap-1 w-8 flex-shrink-0">
+                  <div className="w-px flex-1 bg-tp-slate-200" />
+                  <div className="w-7 h-7 rounded-full bg-tp-blue-50 border border-tp-blue-200 text-tp-blue-600 grid place-items-center flex-shrink-0" style={{ fontSize: '13px' }}>⇌</div>
+                  <div className="text-[9px] text-tp-slate-400">sync</div>
+                  <div className="w-px flex-1 bg-tp-slate-200" />
+                </div>
+                {/* Right — Pune branch */}
+                <div className="flex-1 rounded-[14px] border border-tp-slate-200 bg-white p-4 flex flex-col gap-2.5">
+                  <span className="badge badge-blue w-fit" style={{ height: '20px', padding: '0 8px', fontSize: '10px' }}>Pune · Kothrud Clinic</span>
+                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Rx Draft</div>
+                  <div className="grid text-[11px]" style={{ gridTemplateColumns: '1fr auto', gap: '5px 10px' }}>
+                    <span className="font-semibold text-tp-slate-900">Telma 40 mg · OD · 30d</span>
+                    <span className="badge badge-success flex-shrink-0" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>synced</span>
+                    <span className="font-semibold text-tp-slate-900">Amlodipine 5 mg · OD · 30d</span>
+                    <span className="badge badge-success flex-shrink-0" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>synced</span>
+                  </div>
+                  <div className="text-[10px] text-tp-slate-400 border-t border-tp-slate-100 pt-1.5 mt-auto">Edited 11:43 AM by Dr. Mehta</div>
+                </div>
+              </div>
+              {/* Conflict resolution chip */}
+              <div className="mt-3 flex justify-center">
+                <div className="rounded-xl px-4 py-2" style={{ background: '#FFFBEB', border: '1px solid #FDE68A' }}>
+                  <span className="text-[11px] font-semibold text-amber-700">1 conflict resolved · audit logged</span>
+                </div>
+              </div>
+            </div>
+            {/* Floating overlay */}
+            <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">↑</span>
+              <div>
+                <div className="font-display font-semibold text-[13px] text-tp-slate-900">Synced across 2 branches in 1.2s</div>
+                <div className="text-[11px] text-tp-slate-500">audit trail intact</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

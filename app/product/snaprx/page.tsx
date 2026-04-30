@@ -132,11 +132,75 @@ export default async function SnapRxPage() {
             </Link>
           </div>
 
-          <div
-            className="ph ph-aspect-16-10 mt-12 max-w-[980px] mx-auto"
-            data-placeholder="ui-screenshot"
-            data-replace-with="SnapRx interface showing a photograph of a handwritten prescription being processed into structured digital Rx"
-          >
+          {/* SnapRx hero card — phone capture → digitized output */}
+          <div className="relative pb-6 mt-12 max-w-[980px] mx-auto">
+            <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
+              {/* Header row */}
+              <div className="flex justify-between items-center mb-4">
+                <div>
+                  <div className="font-display font-bold text-tp-slate-900 text-sm">Mr. Anil Deshmukh · 58M</div>
+                  <div className="text-[11px] text-tp-slate-500">Prescription digitisation · SnapRx</div>
+                </div>
+                <span className="badge badge-violet">● SnapRx · OCR · ready</span>
+              </div>
+              {/* Two-panel */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                {/* Left — phone capture */}
+                <div className="flex-1 rounded-[14px] p-4 flex flex-col items-center justify-center gap-3 bg-tp-slate-50 border border-tp-slate-200">
+                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Phone capture · 11:28 AM</div>
+                  {/* Camera frame */}
+                  <div className="relative w-full max-w-[260px]" style={{ background: '#FDFCFA', border: '1px solid #D6D3CB', borderRadius: '8px', padding: '14px 12px' }}>
+                    {/* Corner brackets */}
+                    <div className="absolute top-1.5 left-1.5 w-4 h-4 border-t-2 border-l-2 border-tp-blue-400 rounded-tl" />
+                    <div className="absolute top-1.5 right-1.5 w-4 h-4 border-t-2 border-r-2 border-tp-blue-400 rounded-tr" />
+                    <div className="absolute bottom-1.5 left-1.5 w-4 h-4 border-b-2 border-l-2 border-tp-blue-400 rounded-bl" />
+                    <div className="absolute bottom-1.5 right-1.5 w-4 h-4 border-b-2 border-r-2 border-tp-blue-400 rounded-br" />
+                    {/* Handwritten Rx — slightly rotated */}
+                    <div style={{ transform: 'rotate(-2deg)', fontFamily: 'cursive', fontSize: '11px', lineHeight: 1.8, color: '#374151' }}>
+                      <div>Pt: Anil Deshmukh 58M</div>
+                      <div>Dx: T2DM · HTN · Hyperlipidemia</div>
+                      <div>R/ Metformin 500mg BD × 30d</div>
+                      <div>&nbsp;&nbsp;&nbsp;Atorva 10mg HS × 30d</div>
+                      <div>&nbsp;&nbsp;&nbsp;Telmisartan 40mg OD × 30d</div>
+                    </div>
+                  </div>
+                </div>
+                {/* Right — digitized output */}
+                <div className="flex-1 rounded-[14px] border border-tp-slate-200 bg-white p-4 flex flex-col gap-2.5">
+                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Digitized Rx</div>
+                  <div className="flex flex-col gap-2">
+                    {([
+                      { drug: 'Metformin 500mg', abbr: 'BD', expanded: 'twice daily', conf: '95%' },
+                      { drug: 'Atorvastatin 10mg', abbr: 'HS', expanded: 'at bedtime', conf: '97%' },
+                      { drug: 'Telmisartan 40mg', abbr: 'OD', expanded: 'once daily', conf: '96%' },
+                    ] as const).map(({ drug, abbr, expanded, conf }) => (
+                      <div key={drug} className="rounded-lg bg-tp-slate-50 border border-tp-slate-100 px-2.5 py-2 flex justify-between items-center gap-2">
+                        <div>
+                          <div className="text-[11px] font-semibold text-tp-slate-900">{drug}</div>
+                          <div className="text-[10px] mt-0.5 flex items-center gap-1">
+                            <span className="font-semibold text-tp-slate-700">{abbr}</span>
+                            <span className="text-tp-slate-400">→</span>
+                            <span className="text-tp-slate-500">{expanded}</span>
+                          </div>
+                        </div>
+                        <span className="badge badge-success flex-shrink-0" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>{conf}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-[10px] text-tp-slate-400 border-t border-tp-slate-100 pt-1.5 mt-auto">
+                    Drug name match: 100K+ formulary
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Floating overlay */}
+            <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">◎</span>
+              <div>
+                <div className="font-display font-semibold text-[13px] text-tp-slate-900">Captured in 1 photo · 96% accuracy</div>
+                <div className="text-[11px] text-tp-slate-500">ABDM-ready</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

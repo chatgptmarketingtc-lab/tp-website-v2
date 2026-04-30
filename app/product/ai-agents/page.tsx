@@ -85,11 +85,82 @@ export default async function AIAgentsPage() {
             </Link>
           </div>
 
-          <div
-            className="ph ph-aspect-16-10 mt-12 max-w-[980px] mx-auto"
-            data-placeholder="ui-screenshot"
-            data-replace-with="AI Agents interface showing DoctorAgent DDx panel with differential diagnoses"
-          >
+          {/* AI Agents hero card — three agents in parallel */}
+          <div className="relative pb-6 mt-12 max-w-[980px] mx-auto">
+            <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
+              {/* Patient context header */}
+              <div className="flex justify-between items-center mb-4">
+                <div>
+                  <div className="font-display font-bold text-tp-slate-900 text-sm">Mr. Vikram Shah · 56y · M</div>
+                  <div className="text-[11px] text-tp-slate-500">Diabetes follow-up · OPD #14 · 11:42 AM</div>
+                </div>
+                <span className="badge badge-violet">● All agents · ready</span>
+              </div>
+              {/* Three agent columns */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {/* DoctorAgent */}
+                <div className="rounded-[14px] bg-tp-blue-50 border border-tp-blue-100 p-3.5 flex flex-col gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-[18px] h-[18px] rounded-[4px] bg-tp-blue-600 text-white grid place-items-center flex-shrink-0" style={{ fontSize: '8px', fontWeight: 700 }}>AI</span>
+                    <span className="font-display font-semibold text-[12px] text-tp-blue-900">DoctorAgent</span>
+                  </div>
+                  <div className="text-[10px] font-semibold text-tp-blue-700 uppercase tracking-wide">DDx generated</div>
+                  <div className="flex flex-col gap-1.5">
+                    <div className="flex justify-between items-baseline text-[11px]">
+                      <span className="font-semibold text-tp-slate-900">Type 2 DM</span>
+                      <span className="text-[10px] text-tp-slate-400 italic">primary</span>
+                    </div>
+                    <div className="flex justify-between items-baseline text-[11px]">
+                      <span className="font-semibold text-tp-slate-600">Hypothyroidism</span>
+                      <span className="text-[10px] text-tp-slate-400 italic">likely</span>
+                    </div>
+                    <div className="flex justify-between items-baseline text-[11px]">
+                      <span className="font-semibold text-tp-slate-400">Anaemia</span>
+                      <span className="text-[10px] text-tp-slate-400 italic">rule out</span>
+                    </div>
+                  </div>
+                  <div className="text-[10px] text-tp-blue-700 border-t border-tp-blue-100 pt-1.5 mt-auto">3 candidates · cited</div>
+                </div>
+                {/* Agent Amaya */}
+                <div className="rounded-[14px] p-3.5 flex flex-col gap-2" style={{ background: '#FAF5FE', border: '1px solid rgba(164,97,216,0.2)' }}>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-[18px] h-[18px] rounded-[4px] text-white grid place-items-center flex-shrink-0" style={{ fontSize: '8px', fontWeight: 700, background: '#A461D8' }}>AI</span>
+                    <span className="font-display font-semibold text-[12px] text-tp-violet-900">Agent Amaya</span>
+                  </div>
+                  <div className="text-[10px] font-semibold text-tp-violet-700 uppercase tracking-wide">SOAP draft ready</div>
+                  <div className="flex flex-col gap-1.5">
+                    {['S · Subjective', 'O · Objective', 'A · Assessment', 'P · Plan'].map((item) => (
+                      <div key={item} className="flex items-center gap-1.5 text-[11px]">
+                        <span className="text-emerald-500 flex-shrink-0 font-bold">✓</span>
+                        <span className="text-tp-slate-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-[10px] text-tp-violet-700 border-t pt-1.5 mt-auto" style={{ borderColor: 'rgba(164,97,216,0.2)' }}>142 words · ICD-10 tagged</div>
+                </div>
+                {/* Receptionist Agent */}
+                <div className="rounded-[14px] bg-emerald-50 border border-emerald-200 p-3.5 flex flex-col gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-[18px] h-[18px] rounded-[4px] bg-emerald-600 text-white grid place-items-center flex-shrink-0" style={{ fontSize: '8px', fontWeight: 700 }}>AI</span>
+                    <span className="font-display font-semibold text-[12px] text-emerald-900">Receptionist Agent</span>
+                  </div>
+                  <div className="text-[10px] font-semibold text-emerald-700 uppercase tracking-wide">WhatsApp sent</div>
+                  <div className="rounded-lg bg-white border border-emerald-100 p-2 flex flex-col gap-1">
+                    <div className="text-[11px] font-semibold text-tp-slate-700">Reminder confirmed</div>
+                    <div className="text-[11px] text-tp-slate-500">Reschedule: none</div>
+                  </div>
+                  <div className="text-[10px] text-emerald-700 border-t border-emerald-100 pt-1.5 mt-auto">EN · queue updated</div>
+                </div>
+              </div>
+            </div>
+            {/* Floating overlay */}
+            <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <span className="w-7 h-7 rounded-full bg-tp-violet-50 text-tp-violet-700 grid place-items-center text-sm flex-shrink-0">●</span>
+              <div>
+                <div className="font-display font-semibold text-[13px] text-tp-slate-900">3 agents synced in 2.3s</div>
+                <div className="text-[11px] text-tp-slate-500">one patient context</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
