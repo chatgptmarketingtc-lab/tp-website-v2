@@ -301,7 +301,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Floating badge */}
-              <div className="absolute bottom-[-16px] left-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
                 <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">↑</span>
                 <div>
                   <div className="font-display font-semibold text-[13px] text-tp-slate-900">Synced in 2.1s</div>
@@ -399,7 +399,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Floating badge */}
-              <div className="absolute bottom-[-16px] left-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
                 <span className="w-7 h-7 rounded-full bg-tp-violet-50 text-tp-violet-700 grid place-items-center text-sm flex-shrink-0">●</span>
                 <div>
                   <div className="font-display font-semibold text-[13px] text-tp-slate-900">DDx generated in 1.4s</div>
