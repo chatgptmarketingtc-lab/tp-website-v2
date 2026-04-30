@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ShieldCheckIcon, BadgeCheckIcon, UserCheckIcon, LockIcon, FileCheck2Icon, GlobeIcon,
 } from './icons'
@@ -22,9 +23,14 @@ export default function SiteFooter() {
         >
           {/* Brand column */}
           <div>
-            <Link href="/" className="flex items-center gap-2 font-display font-bold text-[22px] leading-none text-white no-underline">
-              <span className="w-7 h-7 rounded-lg bg-tp-blue-500 text-white grid place-items-center font-display font-extrabold text-base flex-shrink-0">T</span>
-              TatvaPractice
+            <Link href="/" aria-label="TatvaPractice home">
+              <Image
+                src="/brand/tatvapractice-logo-white.png"
+                alt="TatvaPractice"
+                width={3023}
+                height={664}
+                className="h-6 w-auto"
+              />
             </Link>
             <p className="mt-3.5 text-[#9CA3AF] text-sm leading-[22px] max-w-[320px]">
               The AI-first EMR built for Indian OPD reality. Less typing. More treating.

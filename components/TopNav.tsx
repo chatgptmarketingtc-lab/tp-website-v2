@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import {
@@ -74,9 +75,15 @@ export default function TopNav() {
       >
         <div className="max-w-wrap mx-auto w-full px-6 flex items-center flex-nowrap gap-4 h-[72px]">
           {/* Logo */}
-          <Link href="/" aria-label="TatvaPractice home" className="flex items-center gap-2 flex-shrink-0 font-display font-bold text-[22px] leading-none text-tp-slate-900 tracking-[-0.01em] no-underline">
-            <span aria-hidden="true" className="w-7 h-7 rounded-lg bg-tp-blue-500 text-white grid place-items-center font-display font-extrabold text-base leading-none shadow-tp-sm flex-shrink-0">T</span>
-            <span aria-hidden="true">TatvaPractice</span>
+          <Link href="/" aria-label="TatvaPractice home" className="flex-shrink-0">
+            <Image
+              src="/brand/tatvapractice-logo-transparent.png"
+              alt="TatvaPractice"
+              width={3023}
+              height={664}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop nav — visible at xl (1280px+) to ensure single-row fit */}
