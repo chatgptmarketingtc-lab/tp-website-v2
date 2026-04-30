@@ -146,7 +146,6 @@ export default async function SmartSyncPage() {
             data-placeholder="ui-screenshot"
             data-replace-with="SmartSync session showing handwritten Rx being digitised in real time"
           >
-            <span className="ph-label">Product UI · SmartSync</span>
           </div>
         </div>
       </section>

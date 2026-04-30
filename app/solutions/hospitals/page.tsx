@@ -110,7 +110,6 @@ export default function HospitalsPage() {
               data-replace-with="Hospital UI mock — IPD discharge summary or queue dashboard"
               aria-label="Hospital command-center dashboard placeholder"
             >
-              <span className="ph-label">Product UI · Hospital command center</span>
             </div>
           </div>
         </div>

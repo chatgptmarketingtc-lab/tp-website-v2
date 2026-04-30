@@ -141,7 +141,6 @@ export default async function CoreEMRPage() {
             data-placeholder="ui-screenshot"
             data-replace-with="Core EMR consult screen showing patient timeline with SOAP notes, Rx history, and lab results"
           >
-            <span className="ph-label">Product UI · Core EMR</span>
           </div>
         </div>
       </section>

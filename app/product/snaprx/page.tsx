@@ -137,7 +137,6 @@ export default async function SnapRxPage() {
             data-placeholder="ui-screenshot"
             data-replace-with="SnapRx interface showing a photograph of a handwritten prescription being processed into structured digital Rx"
           >
-            <span className="ph-label">Product UI · SnapRx</span>
           </div>
         </div>
       </section>

@@ -90,7 +90,6 @@ export default async function AIAgentsPage() {
             data-placeholder="ui-screenshot"
             data-replace-with="AI Agents interface showing DoctorAgent DDx panel with differential diagnoses"
           >
-            <span className="ph-label">Product UI · AI Agents</span>
           </div>
         </div>
       </section>
@@ -248,13 +247,12 @@ export default async function AIAgentsPage() {
           >
             {/* Amaya mock UI */}
             <div
-              className="ph ph-aspect-16-10"
+              className="ph p-6"
               data-placeholder="ui-screenshot"
               data-replace-with="Agent Amaya — a SOAP note auto-structured from a transcript"
             >
-              <span className="ph-label">Product UI · Agent Amaya</span>
               <div
-                className="absolute inset-6 bg-white border border-tp-slate-200 rounded-[14px] p-[18px] grid gap-3.5"
+                className="w-full bg-white border border-tp-slate-200 rounded-[14px] p-[18px] grid gap-3.5"
                 style={{ gridTemplateColumns: '1fr 1fr' }}
               >
                 <div>

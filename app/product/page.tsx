@@ -66,37 +66,37 @@ const modules = [
   {
     name: 'Appointments & Queue',
     desc: 'OPD slots, walk-ins, live ETAs, and follow-up automation.',
-    href: undefined,
+    href: '/product/emr',
     Icon: CalendarCheckIcon,
   },
   {
     name: 'Billing',
     desc: 'GST invoices, packages, UPI/card payments, and reconciliation.',
-    href: undefined,
+    href: '/product/emr',
     Icon: ReceiptIcon,
   },
   {
     name: 'Analytics',
     desc: 'Revenue, retention, and OPD utilisation — refreshed live.',
-    href: undefined,
+    href: '/product/emr',
     Icon: BarChart3Icon,
   },
   {
     name: 'Integrations',
     desc: 'Lab networks, pharmacy, ABDM, and insurance in one place.',
-    href: undefined,
+    href: '/resources/abdm-abha',
     Icon: GridIcon,
   },
   {
     name: 'Digital Presence',
     desc: 'Clinic profile, patient portal, and WhatsApp communications.',
-    href: undefined,
+    href: '/solutions/clinics',
     Icon: MessageSquareIcon,
   },
   {
     name: 'Security & Compliance',
     desc: 'DPDPA, ABDM, and role-based access built in by default.',
-    href: undefined,
+    href: '/security',
     Icon: ShieldAlertIcon,
   },
 ]
@@ -104,19 +104,27 @@ const modules = [
 const howItWorksSteps = [
   {
     title: 'Patient walks in',
-    description: 'Queue managed automatically. Room assigned. Waiting time updated on the display.',
+    description: 'ABHA verified, history loaded automatically.',
+  },
+  {
+    title: 'Queue managed',
+    description: 'Receptionist Agent handles flow, room assignments, ETAs.',
   },
   {
     title: 'Consultation begins',
-    description: 'Doctor opens the session. VoiceRx, SmartSync, or SnapRx — whichever fits the workflow.',
+    description: 'Doctor opens the session — VoiceRx, SmartSync, or SnapRx — whichever fits the workflow.',
   },
   {
     title: 'Lab order sent',
     description: 'Lab request filed from the same screen. Results flow back automatically.',
   },
   {
+    title: 'Follow-up scheduled',
+    description: 'WhatsApp reminder set. Care continuity ensured.',
+  },
+  {
     title: 'Bill generated',
-    description: 'Follow-up reminder automated. GST invoice created. Patient gets WhatsApp summary.',
+    description: 'GST invoice created. Patient gets WhatsApp summary.',
   },
 ]
 
@@ -160,12 +168,89 @@ export default async function ProductPage() {
               Book a Demo
             </Link>
           </div>
+          {/* Panoramic dashboard mock */}
           <div
-            className="ph ph-aspect-16-10 mt-12 max-w-[980px] mx-auto"
+            className="ph p-5 mt-12 mx-auto"
             data-placeholder="ui-screenshot"
-            data-replace-with="Product overview — panoramic UI showing the full TatvaPractice workspace with patient queue, consult, and billing tabs"
+            data-replace-with="Panoramic TatvaPractice dashboard — left: OPD queue, centre: active consultation with VoiceRx, right: DoctorAgent insights panel"
           >
-            <span className="ph-label">Product UI · Full workspace</span>
+            <div className="w-full grid gap-3" style={{ gridTemplateColumns: '220px 1fr 220px' }}>
+              {/* OPD Queue panel */}
+              <div className="bg-white border border-tp-slate-200 rounded-[14px] p-[14px] flex flex-col gap-2 text-left">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-display font-bold text-[12px] text-tp-slate-900">OPD Queue</span>
+                  <span className="badge badge-blue" style={{ height: '18px', padding: '0 6px', fontSize: '10px' }}>14 waiting</span>
+                </div>
+                {[
+                  { name: 'Ramesh K.', tag: 'Follow-up', wait: '2 min', active: true },
+                  { name: 'Sunita M.', tag: 'New', wait: '8 min', active: false },
+                  { name: 'Arjun S.', tag: 'Follow-up', wait: '15 min', active: false },
+                  { name: 'Preethi N.', tag: 'New', wait: '22 min', active: false },
+                ].map((p) => (
+                  <div key={p.name} className={`flex items-center justify-between rounded-lg px-2.5 py-1.5 ${p.active ? 'bg-tp-blue-50 border border-tp-blue-100' : ''}`}>
+                    <div>
+                      <div className="text-[11px] font-semibold text-tp-slate-900">{p.name}</div>
+                      <div className="text-[10px] text-tp-slate-500">{p.tag}</div>
+                    </div>
+                    <span className="text-[10px] text-tp-slate-400">{p.wait}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Active consultation panel */}
+              <div className="bg-white border border-tp-slate-200 rounded-[14px] p-[14px] flex flex-col gap-2.5 text-left">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-display font-bold text-[13px] text-tp-slate-900">Ramesh Kumar · M · 52</div>
+                    <div className="text-[10px] text-tp-slate-500">DM T2 · HTN · Last visit 6 weeks ago</div>
+                  </div>
+                  <span className="badge badge-violet">● VoiceRx Live · 1:14</span>
+                </div>
+                <div className="border border-tp-slate-100 rounded-lg p-2.5 bg-tp-slate-50 text-[11px] text-tp-slate-700 font-display leading-relaxed">
+                  &ldquo;Metformin 500 BD continue karein, add Glimepiride 1 mg OD before breakfast, FBS check in 4 weeks…&rdquo;
+                </div>
+                <div className="grid gap-1.5" style={{ gridTemplateColumns: '1fr 1fr' }}>
+                  <div className="border border-tp-slate-200 rounded-lg p-2">
+                    <div className="text-[10px] text-tp-slate-500 mb-1">Structured Rx</div>
+                    <div className="text-[11px] font-semibold text-tp-slate-900">Metformin 500 mg · BD</div>
+                    <div className="text-[11px] font-semibold text-tp-slate-900 mt-0.5">Glimepiride 1 mg · OD</div>
+                    <div className="text-[10px] text-tp-blue-700 mt-1.5">Lab: FBS, HbA1c · 4 wks</div>
+                  </div>
+                  <div className="border border-tp-slate-200 rounded-lg p-2">
+                    <div className="text-[10px] text-tp-slate-500 mb-1">Vitals</div>
+                    <div className="flex justify-between text-[11px]">
+                      <span className="text-tp-slate-600">BP</span><span className="font-semibold text-tp-slate-900">138/88</span>
+                    </div>
+                    <div className="flex justify-between text-[11px] mt-0.5">
+                      <span className="text-tp-slate-600">Wt</span><span className="font-semibold text-tp-slate-900">78 kg</span>
+                    </div>
+                    <div className="flex justify-between text-[11px] mt-0.5">
+                      <span className="text-tp-slate-600">FBS</span><span className="font-semibold text-tp-slate-900">142 mg/dL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* DoctorAgent insights panel */}
+              <div className="bg-white border border-tp-slate-200 rounded-[14px] p-[14px] flex flex-col gap-2 text-left">
+                <div className="flex items-center gap-1.5 mb-1">
+                  <span className="w-4 h-4 rounded-md bg-tp-blue-600 text-white grid place-items-center" style={{ fontSize: '8px', fontWeight: 700 }}>AI</span>
+                  <span className="font-display font-bold text-[12px] text-tp-slate-900">DoctorAgent</span>
+                </div>
+                <div className="bg-tp-blue-50 border border-tp-blue-100 rounded-lg p-2">
+                  <div className="text-[10px] font-semibold text-tp-blue-800 mb-1">DDx suggestion</div>
+                  <div className="text-[10px] text-tp-blue-700">Uncontrolled DM T2 — consider adding SGLT2 inhibitor if eGFR &gt; 45</div>
+                </div>
+                <div className="bg-amber-50 border border-amber-100 rounded-lg p-2">
+                  <div className="text-[10px] font-semibold text-amber-800 mb-1">Drug interaction</div>
+                  <div className="text-[10px] text-amber-700">Glimepiride + Metformin — monitor for hypoglycaemia</div>
+                </div>
+                <div className="border border-tp-slate-100 rounded-lg p-2">
+                  <div className="text-[10px] font-semibold text-tp-slate-700 mb-1">Last HbA1c</div>
+                  <div className="text-[12px] font-bold text-tp-slate-900">8.4% <span className="text-[10px] text-tp-slate-400 font-normal">· 6 wks ago</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -227,7 +312,11 @@ export default async function ProductPage() {
             letterSpacing: '-0.02em',
           }}
         >
-          One connected workflow. Every consult, every Rx, every record — in one place.
+          One platform.{' '}
+          <span style={{ fontSize: 'clamp(28px,3.6vw,46px)', fontWeight: 800, letterSpacing: '-0.03em' }}>
+            Twenty modules.
+          </span>{' '}
+          Built for how Indian doctors actually work.
         </p>
       </StatementBand>
 
@@ -253,20 +342,33 @@ export default async function ProductPage() {
               From patient in to patient out — every step connected.
             </h2>
           </div>
-          <HowItWorksSteps steps={howItWorksSteps} />
+          <HowItWorksSteps steps={howItWorksSteps} cols={3} />
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-24 bg-white" aria-label="Customer testimonial">
-        <div className="max-w-[840px] mx-auto px-6">
-          <TestimonialCard
-            quote="We moved 3 clinics to TatvaPractice in under a week. The onboarding was seamless and the team is incredibly responsive."
-            name="Dr. Priya Sharma"
-            role="Clinic Director · Wellness First, Mumbai"
-            initials="PS"
-            large
-          />
+      {/* Testimonials */}
+      <section className="py-24 bg-white" aria-label="Customer testimonials">
+        <div className="max-w-wrap mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <TestimonialCard
+              quote="We moved 3 clinics to TatvaPractice in under a week. The onboarding was seamless and the team is incredibly responsive."
+              name="Dr. Priya Sharma"
+              role="Clinic Director · Wellness First, Mumbai"
+              initials="PS"
+            />
+            <TestimonialCard
+              quote="TatvaPractice has cut our prescription time by 70%. The VoiceRx feature alone has transformed how we manage OPD."
+              name="Dr. Anand Kumar"
+              role="HOD Medicine · City General Hospital, Delhi"
+              initials="AK"
+            />
+            <TestimonialCard
+              quote="Walk-ins, queue, billing — finally one screen. My receptionist saves an hour every day."
+              name="Dr. Vinay Kashyap"
+              role="Family physician · Pune"
+              initials="VK"
+            />
+          </div>
         </div>
       </section>
 

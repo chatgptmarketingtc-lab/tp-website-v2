@@ -150,13 +150,12 @@ export default async function VoiceRxPage() {
 
           {/* VoiceRx UI Mock */}
           <div
-            className="ph ph-aspect-16-10 mt-12 max-w-[980px] mx-auto"
+            className="ph p-8 mt-12 max-w-[980px] mx-auto"
             data-placeholder="ui-screenshot"
             data-replace-with="VoiceRx active session showing live transcription in Hindi-English with structured Rx forming on the right"
           >
-            <span className="ph-label">Product UI · VoiceRx</span>
             <div
-              className="absolute inset-8 grid gap-3.5"
+              className="w-full grid gap-3.5"
               style={{ gridTemplateColumns: '1fr 1fr' }}
             >
               {/* Waveform panel */}

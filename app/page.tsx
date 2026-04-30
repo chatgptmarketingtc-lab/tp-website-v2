@@ -84,7 +84,6 @@ export default function HomePage() {
                 data-placeholder="ui-screenshot"
                 data-replace-with="VoiceRx active session — left sidebar showing patient queue, main panel showing live transcription with structured Rx forming on the right"
               >
-                <span className="ph-label">Product UI · VoiceRx session</span>
                 {/* Mock chrome */}
                 <div className="absolute inset-0 grid bg-white" style={{ gridTemplateColumns: '140px 1fr' }}>
                   {/* Sidebar */}
