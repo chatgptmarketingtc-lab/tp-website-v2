@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import {
   ShieldCheckIcon, BadgeCheckIcon, UserCheckIcon, LockIcon, FileCheck2Icon, GlobeIcon,
 } from './icons'
@@ -11,7 +12,13 @@ const COMPLIANCE = [
   { Icon: GlobeIcon,       label: 'HIPAA-Aligned' },
 ]
 
-const PARTNERS = ['ZYDUS', 'CLIANTHA RESEARCH', 'GUARDIAN HEALTH', 'ZYDUS WELLNESS', 'SENTISS PHARMA', 'ALIVECOR']
+const HOSPITALS = [
+  { src: '/mission%20hospital.jpg',         alt: 'Mission Hospital',  width: 248,  height: 121  },
+  { src: '/Apollo-Cradle-logo1.png',        alt: 'Apollo Cradle',     width: 462,  height: 218  },
+  { src: '/Zydus_Hospitals_New_Logo.jpg',   alt: 'Zydus Hospitals',   width: 3301, height: 2551 },
+  { src: '/ApexOrthoHosLogo1.jpg.webp',     alt: 'Apex Ortho Care',   width: 5075, height: 1800 },
+  { src: '/Munshi%20hospital.png',          alt: 'Munshi Hospitals',  width: 270,  height: 129  },
+]
 
 export default function TrustBar() {
   return (
@@ -27,17 +34,24 @@ export default function TrustBar() {
           ))}
         </div>
 
-        {/* Partner logos */}
-        <div className="flex flex-wrap gap-8 justify-center items-center mt-6 opacity-60 hover:opacity-100 transition-opacity duration-150">
-          {PARTNERS.map((name) => (
-            <span
-              key={name}
-              className="partner-ph"
-              data-replace-with={`${name} logo`}
-            >
-              {name}
-            </span>
-          ))}
+        {/* Hospital logos */}
+        <div className="mt-8">
+          <p className="text-center text-[11px] font-semibold uppercase tracking-widest text-tp-slate-400 mb-5">
+            Trusted by hospitals across India
+          </p>
+          <div className="flex flex-wrap justify-around items-center gap-x-8 gap-y-6">
+            {HOSPITALS.map(({ src, alt, width, height }) => (
+              <Image
+                key={alt}
+                src={src}
+                alt={alt}
+                width={width}
+                height={height}
+                className="h-9 sm:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-200"
+                style={{ width: 'auto' }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
