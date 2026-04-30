@@ -141,64 +141,82 @@ export default async function SmartSyncPage() {
             </Link>
           </div>
 
-          {/* SmartSync hero card — multi-branch sync */}
+          {/* SmartSync hero card — hardware writing pad → live digitization */}
           <div className="relative pb-6 mt-12 max-w-[980px] mx-auto">
             <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
               {/* Header row */}
               <div className="flex justify-between items-center mb-4">
                 <div>
-                  <div className="font-display font-bold text-tp-slate-900 text-sm">Ms. Reema Pawar · 34F</div>
-                  <div className="text-[11px] text-tp-slate-500">Hypertension follow-up · SmartSync capture</div>
+                  <div className="font-display font-bold text-tp-slate-900 text-sm">Mr. Anand Joshi · 48M · Diabetes follow-up</div>
+                  <div className="text-[11px] text-tp-slate-500">Live handwriting capture · SmartSync writing pad</div>
                 </div>
-                <span className="badge badge-violet">● SmartSync · multi-branch</span>
+                <span className="badge badge-violet">● SmartSync · live</span>
               </div>
-              {/* Two-panel with sync divider */}
-              <div className="flex flex-col sm:flex-row gap-3 items-stretch">
-                {/* Left — Mumbai branch */}
-                <div className="flex-1 rounded-[14px] border border-tp-slate-200 bg-white p-4 flex flex-col gap-2.5">
-                  <span className="badge badge-blue w-fit" style={{ height: '20px', padding: '0 8px', fontSize: '10px' }}>Mumbai · Bandra Clinic</span>
-                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Rx Draft</div>
-                  <div className="grid text-[11px]" style={{ gridTemplateColumns: '1fr auto', gap: '5px 10px' }}>
-                    <span className="font-semibold text-tp-slate-900">Telma 40 mg · OD · 30d</span>
-                    <span className="text-tp-slate-400 whitespace-nowrap text-[10px]">11:38 AM</span>
-                    <span className="font-semibold text-tp-slate-900">Amlodipine 5 mg · OD · 30d</span>
-                    <span className="text-tp-slate-400 whitespace-nowrap text-[10px]">11:39 AM</span>
+              {/* Two-panel */}
+              <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+                {/* Left — physical device representation */}
+                <div className="flex-1 flex flex-col gap-2 items-center">
+                  {/* Device status row */}
+                  <div className="w-full flex items-center justify-between px-3 py-1.5 rounded-lg bg-tp-slate-50 border border-tp-slate-200 mb-1">
+                    <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
+                      Live capture · USB connected
+                    </span>
+                    <span className="text-[10px] text-tp-slate-400">SmartSync · Writing Pad</span>
                   </div>
-                  <div className="text-[10px] text-tp-slate-400 border-t border-tp-slate-100 pt-1.5 mt-auto">Edited 11:42 AM by Dr. Rao</div>
-                </div>
-                {/* Center sync divider — hidden on mobile */}
-                <div className="hidden sm:flex flex-col items-center justify-center gap-1 w-8 flex-shrink-0">
-                  <div className="w-px flex-1 bg-tp-slate-200" />
-                  <div className="w-7 h-7 rounded-full bg-tp-blue-50 border border-tp-blue-200 text-tp-blue-600 grid place-items-center flex-shrink-0" style={{ fontSize: '13px' }}>⇌</div>
-                  <div className="text-[9px] text-tp-slate-400">sync</div>
-                  <div className="w-px flex-1 bg-tp-slate-200" />
-                </div>
-                {/* Right — Pune branch */}
-                <div className="flex-1 rounded-[14px] border border-tp-slate-200 bg-white p-4 flex flex-col gap-2.5">
-                  <span className="badge badge-blue w-fit" style={{ height: '20px', padding: '0 8px', fontSize: '10px' }}>Pune · Kothrud Clinic</span>
-                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Rx Draft</div>
-                  <div className="grid text-[11px]" style={{ gridTemplateColumns: '1fr auto', gap: '5px 10px' }}>
-                    <span className="font-semibold text-tp-slate-900">Telma 40 mg · OD · 30d</span>
-                    <span className="badge badge-success flex-shrink-0" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>synced</span>
-                    <span className="font-semibold text-tp-slate-900">Amlodipine 5 mg · OD · 30d</span>
-                    <span className="badge badge-success flex-shrink-0" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>synced</span>
+                  {/* Device frame */}
+                  <div className="w-full rounded-[14px] p-3" style={{ background: '#EEEEF0', border: '1.5px solid #D0D0D8' }}>
+                    {/* Paper sheet on device */}
+                    <div className="rounded-[8px] bg-white p-4 flex flex-col gap-0.5" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>
+                      <div style={{ fontFamily: 'cursive', fontSize: '12px', lineHeight: 1.9, color: '#2C2C35' }}>
+                        <div>Pt: Mr. Anand Joshi 48M</div>
+                        <div>Dx: T2DM + HTN</div>
+                        <div>Rx: Metformin 500 BD × 30d</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;Telma 40 OD × 30d</div>
+                        <div className="flex items-center gap-1">
+                          <span>FBS, HbA1c — 4 wks</span>
+                          {/* Pen cursor — writing in progress */}
+                          <span className="inline-block w-px h-3 bg-tp-blue-500" style={{ animation: 'none', opacity: 0.9 }} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-[10px] text-tp-slate-400 border-t border-tp-slate-100 pt-1.5 mt-auto">Edited 11:43 AM by Dr. Mehta</div>
+                  <div className="text-[10px] text-tp-slate-400 mt-1">SmartSync · Writing Pad</div>
                 </div>
-              </div>
-              {/* Conflict resolution chip */}
-              <div className="mt-3 flex justify-center">
-                <div className="rounded-xl px-4 py-2" style={{ background: '#FFFBEB', border: '1px solid #FDE68A' }}>
-                  <span className="text-[11px] font-semibold text-amber-700">1 conflict resolved · audit logged</span>
+                {/* Right — live digitized output */}
+                <div className="flex-1 rounded-[14px] border border-tp-slate-200 bg-white p-4 flex flex-col gap-2.5">
+                  <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Structured Rx</div>
+                  {/* Materializing rows */}
+                  <div className="flex flex-col gap-2">
+                    <div className="flex justify-between items-center text-[11px] px-2.5 py-2 rounded-lg bg-tp-slate-50 border border-tp-slate-100">
+                      <span className="font-semibold text-tp-slate-900">Metformin 500 mg · BD · 30d</span>
+                      <span className="badge badge-success flex-shrink-0" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>verified</span>
+                    </div>
+                    <div className="flex justify-between items-center text-[11px] px-2.5 py-2 rounded-lg bg-tp-slate-50 border border-tp-slate-100">
+                      <span className="font-semibold text-tp-slate-900">Telmisartan 40 mg · OD · 30d</span>
+                      <span className="badge badge-success flex-shrink-0" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>verified</span>
+                    </div>
+                    {/* Last row — still being written, reduced opacity */}
+                    <div className="flex justify-between items-center text-[11px] px-2.5 py-2 rounded-lg border border-dashed border-tp-blue-200 bg-tp-blue-50" style={{ opacity: 0.7 }}>
+                      <span className="font-semibold text-tp-blue-800 flex items-center gap-1.5">
+                        Lab: FBS, HbA1c · 4 wks
+                        <span className="inline-block w-px h-3 bg-tp-blue-400" />
+                      </span>
+                      <span className="text-[10px] text-tp-blue-500 italic">writing…</span>
+                    </div>
+                  </div>
+                  <div className="text-[10px] text-tp-slate-400 border-t border-tp-slate-100 pt-1.5 mt-auto">
+                    Pen → record · 0.4s lag
+                  </div>
                 </div>
               </div>
             </div>
             {/* Floating overlay */}
             <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
-              <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">↑</span>
+              <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">✎</span>
               <div>
-                <div className="font-display font-semibold text-[13px] text-tp-slate-900">Synced across 2 branches in 1.2s</div>
-                <div className="text-[11px] text-tp-slate-500">audit trail intact</div>
+                <div className="font-display font-semibold text-[13px] text-tp-slate-900">Pen on paper, structured Rx in 0.4s</div>
+                <div className="text-[11px] text-tp-slate-500">zero typing</div>
               </div>
             </div>
           </div>

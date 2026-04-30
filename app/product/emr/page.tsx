@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
@@ -293,14 +292,94 @@ export default async function CoreEMRPage() {
                 <li>Month-over-month comparison, no setup</li>
               </ul>
             </div>
-            <div className="relative rounded-tp-hero overflow-hidden aspect-video bg-tp-slate-200">
-              <Image
-                src="/assets/mocks/analytics.png"
-                alt="TatvaCare analytics dashboard showing weekly consults, unique patients, and follow-up comparisons by month"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 55vw"
-              />
+            {/* Analytics stylized card */}
+            <div className="relative pb-6">
+              <div className="rounded-tp-hero border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden p-5">
+                {/* Header + filter chips */}
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <div className="font-display font-bold text-tp-slate-900 text-sm">Practice analytics · Apr 2026</div>
+                    <div className="flex gap-1.5 mt-1.5 flex-wrap">
+                      <span className="text-[10px] px-2 py-0.5 rounded-md bg-tp-blue-600 text-white border border-tp-blue-600">Last 4 weeks</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-md bg-white text-tp-slate-500 border border-tp-slate-200">All doctors</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-md bg-white text-tp-slate-500 border border-tp-slate-200">All specialties</span>
+                    </div>
+                  </div>
+                  <span className="badge badge-success flex-shrink-0" style={{ height: '22px', fontSize: '11px', padding: '0 9px' }}>● Analytics · live</span>
+                </div>
+                {/* Stat row */}
+                <div className="grid grid-cols-4 gap-2 mb-3">
+                  {[
+                    { label: 'Consults', value: '342', trend: '↑ 12%', up: true },
+                    { label: 'Unique pts', value: '218', trend: '↑ 8%', up: true },
+                    { label: 'Avg Rx/visit', value: '2.4', trend: '↓ 3%', up: false },
+                    { label: 'Follow-up', value: '74%', trend: '↑ 5%', up: true },
+                  ].map(({ label, value, trend, up }) => (
+                    <div key={label} className="rounded-[10px] bg-tp-slate-50 border border-tp-slate-100 p-2.5 flex flex-col gap-0.5">
+                      <div className="font-display font-bold text-tp-slate-900" style={{ fontSize: '22px', lineHeight: 1.1 }}>{value}</div>
+                      <div className="text-[10px] text-tp-slate-500">{label}</div>
+                      <div className={`text-[10px] font-semibold ${up ? 'text-emerald-600' : 'text-red-500'}`}>{trend}</div>
+                    </div>
+                  ))}
+                </div>
+                {/* Bar chart + diagnoses */}
+                <div className="flex gap-3 items-stretch">
+                  {/* Bar chart */}
+                  <div className="flex-1 rounded-[14px] border border-tp-slate-100 bg-tp-slate-50 p-3 flex flex-col">
+                    <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide mb-3">Weekly consults · last 4 weeks</div>
+                    {/* Grid lines */}
+                    <div className="flex-1 flex flex-col justify-between relative" style={{ minHeight: '80px' }}>
+                      <div className="absolute inset-x-0 top-0 h-px bg-tp-slate-200" />
+                      <div className="absolute inset-x-0" style={{ top: '33%', height: '1px', background: '#E2E2EA' }} />
+                      <div className="absolute inset-x-0" style={{ top: '66%', height: '1px', background: '#E2E2EA' }} />
+                      {/* Bars */}
+                      <div className="absolute inset-x-3 bottom-5 flex gap-3 items-end" style={{ top: 0 }}>
+                        {[
+                          { w: 'W1', h: '60%', peak: false, val: '' },
+                          { w: 'W2', h: '80%', peak: false, val: '' },
+                          { w: 'W3', h: '70%', peak: false, val: '' },
+                          { w: 'W4', h: '95%', peak: true, val: '76' },
+                        ].map(({ w, h, peak, val }) => (
+                          <div key={w} className="flex-1 flex flex-col items-center justify-end gap-1">
+                            {peak && (
+                              <div className="text-[10px] font-bold text-tp-blue-700">{val}</div>
+                            )}
+                            <div className="w-full rounded-t-[4px] bg-tp-blue-500" style={{ height: h, opacity: peak ? 1 : 0.6 }} />
+                          </div>
+                        ))}
+                      </div>
+                      {/* Week labels */}
+                      <div className="absolute inset-x-3 bottom-0 flex gap-3">
+                        {['W1', 'W2', 'W3', 'W4'].map((w) => (
+                          <div key={w} className="flex-1 text-center text-[10px] text-tp-slate-400">{w}</div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Top diagnoses */}
+                  <div className="w-[140px] flex-shrink-0 rounded-[14px] border border-tp-slate-100 bg-white p-3 flex flex-col gap-2">
+                    <div className="text-[10px] font-semibold text-tp-slate-500 uppercase tracking-wide">Top diagnoses</div>
+                    {[
+                      { dx: 'T2DM follow-up', n: 47 },
+                      { dx: 'Hypertension', n: 31 },
+                      { dx: 'URTI', n: 24 },
+                    ].map(({ dx, n }) => (
+                      <div key={dx} className="flex justify-between items-baseline text-[11px] gap-1">
+                        <span className="text-tp-slate-700 leading-tight truncate">{dx}</span>
+                        <span className="text-tp-slate-400 flex-shrink-0">{n}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {/* Floating overlay */}
+              <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+                <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">↗</span>
+                <div>
+                  <div className="font-display font-semibold text-[13px] text-tp-slate-900">Refreshed live · no exports needed</div>
+                  <div className="text-[11px] text-tp-slate-500">week-on-week, all doctors</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

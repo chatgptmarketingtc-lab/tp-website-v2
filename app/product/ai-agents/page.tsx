@@ -295,15 +295,81 @@ export default async function AIAgentsPage() {
                 <li>Q&amp;A on Indian guidelines — every answer cited</li>
               </ul>
             </div>
-            <div className="relative rounded-tp-hero overflow-hidden aspect-video bg-tp-slate-200">
-              {/* Real image — falls back gracefully if not present */}
-              <Image
-                src="/assets/mocks/doctor-agent-ddx.png"
-                alt="DoctorAgent panel showing Symptoms, Diagnosis with a Generate DDx call-to-action, and Medication chips"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 55vw"
-              />
+            {/* DoctorAgent DDx stylized card */}
+            <div className="relative pb-6">
+              <div className="rounded-tp-hero border border-tp-slate-200 shadow-tp-lg overflow-hidden flex">
+                {/* Dark sidebar */}
+                <div className="hidden sm:flex flex-col flex-shrink-0 bg-tp-blue-900 text-white p-[18px] px-3.5" style={{ width: '120px' }}>
+                  <div className="flex items-center gap-2 font-display font-bold text-[13px]">
+                    <span className="w-[22px] h-[22px] rounded-[6px] bg-tp-blue-500 grid place-items-center text-[11px]">T</span> TP
+                  </div>
+                  <div className="mt-[18px] flex flex-col gap-1.5 text-[11px] text-white/70">
+                    <div className="bg-tp-blue-500 py-[7px] px-2.5 rounded-[7px] text-white">Today&apos;s queue</div>
+                    <div className="py-[7px] px-2.5">Patients</div>
+                    <div className="py-[7px] px-2.5">Lab</div>
+                    <div className="py-[7px] px-2.5">Billing</div>
+                    <div className="py-[7px] px-2.5">Analytics</div>
+                  </div>
+                </div>
+                {/* Main panel */}
+                <div className="flex-1 bg-white p-[14px] px-4 flex flex-col gap-2.5">
+                  <div className="flex justify-between items-start gap-2">
+                    <div>
+                      <div className="font-display font-bold text-tp-slate-900 text-sm">Mrs. Priya Menon · 47F · General Medicine</div>
+                      <div className="text-[11px] text-tp-slate-500">Chief complaint · OPD #09 · 10:15 AM</div>
+                    </div>
+                    <span className="badge badge-violet flex-shrink-0">● DoctorAgent · ready</span>
+                  </div>
+                  {/* Symptom chips */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {['Fatigue', 'Polyuria', 'Blurred vision', 'Weight loss', 'Frequent thirst'].map((s) => (
+                      <span key={s} className="badge badge-blue" style={{ height: '22px', fontSize: '11px', padding: '0 9px' }}>{s}</span>
+                    ))}
+                  </div>
+                  {/* DDx ranked */}
+                  <div className="bg-tp-blue-50 border border-dashed border-tp-blue-200 rounded-xl p-3">
+                    <div className="text-[10px] font-semibold text-tp-blue-700 uppercase tracking-wide mb-2">DDx · ranked by likelihood</div>
+                    <div className="flex flex-col gap-1.5">
+                      {[
+                        { dx: 'Type 2 Diabetes Mellitus', pct: 82, label: 'primary', barColor: 'bg-tp-blue-500' },
+                        { dx: 'Hyperthyroidism', pct: 14, label: 'consider', barColor: 'bg-tp-blue-300' },
+                        { dx: 'Adrenal insufficiency', pct: 4, label: 'rule out', barColor: 'bg-tp-slate-300' },
+                      ].map(({ dx, pct, label, barColor }) => (
+                        <div key={dx} className="flex items-center gap-2">
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[11px] font-semibold text-tp-slate-900 truncate">{dx}</div>
+                            <div className="mt-0.5 h-1.5 rounded-full bg-tp-blue-100 overflow-hidden">
+                              <div className={`h-full rounded-full ${barColor}`} style={{ width: `${pct}%` }} />
+                            </div>
+                          </div>
+                          <span className="text-[11px] font-bold text-tp-blue-700 flex-shrink-0 w-8 text-right">{pct}%</span>
+                          <span className="text-[10px] text-tp-slate-400 flex-shrink-0 w-14 italic">{label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="text-[10px] text-tp-blue-600 mt-2 pt-1.5 border-t border-tp-blue-100">Cited: ICMR DM-2 guideline · NHM 2024</div>
+                  </div>
+                  {/* Drug check + Lab AI side by side */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="rounded-xl p-2.5" style={{ background: '#FFFBEB', border: '1px solid #FDE68A' }}>
+                      <div className="text-[10px] font-semibold text-amber-700 mb-1">Drug interaction check</div>
+                      <div className="text-[11px] text-amber-800">4 active meds · 0 interactions flagged</div>
+                    </div>
+                    <div className="rounded-xl p-2.5" style={{ background: '#FAF5FE', border: '1px solid rgba(164,97,216,0.2)' }}>
+                      <div className="text-[10px] font-semibold text-tp-violet-700 mb-1">Lab AI</div>
+                      <div className="text-[11px] text-tp-violet-700">HbA1c 8.2% · trending up · review in 8 wks</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Floating overlay */}
+              <div className="absolute bottom-[-16px] left-6 z-10 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+                <span className="w-7 h-7 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-sm flex-shrink-0">●</span>
+                <div>
+                  <div className="font-display font-semibold text-[13px] text-tp-slate-900">DDx generated in 1.4s · cited</div>
+                  <div className="text-[11px] text-tp-slate-500">ICMR · NHM guidelines</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
