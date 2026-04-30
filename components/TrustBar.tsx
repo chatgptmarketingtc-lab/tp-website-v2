@@ -15,7 +15,7 @@ const COMPLIANCE = [
 const HOSPITALS = [
   { src: '/mission%20hospital.jpg',         alt: 'Mission Hospital',  width: 248,  height: 121  },
   { src: '/Apollo-Cradle-logo1.png',        alt: 'Apollo Cradle',     width: 462,  height: 218  },
-  { src: '/Zydus_Hospitals_New_Logo.jpg',   alt: 'Zydus Hospitals',   width: 3301, height: 2551 },
+  { src: '/ZydusLogo.webp',                  alt: 'Zydus Hospitals',   width: 129,  height: 78   },
   { src: '/ApexOrthoHosLogo1.jpg.webp',     alt: 'Apex Ortho Care',   width: 5075, height: 1800 },
   { src: '/Munshi%20hospital.png',          alt: 'Munshi Hospitals',  width: 270,  height: 129  },
 ]
