@@ -39,7 +39,7 @@ export default function CTABand({
               {subhead}
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
-              <Link href="/contact" className="btn btn-on-dark-solid btn-l">
+              <Link href="https://health.tatvacare.in/login" className="btn btn-on-dark-solid btn-l">
                 {primaryLabel} <span className="arr">→</span>
               </Link>
               <Link href="/contact" className="btn btn-on-dark-outline btn-l">

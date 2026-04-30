@@ -74,9 +74,9 @@ export default function TopNav() {
       >
         <div className="max-w-wrap mx-auto w-full px-6 flex items-center flex-nowrap gap-4 h-[72px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0 font-display font-bold text-[22px] leading-none text-tp-slate-900 tracking-[-0.01em] no-underline">
-            <span className="w-7 h-7 rounded-lg bg-tp-blue-500 text-white grid place-items-center font-display font-extrabold text-base leading-none shadow-tp-sm flex-shrink-0">T</span>
-            TatvaPractice
+          <Link href="/" aria-label="TatvaPractice home" className="flex items-center gap-2 flex-shrink-0 font-display font-bold text-[22px] leading-none text-tp-slate-900 tracking-[-0.01em] no-underline">
+            <span aria-hidden="true" className="w-7 h-7 rounded-lg bg-tp-blue-500 text-white grid place-items-center font-display font-extrabold text-base leading-none shadow-tp-sm flex-shrink-0">T</span>
+            <span aria-hidden="true">TatvaPractice</span>
           </Link>
 
           {/* Desktop nav — visible at xl (1280px+) to ensure single-row fit */}
@@ -128,9 +128,9 @@ export default function TopNav() {
 
           {/* CTA group */}
           <div className="ml-auto hidden xl:flex flex-nowrap flex-shrink-0 gap-2 items-center">
-            <Link href="/contact" className="btn btn-ghost btn-m">Sign in</Link>
+            <Link href="https://health.tatvacare.in/login" className="btn btn-ghost btn-m">Sign in</Link>
             <Link href="/contact" className="btn btn-outline btn-m">Book a Demo</Link>
-            <Link href="/contact" className="btn btn-solid btn-m">Start Free Trial</Link>
+            <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-m">Start Free Trial</Link>
           </div>
 
           {/* Hamburger */}
@@ -199,7 +199,7 @@ export default function TopNav() {
 
           {/* Mobile CTA bar */}
           <div className="px-6 py-6 border-t border-tp-slate-200 flex flex-col gap-3">
-            <Link href="/contact" className="btn btn-solid btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
+            <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
               Start Free Trial
             </Link>
             <Link href="/contact" className="btn btn-outline btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>

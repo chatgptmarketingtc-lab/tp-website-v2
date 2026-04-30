@@ -77,7 +77,7 @@ export default async function AIAgentsPage() {
             suggestions — grounded in Indian clinical guidelines.
           </p>
           <div className="flex gap-3 justify-center flex-wrap mt-7">
-            <Link href="/contact" className="btn btn-solid btn-l">
+            <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l">
               Start Free Trial <span className="arr">→</span>
             </Link>
             <Link href="/contact" className="btn btn-outline btn-l">

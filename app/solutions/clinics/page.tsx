@@ -142,7 +142,7 @@ export default function ClinicsPage() {
                 prescriptions, and billing — without the complexity.
               </p>
               <div className="flex gap-3 flex-wrap mt-7">
-                <Link href="/contact" className="btn btn-solid btn-l">
+                <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l">
                   Start Free Trial <span className="arr">→</span>
                 </Link>
                 <Link href="/contact" className="btn btn-outline btn-l">
@@ -290,7 +290,7 @@ export default function ClinicsPage() {
                 <li>Basic billing</li>
                 <li>Patient records</li>
               </ul>
-              <Link href="/contact" className="btn btn-outline btn-l mt-auto">
+              <Link href="https://health.tatvacare.in/login" className="btn btn-outline btn-l mt-auto">
                 Start Free Trial
               </Link>
             </div>
@@ -328,7 +328,7 @@ export default function ClinicsPage() {
                 <li>OPD queue</li>
                 <li>Lab integration</li>
               </ul>
-              <Link href="/contact" className="btn btn-solid btn-l mt-auto">
+              <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l mt-auto">
                 Start Free Trial <span className="arr">→</span>
               </Link>
             </div>

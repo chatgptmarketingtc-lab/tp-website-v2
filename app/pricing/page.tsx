@@ -138,7 +138,7 @@ export default function PricingPage() {
                 <li>WhatsApp messaging</li>
                 <li>Email + chat support</li>
               </ul>
-              <Link href="/contact" className="btn btn-outline btn-l mt-auto">
+              <Link href="https://health.tatvacare.in/login" className="btn btn-outline btn-l mt-auto">
                 Start Free Trial
               </Link>
             </div>
@@ -193,7 +193,7 @@ export default function PricingPage() {
                 <li>Custom clinic website + Google My Business</li>
                 <li>Priority phone support</li>
               </ul>
-              <Link href="/contact" className="btn btn-solid btn-l mt-auto">
+              <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l mt-auto">
                 Start Free Trial <span className="arr">→</span>
               </Link>
             </div>

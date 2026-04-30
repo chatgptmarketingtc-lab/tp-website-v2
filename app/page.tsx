@@ -65,7 +65,7 @@ export default function HomePage() {
                 The AI-first EMR built for Indian OPD reality. Document faster, work smarter, stay focused on the patient.
               </p>
               <div className="flex gap-3 flex-wrap mt-7">
-                <Link href="/contact" className="btn btn-solid btn-l">
+                <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l">
                   Start Free Trial <span className="arr">→</span>
                 </Link>
                 <Link href="/contact" className="btn btn-outline btn-l">Book a Demo</Link>
@@ -372,7 +372,7 @@ export default function HomePage() {
                 <li>GST billing, lab integration, telehealth</li>
                 <li>Earn back via DHIS government incentives</li>
               </ul>
-              <Link href="/contact" className="btn btn-solid btn-l mt-auto self-start">
+              <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l mt-auto self-start">
                 Start Free Trial <span className="arr">→</span>
               </Link>
             </div>
