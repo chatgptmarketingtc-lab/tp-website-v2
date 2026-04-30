@@ -103,7 +103,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               ) : (
-                <form className="card" style={{ padding: '32px' }} onSubmit={handleSubmit} noValidate>
+                <form className="border border-gray-200 rounded-2xl p-8 bg-white" onSubmit={handleSubmit} noValidate>
                   {error && (
                     <div
                       role="alert"
@@ -113,11 +113,11 @@ export default function ContactPage() {
                     </div>
                   )}
 
-                  {/* Row 1 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-3.5">
-                    <div className="field">
-                      <label htmlFor="name">
-                        Name <span className="req">*</span>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                    {/* Row 1: Name + Designation */}
+                    <div>
+                      <label htmlFor="name" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        Name <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="name"
@@ -125,40 +125,54 @@ export default function ContactPage() {
                         name="name"
                         required
                         placeholder="Dr. Rajesh Patel"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                       />
                     </div>
-                    <div className="field">
-                      <label htmlFor="designation">Designation</label>
-                      <select id="designation" name="designation">
+                    <div>
+                      <label htmlFor="designation" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        Designation
+                      </label>
+                      <select
+                        id="designation"
+                        name="designation"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                      >
                         {DESIGNATIONS.map((d) => (
                           <option key={d}>{d}</option>
                         ))}
                       </select>
                     </div>
-                  </div>
 
-                  {/* Row 2 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-3.5">
-                    <div className="field">
-                      <label htmlFor="clinicName">Clinic / Hospital name</label>
+                    {/* Row 2: Clinic + City */}
+                    <div>
+                      <label htmlFor="clinicName" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        Clinic / Hospital name
+                      </label>
                       <input
                         id="clinicName"
                         type="text"
                         name="clinicName"
                         placeholder="HeartCare Clinic"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                       />
                     </div>
-                    <div className="field">
-                      <label htmlFor="city">City</label>
-                      <input id="city" type="text" name="city" placeholder="Ahmedabad" />
+                    <div>
+                      <label htmlFor="city" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        City
+                      </label>
+                      <input
+                        id="city"
+                        type="text"
+                        name="city"
+                        placeholder="Ahmedabad"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                      />
                     </div>
-                  </div>
 
-                  {/* Row 3 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-3.5">
-                    <div className="field">
-                      <label htmlFor="phone">
-                        Phone <span className="req">*</span>
+                    {/* Row 3: Phone + Email */}
+                    <div>
+                      <label htmlFor="phone" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        Phone <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="phone"
@@ -166,11 +180,12 @@ export default function ContactPage() {
                         name="phone"
                         required
                         placeholder="+91 XXXXX XXXXX"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                       />
                     </div>
-                    <div className="field">
-                      <label htmlFor="email">
-                        Email <span className="req">*</span>
+                    <div>
+                      <label htmlFor="email" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        Email <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="email"
@@ -178,51 +193,67 @@ export default function ContactPage() {
                         name="email"
                         required
                         placeholder="rajesh@heartcare.in"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                       />
                     </div>
-                  </div>
 
-                  {/* Practice size */}
-                  <div className="field mb-3.5">
-                    <label htmlFor="practiceSize">Practice size</label>
-                    <select id="practiceSize" name="practiceSize">
-                      {PRACTICE_SIZES.map((s) => (
-                        <option key={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
+                    {/* Row 4: Practice size (full width) */}
+                    <div className="md:col-span-2">
+                      <label htmlFor="practiceSize" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        Practice size
+                      </label>
+                      <select
+                        id="practiceSize"
+                        name="practiceSize"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                      >
+                        {PRACTICE_SIZES.map((s) => (
+                          <option key={s}>{s}</option>
+                        ))}
+                      </select>
+                    </div>
 
-                  {/* Message */}
-                  <div className="field mb-3.5">
-                    <label htmlFor="message">
-                      What would you like to discuss?{' '}
-                      <span className="text-tp-slate-400 text-xs font-normal ml-1.5">
-                        280 char max
+                    {/* Row 5: Message (full width) */}
+                    <div className="md:col-span-2">
+                      <label htmlFor="message" className="block mb-1.5 text-sm font-medium text-gray-700">
+                        What would you like to discuss?{' '}
+                        <span className="text-xs text-gray-500 font-normal ml-1.5">280 char max</span>
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={4}
+                        maxLength={280}
+                        placeholder="Quick context about your practice and what you are looking for…"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none min-h-[120px] resize-y"
+                      />
+                    </div>
+
+                    {/* Row 6: Consent (full width) */}
+                    <label className="md:col-span-2 flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="consent"
+                        required
+                        className="h-4 w-4 accent-indigo-600 mt-0.5 flex-shrink-0"
+                      />
+                      <span className="text-sm text-gray-600">
+                        I consent to TatvaPractice contacting me about this inquiry. We will not share
+                        your details with third parties.
                       </span>
                     </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      maxLength={280}
-                      placeholder="Quick context about your practice and what you are looking for…"
-                    />
+
+                    {/* Row 7: Submit (full width) */}
+                    <div className="md:col-span-2">
+                      <button
+                        type="submit"
+                        className="btn btn-solid btn-l w-full"
+                        disabled={loading}
+                      >
+                        {loading ? 'Sending…' : <>Send message <span className="arr">→</span></>}
+                      </button>
+                    </div>
                   </div>
-
-                  {/* Consent */}
-                  <label className="flex gap-2 items-start text-[13px] text-tp-slate-600 mb-4 cursor-pointer">
-                    <input type="checkbox" name="consent" required className="mt-0.5 flex-shrink-0" />
-                    I consent to TatvaPractice contacting me about this inquiry. We will not share
-                    your details with third parties.
-                  </label>
-
-                  <button
-                    type="submit"
-                    className="btn btn-solid btn-l w-full"
-                    disabled={loading}
-                  >
-                    {loading ? 'Sending…' : <>Send message <span className="arr">→</span></>}
-                  </button>
                 </form>
               )}
             </div>
