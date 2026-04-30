@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: 'Are AI features really included in every plan?',
     answer:
-      'Yes. VoiceRx, SmartSync, SnapRx, and DoctorAgent are part of every plan from day one. The differences between plans are about scale (multi-doctor, multi-location) and integrations (lab, IPD, pharmacy).',
+      'Yes. VoiceRx, SmartSync, SnapRx, Amaya, and Mira are part of every plan from day one. The differences between plans are about scale (multi-doctor, multi-location) and integrations (lab, IPD, pharmacy).',
   },
   {
     question: 'How do DHIS earnings actually work?',
@@ -330,13 +330,13 @@ export default function PricingPage() {
                     { feature: 'VoiceRx', solo: true, clinic: true, hospital: true },
                     { feature: 'SmartSync', solo: true, clinic: true, hospital: true },
                     { feature: 'SnapRx', solo: true, clinic: true, hospital: true },
-                    { feature: 'DoctorAgent', solo: true, clinic: true, hospital: true },
+                    { feature: 'Amaya (doctor\'s AI agent)', solo: true, clinic: true, hospital: true },
                     { feature: 'DHIS earnings dashboard', solo: true, clinic: true, hospital: true },
                     { feature: 'Appointment booking & reminders', solo: true, clinic: true, hospital: true },
                     { feature: 'Basic billing & GST invoices', solo: true, clinic: true, hospital: true },
                     { feature: 'Patient records & history', solo: true, clinic: true, hospital: true },
                     { feature: 'WhatsApp messaging', solo: true, clinic: true, hospital: true },
-                    { feature: 'Receptionist Agent', solo: false, clinic: true, hospital: true },
+                    { feature: 'Mira (patient\'s AI agent)', solo: false, clinic: true, hospital: true },
                     { feature: 'OPD queue management', solo: false, clinic: true, hospital: true },
                     { feature: 'Multi-doctor roles', solo: false, clinic: true, hospital: true },
                     { feature: 'Lab integration', solo: false, clinic: true, hospital: true },

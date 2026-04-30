@@ -21,7 +21,7 @@ const PRODUCT_ITEMS: NavDropItem[] = [
   { href: '/product/voicerx',    icon: MicIcon,      title: 'VoiceRx',       desc: 'Speak. We\'ll write the prescription.' },
   { href: '/product/smartsync',  icon: PenLineIcon,  title: 'SmartSync',     desc: 'Write naturally. Save digitally.' },
   { href: '/product/snaprx',     icon: CameraIcon,   title: 'SnapRx',        desc: 'Photograph any Rx. We digitise it.' },
-  { href: '/product/ai-agents',  icon: BrainIcon,    title: 'AI Agents',     desc: 'DoctorAgent, Amaya, Receptionist.' },
+  { href: '/product/ai-agents',  icon: BrainIcon,    title: 'AI Agents',     desc: 'Amaya, Mira · two AI agents.' },
   { href: '/product/emr',        icon: FilePenIcon,  title: 'Core EMR',      desc: 'Records, queue, billing, telehealth.' },
   { href: '/product',            icon: GridIcon,     title: 'Full overview', desc: 'Every module, one workflow.' },
 ]

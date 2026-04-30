@@ -53,7 +53,7 @@ const modules = [
   },
   {
     name: 'AI Agents',
-    desc: 'DoctorAgent, Amaya, and Receptionist Agent in one workflow.',
+    desc: 'Amaya and Mira in one workflow.',
     href: '/product/ai-agents',
     Icon: BrainIcon,
   },
@@ -108,7 +108,7 @@ const howItWorksSteps = [
   },
   {
     title: 'Queue managed',
-    description: 'Receptionist Agent handles flow, room assignments, ETAs.',
+    description: 'Mira handles flow, room assignments, ETAs.',
   },
   {
     title: 'Consultation begins',
@@ -172,7 +172,7 @@ export default async function ProductPage() {
           <div
             className="ph p-5 mt-12 mx-auto"
             data-placeholder="ui-screenshot"
-            data-replace-with="Panoramic TatvaPractice dashboard — left: OPD queue, centre: active consultation with VoiceRx, right: DoctorAgent insights panel"
+            data-replace-with="Panoramic TatvaPractice dashboard — left: OPD queue, centre: active consultation with VoiceRx, right: Amaya insights panel"
           >
             <div className="w-full grid gap-3" style={{ gridTemplateColumns: '220px 1fr 220px' }}>
               {/* OPD Queue panel */}
@@ -231,11 +231,11 @@ export default async function ProductPage() {
                 </div>
               </div>
 
-              {/* DoctorAgent insights panel */}
+              {/* Amaya insights panel */}
               <div className="bg-white border border-tp-slate-200 rounded-[14px] p-[14px] flex flex-col gap-2 text-left">
                 <div className="flex items-center gap-1.5 mb-1">
                   <span className="w-4 h-4 rounded-md bg-tp-blue-600 text-white grid place-items-center" style={{ fontSize: '8px', fontWeight: 700 }}>AI</span>
-                  <span className="font-display font-bold text-[12px] text-tp-slate-900">DoctorAgent</span>
+                  <span className="font-display font-bold text-[12px] text-tp-slate-900">Amaya</span>
                 </div>
                 <div className="bg-tp-blue-50 border border-tp-blue-100 rounded-lg p-2">
                   <div className="text-[10px] font-semibold text-tp-blue-800 mb-1">DDx suggestion</div>
