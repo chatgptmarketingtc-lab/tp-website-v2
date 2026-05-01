@@ -80,14 +80,14 @@ export default function HomePage() {
             {/* Right — product UI mock */}
             <div className="relative">
               <div
-                className="ph ph-aspect-4-3"
+                className="ph aspect-auto md:aspect-[4/3]"
                 data-placeholder="ui-screenshot"
                 data-replace-with="VoiceRx active session — left sidebar showing patient queue, main panel showing live transcription with structured Rx forming on the right"
               >
                 {/* Mock chrome */}
-                <div className="absolute inset-0 grid bg-white" style={{ gridTemplateColumns: '140px 1fr' }}>
-                  {/* Sidebar */}
-                  <div className="bg-tp-blue-900 text-white p-[18px] px-3.5">
+                <div className="md:absolute md:inset-0 flex bg-white w-full">
+                  {/* Sidebar — desktop only */}
+                  <div className="hidden md:flex flex-col flex-shrink-0 w-[140px] bg-tp-blue-900 text-white p-[18px] px-3.5">
                     <div className="flex items-center gap-2 font-display font-bold text-[13px]">
                       <span className="w-[22px] h-[22px] rounded-[6px] bg-tp-blue-500 grid place-items-center text-[11px]">T</span> TP
                     </div>
@@ -100,35 +100,52 @@ export default function HomePage() {
                     </div>
                   </div>
                   {/* Main panel */}
-                  <div className="p-[18px] px-5 flex flex-col gap-3.5">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <div className="font-display font-bold text-tp-slate-900 text-sm">Mr. Suresh Kumar · 42y · M</div>
-                        <div className="text-[13px] text-tp-slate-500">Hypertension follow-up · OPD #08 · 11:24 AM</div>
+                  <div className="flex-1 min-w-0 p-3 md:p-[18px] md:px-5 flex flex-col gap-3">
+                    {/* Mobile top bar — hidden on desktop */}
+                    <div className="flex md:hidden items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="w-[22px] h-[22px] rounded-[6px] bg-tp-blue-900 grid place-items-center text-[11px] text-white font-bold">T</span>
+                        <span className="text-[11px] font-semibold text-tp-blue-900 bg-tp-blue-50 px-2 py-0.5 rounded-full">Today&apos;s queue</span>
                       </div>
-                      <span className="badge badge-violet">● VoiceRx live</span>
+                      <span className="badge badge-violet text-[10px]">● VoiceRx live</span>
                     </div>
-                    <div className="bg-tp-blue-50 border border-dashed border-tp-blue-200 rounded-xl p-3 text-[11px] text-tp-slate-700 font-display">
+                    {/* Patient header */}
+                    <div className="flex justify-between items-start gap-2">
+                      <div className="min-w-0">
+                        <div className="font-display font-bold text-tp-slate-900 text-[13px] md:text-sm truncate">Mr. Suresh Kumar · 42y · M</div>
+                        <div className="text-[11px] md:text-[13px] text-tp-slate-500 truncate">Hypertension follow-up · OPD #08</div>
+                      </div>
+                      <span className="hidden md:inline-flex badge badge-violet flex-shrink-0">● VoiceRx live</span>
+                    </div>
+                    <div className="bg-tp-blue-50 border border-dashed border-tp-blue-200 rounded-xl p-2.5 md:p-3 text-[11px] text-tp-slate-700 font-display leading-relaxed">
                       &ldquo;BP 138 by 88, continue Telma 40 once daily, add Atorvastatin 10 mg HS, lipid panel 4 weeks…&rdquo;
                     </div>
-                    <div className="border border-tp-slate-200 rounded-xl p-3 text-[11px]">
+                    <div className="border border-tp-slate-200 rounded-xl p-2.5 md:p-3 text-[11px]">
                       <div className="font-display font-bold text-tp-slate-900 mb-1.5">Structured Rx</div>
-                      <div className="grid text-tp-slate-600" style={{ gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '6px' }}>
-                        <span>Telma 40</span><span>1 OD</span><span>30 days</span>
-                        <span className="badge badge-success" style={{ height: '20px', padding: '0 6px', fontSize: '10px' }}>safe</span>
-                        <span>Atorvastatin 10</span><span>1 HS</span><span>30 days</span>
-                        <span className="badge badge-success" style={{ height: '20px', padding: '0 6px', fontSize: '10px' }}>safe</span>
+                      <div className="grid text-tp-slate-600" style={{ gridTemplateColumns: '1fr auto auto auto', gap: '4px 6px' }}>
+                        <span className="min-w-0 truncate">Telma 40</span><span>1 OD</span><span>30d</span>
+                        <span className="badge badge-success" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>safe</span>
+                        <span className="min-w-0 truncate">Atorvastatin 10</span><span>1 HS</span><span>30d</span>
+                        <span className="badge badge-success" style={{ height: '18px', padding: '0 5px', fontSize: '10px' }}>safe</span>
                       </div>
                     </div>
                     <div className="flex gap-2 justify-end">
                       <button className="btn btn-outline btn-s">Edit</button>
                       <button className="btn btn-solid btn-s">Send to patient</button>
                     </div>
+                    {/* Inline floating badge — mobile only */}
+                    <div className="flex md:hidden items-center gap-2.5 bg-white border border-tp-slate-200 rounded-[14px] p-2 px-3 shadow-tp-md">
+                      <span className="w-6 h-6 rounded-full bg-tp-violet-50 text-tp-violet-700 grid place-items-center text-xs flex-shrink-0">●</span>
+                      <div>
+                        <div className="font-display font-semibold text-[12px] text-tp-slate-900">Rx ready in 28s</div>
+                        <div className="text-[11px] text-tp-slate-500">Hindi-English · auto-validated</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              {/* Floating badge */}
-              <div className="absolute left-[-18px] bottom-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md flex gap-2.5 items-center">
+              {/* Floating badge — desktop only */}
+              <div className="hidden md:flex absolute left-[-18px] bottom-6 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3.5 shadow-tp-md gap-2.5 items-center">
                 <span className="w-7 h-7 rounded-full bg-tp-violet-50 text-tp-violet-700 grid place-items-center text-sm flex-shrink-0">●</span>
                 <div>
                   <div className="font-display font-semibold text-[13px] text-tp-slate-900">Rx ready in 28s</div>
