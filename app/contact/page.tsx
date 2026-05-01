@@ -387,7 +387,7 @@ export default function ContactPage() {
               </div>
               <a
                 className="office-link"
-                href="https://share.google/hhQcL77ot8AqCxT6m"
+                href="https://www.google.com/maps/place/TatvaCare/@12.9180985,77.6425344,17z/data=!3m1!5s0x3bae14842d4704c1:0xa2184b9f130125c1!4m14!1m7!3m6!1s0x3bae1532d8233067:0x6a6ac10756d3eb1b!2sTatvaCare!8m2!3d12.9180933!4d77.6451093!16s%2Fg%2F11l5vcycbx!3m5!1s0x3bae1532d8233067:0x6a6ac10756d3eb1b!8m2!3d12.9180933!4d77.6451093!16s%2Fg%2F11l5vcycbx"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -424,7 +424,7 @@ export default function ContactPage() {
               </div>
               <a
                 className="office-link"
-                href="https://share.google/CPkJdZ4KZtM6QuyNA"
+                href="https://www.google.com/maps/place/TatvaCare/@23.0251727,72.4915297,17z/data=!3m1!5s0x395e9b15d4ef3e61:0xb976329cfa6ae499!4m14!1m7!3m6!1s0x395e9b6c189b5a8f:0x4aafe7274114abac!2sTatvaCare!8m2!3d23.0251678!4d72.4941046!16s%2Fg%2F11stjtr5nz!3m5!1s0x395e9b6c189b5a8f:0x4aafe7274114abac!8m2!3d23.0251678!4d72.4941046!16s%2Fg%2F11stjtr5nz"
                 target="_blank"
                 rel="noopener noreferrer"
               >
