@@ -387,7 +387,7 @@ export default function ContactPage() {
               </div>
               <a
                 className="office-link"
-                href="https://www.google.com/maps/search/?api=1&query=Incubex+HSR27+1500+19th+Main+Rd+1st+Sector+HSR+Layout+Bengaluru+560102"
+                href="https://share.google/hhQcL77ot8AqCxT6m"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -424,7 +424,7 @@ export default function ContactPage() {
               </div>
               <a
                 className="office-link"
-                href="https://www.google.com/maps/search/?api=1&query=4th+Floor+Plot+No+115+5+TP+Scheme+No+51+Ambli-Bopal+Road+Ahmedabad+380058"
+                href="https://share.google/CPkJdZ4KZtM6QuyNA"
                 target="_blank"
                 rel="noopener noreferrer"
               >
