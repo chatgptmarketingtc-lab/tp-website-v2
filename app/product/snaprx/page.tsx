@@ -210,10 +210,7 @@ export default async function SnapRxPage() {
       {/* Problem Callout */}
       <section className="bg-white py-24" aria-labelledby="snaprx-problem-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid gap-16 items-center"
-            style={{ gridTemplateColumns: '1fr 1fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
               <span className="tp-eyebrow">The problem</span>
               <h2
@@ -235,7 +232,7 @@ export default async function SnapRxPage() {
                 million+ Indian Rx and benchmarked at 96% drug-name accuracy.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="card">
                 <div
                   className="font-display font-bold text-tp-slate-900"
@@ -330,7 +327,7 @@ export default async function SnapRxPage() {
       {/* Stat Strip */}
       <section className="bg-tp-slate-100 py-24" aria-label="SnapRx key metrics">
         <div className="max-w-wrap mx-auto px-6">
-          <div className="bg-tp-blue-50 rounded-tp-hero p-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="bg-tp-blue-50 rounded-tp-hero p-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
               <div
                 className="font-display font-bold text-tp-slate-900"

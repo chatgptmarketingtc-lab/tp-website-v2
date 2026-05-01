@@ -27,7 +27,7 @@ export default function TrustBar() {
         {/* Compliance badges */}
         <div className="flex flex-wrap gap-2.5 justify-center items-center">
           {COMPLIANCE.map(({ Icon, label }) => (
-            <span key={label} className="compliance">
+            <span key={label} className="compliance whitespace-nowrap">
               <Icon size={16} />
               {label}
             </span>

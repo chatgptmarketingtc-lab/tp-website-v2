@@ -228,10 +228,7 @@ export default async function SmartSyncPage() {
       {/* Problem Callout */}
       <section className="bg-white py-24" aria-labelledby="smartsync-problem-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid gap-16 items-center"
-            style={{ gridTemplateColumns: '1fr 1fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
               <span className="tp-eyebrow">The problem</span>
               <h2
@@ -255,7 +252,7 @@ export default async function SmartSyncPage() {
                 same time.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="card">
                 <div
                   className="font-display font-bold text-tp-slate-900"

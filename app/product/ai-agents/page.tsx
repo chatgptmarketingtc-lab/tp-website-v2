@@ -223,10 +223,7 @@ export default async function AIAgentsPage() {
       {/* Amaya Spotlight */}
       <section className="bg-tp-slate-100 py-24" aria-labelledby="amaya-ddx-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid gap-16 items-center"
-            style={{ gridTemplateColumns: '.9fr 1.1fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-8 md:gap-16 items-center">
             <div>
               <span className="badge badge-violet mb-3.5">Amaya</span>
               <h2
@@ -307,7 +304,7 @@ export default async function AIAgentsPage() {
                     <div className="text-[10px] text-tp-blue-600 mt-2 pt-1.5 border-t border-tp-blue-100">Cited: ICMR DM-2 guideline · NHM 2024</div>
                   </div>
                   {/* Drug check + Lab AI side by side */}
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div className="rounded-xl p-2.5" style={{ background: '#FFFBEB', border: '1px solid #FDE68A' }}>
                       <div className="text-[10px] font-semibold text-amber-700 mb-1">Drug interaction check</div>
                       <div className="text-[11px] text-amber-800">4 active meds · 0 interactions flagged</div>
@@ -335,20 +332,14 @@ export default async function AIAgentsPage() {
       {/* Amaya SOAP Spotlight */}
       <section className="bg-white py-24" aria-labelledby="amaya-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid gap-16 items-center"
-            style={{ gridTemplateColumns: '1.1fr .9fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-[1.1fr_.9fr] gap-8 md:gap-16 items-center">
             {/* Amaya mock UI */}
             <div
               className="ph p-6"
               data-placeholder="ui-screenshot"
               data-replace-with="Amaya — a SOAP note auto-structured from a transcript"
             >
-              <div
-                className="w-full bg-white border border-tp-slate-200 rounded-[14px] p-[18px] grid gap-3.5"
-                style={{ gridTemplateColumns: '1fr 1fr' }}
-              >
+              <div className="w-full bg-white border border-tp-slate-200 rounded-[14px] p-[18px] grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
                   <div className="badge badge-violet mb-2">● Live capture</div>
                   <div className="text-[11px] text-tp-slate-700 leading-relaxed font-display">
@@ -409,10 +400,7 @@ export default async function AIAgentsPage() {
       {/* Mira Spotlight */}
       <section className="bg-tp-slate-100 py-24" aria-labelledby="mira-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid gap-16 items-center"
-            style={{ gridTemplateColumns: '.9fr 1.1fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-8 md:gap-16 items-center">
             <div>
               <span className="badge badge-violet mb-3.5">Mira</span>
               <h2
@@ -481,7 +469,7 @@ export default async function AIAgentsPage() {
                     ))}
                   </div>
                   {/* WhatsApp comms + Pre-consult prep */}
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div className="rounded-xl p-2.5" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
                       <div className="text-[10px] font-semibold text-emerald-700 mb-1">WhatsApp comms</div>
                       <div className="text-[11px] text-emerald-800 mb-1.5">Sent to 8 patients today</div>

@@ -154,10 +154,7 @@ export default async function VoiceRxPage() {
             data-placeholder="ui-screenshot"
             data-replace-with="VoiceRx active session showing live transcription in Hindi-English with structured Rx forming on the right"
           >
-            <div
-              className="w-full grid gap-3.5"
-              style={{ gridTemplateColumns: '1fr 1fr' }}
-            >
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               {/* Waveform panel */}
               <div className="bg-white border border-tp-slate-200 rounded-[14px] p-[18px] flex flex-col gap-2.5">
                 <div className="flex justify-between">
@@ -224,10 +221,7 @@ export default async function VoiceRxPage() {
       {/* Problem Callout */}
       <section className="bg-white py-24" aria-labelledby="voicerx-problem-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid gap-16 items-center"
-            style={{ gridTemplateColumns: '1fr 1fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
               <span className="tp-eyebrow">The problem</span>
               <h2
@@ -249,7 +243,7 @@ export default async function VoiceRxPage() {
                 structured the way you would dictate them.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="card">
                 <div
                   className="font-display font-bold text-tp-slate-900"

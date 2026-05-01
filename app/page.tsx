@@ -50,7 +50,7 @@ export default function HomePage() {
       {/* ── HERO SPLIT ── */}
       <section className="py-24 pt-[72px]" aria-labelledby="hero-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div className="grid gap-16 items-center hero-grid" style={{ gridTemplateColumns: '1.1fr 0.9fr' }}>
+          <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-16 items-center">
             {/* Left copy */}
             <div>
               <span className="tp-eyebrow">AI-First EMR for India</span>
@@ -157,7 +157,7 @@ export default function HomePage() {
                 That&apos;s 10 hours a week not spent on patients. TatvaPractice gives that time back — by replacing 5 disconnected tools with one connected workflow built for OPD reality.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="card">
                 <div className="stat-num">2+ hrs</div>
                 <div className="stat-lbl mt-2">a day spent on documentation by the average Indian specialist</div>

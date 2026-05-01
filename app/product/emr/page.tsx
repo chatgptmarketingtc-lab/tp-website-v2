@@ -237,7 +237,7 @@ export default async function CoreEMRPage() {
               Built for the long arc of patient care.
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {featureCards.map(({ Icon, title, desc }) => (
               <article key={title} className="card flex flex-col">
                 <div
@@ -262,10 +262,7 @@ export default async function CoreEMRPage() {
       {/* Analytics Spotlight */}
       <section className="bg-tp-slate-100 py-24" aria-labelledby="emr-analytics-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid gap-16 items-center"
-            style={{ gridTemplateColumns: '.9fr 1.1fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-8 md:gap-16 items-center">
             <div>
               <span className="tp-eyebrow">Built-in analytics</span>
               <h2
@@ -308,7 +305,7 @@ export default async function CoreEMRPage() {
                   <span className="badge badge-success flex-shrink-0" style={{ height: '22px', fontSize: '11px', padding: '0 9px' }}>● Analytics · live</span>
                 </div>
                 {/* Stat row */}
-                <div className="grid grid-cols-4 gap-2 mb-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
                   {[
                     { label: 'Consults', value: '342', trend: '↑ 12%', up: true },
                     { label: 'Unique pts', value: '218', trend: '↑ 8%', up: true },
