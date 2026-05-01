@@ -381,7 +381,7 @@ export default function ContactPage() {
                 <br />
                 Bengaluru, Karnataka — 560102
               </p>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <div className="relative aspect-[16/9] overflow-hidden rounded-xl">
                 <Image
                   src="/offices/bengaluru-office.webp"
                   alt="TatvaPractice office in HSR Layout, Bengaluru"
