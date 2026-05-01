@@ -121,13 +121,6 @@ export default function SiteFooter() {
         <div className="pt-6 flex justify-between flex-wrap gap-3 text-[12px] text-tp-slate-500 font-body">
           <span>© 2026 TatvaPractice. A TatvaCare company.</span>
           <span>hello@tatvapractice.com · +91 99740 42363</span>
-          <span>
-            <Link href="#" className="hover:text-white transition-colors">Terms</Link>
-            {' · '}
-            <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-            {' · '}
-            <Link href="#" className="hover:text-white transition-colors">DPA</Link>
-          </span>
         </div>
       </div>
     </footer>

@@ -316,9 +316,6 @@ export default async function AboutPage() {
                 Help us build the EMR India deserves.
               </p>
             </div>
-            <Link href="#" className="btn btn-solid btn-l whitespace-nowrap">
-              See open roles <span className="arr">→</span>
-            </Link>
           </div>
         </div>
       </section>
