@@ -280,9 +280,9 @@ export default function ClinicsPage() {
                   className="font-display font-extrabold text-tp-slate-900"
                   style={{ fontSize: '42px', lineHeight: 1 }}
                 >
-                  ₹X,XXX
+                  Custom
                 </span>
-                <span className="text-[13px] text-tp-slate-500 ml-1.5">per month</span>
+                <div className="text-[13px] text-tp-slate-500 mt-1">Pricing scales with your practice</div>
               </div>
               <ul className="checks">
                 <li>AI Rx modes</li>
@@ -290,8 +290,8 @@ export default function ClinicsPage() {
                 <li>Basic billing</li>
                 <li>Patient records</li>
               </ul>
-              <Link href="https://health.tatvacare.in/login" className="btn btn-outline btn-l mt-auto">
-                Start Free Trial
+              <Link href="/contact" className="btn btn-outline btn-l mt-auto">
+                Talk to sales <span className="arr">→</span>
               </Link>
             </div>
 
@@ -318,9 +318,9 @@ export default function ClinicsPage() {
                   className="font-display font-extrabold text-tp-slate-900"
                   style={{ fontSize: '42px', lineHeight: 1 }}
                 >
-                  ₹XX,XXX
+                  Custom
                 </span>
-                <span className="text-[13px] text-tp-slate-500 ml-1.5">per month</span>
+                <div className="text-[13px] text-tp-slate-500 mt-1">Tailored to your clinic size</div>
               </div>
               <ul className="checks">
                 <li>Everything in Solo, plus</li>
@@ -328,8 +328,8 @@ export default function ClinicsPage() {
                 <li>OPD queue</li>
                 <li>Lab integration</li>
               </ul>
-              <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l mt-auto">
-                Start Free Trial <span className="arr">→</span>
+              <Link href="/contact" className="btn btn-solid btn-l mt-auto">
+                Talk to sales <span className="arr">→</span>
               </Link>
             </div>
           </div>

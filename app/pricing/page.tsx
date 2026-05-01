@@ -124,10 +124,10 @@ export default function PricingPage() {
                   className="font-display font-extrabold text-tp-slate-900"
                   style={{ fontSize: '42px', lineHeight: 1 }}
                 >
-                  ₹X,XXX
+                  Custom
                 </span>
                 <div className="text-[13px] text-tp-slate-500 mt-1">
-                  per month, billed monthly
+                  Pricing scales with your practice
                 </div>
               </div>
               <ul className="checks" style={{ margin: 0 }}>
@@ -138,8 +138,8 @@ export default function PricingPage() {
                 <li>WhatsApp messaging</li>
                 <li>Email + chat support</li>
               </ul>
-              <Link href="https://health.tatvacare.in/login" className="btn btn-outline btn-l mt-auto">
-                Start Free Trial
+              <Link href="/contact" className="btn btn-outline btn-l mt-auto">
+                Talk to sales <span className="arr">→</span>
               </Link>
             </div>
 
@@ -178,10 +178,10 @@ export default function PricingPage() {
                   className="font-display font-extrabold text-tp-slate-900"
                   style={{ fontSize: '42px', lineHeight: 1 }}
                 >
-                  ₹XX,XXX
+                  Custom
                 </span>
                 <div className="text-[13px] text-tp-slate-500 mt-1">
-                  per month, billed monthly
+                  Tailored to your clinic size
                 </div>
               </div>
               <ul className="checks" style={{ margin: 0 }}>
@@ -193,8 +193,8 @@ export default function PricingPage() {
                 <li>Custom clinic website + Google My Business</li>
                 <li>Priority phone support</li>
               </ul>
-              <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l mt-auto">
-                Start Free Trial <span className="arr">→</span>
+              <Link href="/contact" className="btn btn-solid btn-l mt-auto">
+                Talk to sales <span className="arr">→</span>
               </Link>
             </div>
 
@@ -220,14 +220,14 @@ export default function PricingPage() {
                 <p className="text-sm text-tp-slate-600 mt-1">For hospitals &amp; chains.</p>
               </div>
               <div>
-                <div
-                  className="font-display font-semibold text-tp-slate-800"
-                  style={{ fontSize: '18px', lineHeight: 1.2 }}
+                <span
+                  className="font-display font-extrabold text-tp-slate-900"
+                  style={{ fontSize: '42px', lineHeight: 1 }}
                 >
-                  Custom pricing
-                </div>
-                <div className="font-body text-sm text-tp-slate-500 mt-1.5">
-                  tailored to scale &amp; SLA
+                  Custom
+                </span>
+                <div className="text-[13px] text-tp-slate-500 mt-1">
+                  Volume pricing for hospitals
                 </div>
               </div>
               <ul className="checks" style={{ margin: 0 }}>
@@ -240,7 +240,7 @@ export default function PricingPage() {
                 <li>On-site onboarding</li>
               </ul>
               <Link href="/contact" className="btn btn-solid btn-l mt-auto">
-                Book a Demo <span className="arr">→</span>
+                Talk to sales <span className="arr">→</span>
               </Link>
             </div>
           </div>
