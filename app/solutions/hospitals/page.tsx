@@ -65,10 +65,7 @@ export default function HospitalsPage() {
         aria-labelledby="hospitals-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6">
-          <div
-            className="grid items-center gap-16"
-            style={{ gridTemplateColumns: '1.1fr 0.9fr' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-16 items-center">
             {/* Left copy */}
             <div>
               <span className="tp-eyebrow">For Hospitals &amp; Multi-Location</span>
@@ -104,12 +101,139 @@ export default function HospitalsPage() {
               </p>
             </div>
 
-            {/* Right placeholder */}
-            <div
-              className="ph ph-aspect-4-3"
-              data-replace-with="Hospital UI mock — IPD discharge summary or queue dashboard"
-              aria-label="Hospital command-center dashboard placeholder"
-            >
+            {/* Right — Hospital Command Center mock */}
+            <div className="relative">
+              <div className="ph aspect-auto md:aspect-[4/3]">
+                <div className="md:absolute md:inset-0 flex bg-white w-full">
+
+                  {/* Sidebar — desktop only */}
+                  <div className="hidden md:flex flex-col flex-shrink-0 w-[100px] bg-tp-blue-900 text-white p-3 px-2.5">
+                    <div className="flex items-center gap-1.5 font-display font-bold text-[11px]">
+                      <span className="w-[18px] h-[18px] rounded-[5px] bg-tp-blue-500 grid place-items-center text-[9px]">T</span>
+                      TP
+                    </div>
+                    <div className="mt-3 flex flex-col gap-0.5 text-[9px] text-white/70">
+                      <div className="bg-tp-blue-500 py-[5px] px-2 rounded-[5px] text-white">Dashboard</div>
+                      <div className="py-[5px] px-2">OPD</div>
+                      <div className="py-[5px] px-2">IPD</div>
+                      <div className="py-[5px] px-2">Pharmacy</div>
+                      <div className="py-[5px] px-2">Lab</div>
+                      <div className="py-[5px] px-2">Discharge</div>
+                      <div className="py-[5px] px-2">Reports</div>
+                    </div>
+                  </div>
+
+                  {/* Main panel */}
+                  <div className="flex-1 min-w-0 p-3 flex flex-col gap-2">
+
+                    {/* Mobile top bar */}
+                    <div className="flex md:hidden items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-[18px] h-[18px] rounded-[5px] bg-tp-blue-900 grid place-items-center text-[9px] text-white font-bold">T</span>
+                        <span className="text-[10px] font-semibold text-tp-blue-900 bg-tp-blue-50 px-2 py-0.5 rounded-full">Dashboard</span>
+                      </div>
+                      <span className="badge badge-blue" style={{ fontSize: '9px', height: '18px', padding: '0 6px' }}>● Live</span>
+                    </div>
+
+                    {/* Header strip */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="min-w-0">
+                        <div className="font-display font-bold text-tp-slate-900 text-[11px] truncate">Greenfield Hospital · Mumbai</div>
+                        <div className="text-[9px] text-tp-slate-500 mt-0.5"><span className="text-green-500">●</span> Live · 09:42 AM · 4 active wards</div>
+                      </div>
+                      <span className="hidden md:inline-flex badge badge-blue flex-shrink-0" style={{ fontSize: '9px', height: '18px', padding: '0 6px' }}>Command Center</span>
+                    </div>
+
+                    {/* 4 stat mini-cards */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5">
+                      <div className="bg-tp-blue-50 border border-tp-blue-100 rounded-lg p-2">
+                        <div className="text-[8px] font-semibold text-tp-slate-400 uppercase tracking-wide leading-none">OPD Active</div>
+                        <div className="font-display font-extrabold text-tp-slate-900 text-[16px] leading-tight mt-0.5">47</div>
+                        <div className="text-[8px] text-green-600 font-medium">↑ 8 vs avg</div>
+                      </div>
+                      <div className="bg-tp-slate-50 border border-tp-slate-100 rounded-lg p-2">
+                        <div className="text-[8px] font-semibold text-tp-slate-400 uppercase tracking-wide leading-none">IPD Beds</div>
+                        <div className="font-display font-extrabold text-tp-slate-900 text-[16px] leading-tight mt-0.5">82/120</div>
+                        <div className="text-[8px] text-tp-slate-500">68% occupied</div>
+                      </div>
+                      <div className="bg-tp-slate-50 border border-tp-slate-100 rounded-lg p-2">
+                        <div className="text-[8px] font-semibold text-tp-slate-400 uppercase tracking-wide leading-none">Discharges</div>
+                        <div className="font-display font-extrabold text-tp-slate-900 text-[16px] leading-tight mt-0.5">12</div>
+                        <div className="text-[8px] text-amber-500 font-medium">6 pending</div>
+                      </div>
+                      <div className="bg-tp-slate-50 border border-tp-slate-100 rounded-lg p-2">
+                        <div className="text-[8px] font-semibold text-tp-slate-400 uppercase tracking-wide leading-none">Lab Pending</div>
+                        <div className="font-display font-extrabold text-tp-slate-900 text-[16px] leading-tight mt-0.5">23</div>
+                        <div className="text-[8px] text-tp-slate-500">avg TAT 2.4h</div>
+                      </div>
+                    </div>
+
+                    {/* Bottom zone: Discharges list + Alerts */}
+                    <div className="flex flex-col sm:flex-row gap-2 flex-1">
+
+                      {/* Discharges list */}
+                      <div className="sm:flex-[3] border border-tp-slate-200 rounded-xl p-2.5 flex flex-col gap-1.5">
+                        <div className="text-[8px] font-display font-bold text-tp-slate-400 uppercase tracking-widest">Today&apos;s Discharges</div>
+                        <div className="flex items-center justify-between gap-1">
+                          <div className="min-w-0">
+                            <span className="font-display font-semibold text-tp-slate-900 text-[10px]">Ms. Anita S.</span>
+                            <span className="text-[9px] text-tp-slate-400 ml-1">W-3 / Bed 14</span>
+                          </div>
+                          <span className="badge badge-success flex-shrink-0" style={{ height: '16px', padding: '0 5px', fontSize: '8px' }}>● ready</span>
+                        </div>
+                        <div className="flex items-center justify-between gap-1">
+                          <div className="min-w-0">
+                            <span className="font-display font-semibold text-tp-slate-900 text-[10px]">Mr. Rajesh K.</span>
+                            <span className="text-[9px] text-tp-slate-400 ml-1">W-2 / Bed 08</span>
+                          </div>
+                          <span className="badge badge-blue flex-shrink-0" style={{ height: '16px', padding: '0 5px', fontSize: '8px' }}>⚙ drafting</span>
+                        </div>
+                        <div className="flex items-center justify-between gap-1">
+                          <div className="min-w-0">
+                            <span className="font-display font-semibold text-tp-slate-900 text-[10px]">Mrs. Kavya M.</span>
+                            <span className="text-[9px] text-tp-slate-400 ml-1">ICU-1 / Bed 03</span>
+                          </div>
+                          <span className="badge badge-amber flex-shrink-0" style={{ height: '16px', padding: '0 5px', fontSize: '8px' }}>● review</span>
+                        </div>
+                        <div className="text-[8px] text-tp-slate-400 mt-auto italic">AI-drafted · sign-off in 1 tap</div>
+                      </div>
+
+                      {/* Alerts */}
+                      <div className="sm:flex-[2] flex flex-col gap-1.5">
+                        <div className="text-[8px] font-display font-bold text-tp-slate-400 uppercase tracking-widest">Alerts</div>
+                        <div className="bg-amber-50 border border-amber-200 rounded-lg p-2">
+                          <div className="font-display font-semibold text-amber-800 text-[10px]">Lab critical · Mrs. Iyer</div>
+                          <div className="text-[9px] text-amber-700">K+ 6.8 mEq/L</div>
+                        </div>
+                        <div className="bg-violet-50 border border-violet-200 rounded-lg p-2">
+                          <div className="font-display font-semibold text-violet-800 text-[10px]">Drug interaction · Bed 14</div>
+                          <div className="text-[9px] text-violet-700">review required</div>
+                        </div>
+                        <div className="bg-tp-blue-50 border border-tp-blue-100 rounded-lg p-2">
+                          <div className="font-display font-semibold text-tp-blue-800 text-[10px]">OT slot opened · 14:00</div>
+                          <div className="text-[9px] text-tp-blue-700">Theatre 2 · available</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Inline overlay — mobile only */}
+                    <div className="flex md:hidden items-center gap-2 bg-white border border-tp-slate-200 rounded-xl p-2 px-2.5 shadow-sm">
+                      <span className="w-5 h-5 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-[9px] flex-shrink-0">●</span>
+                      <div className="font-display font-semibold text-[10px] text-tp-slate-900">One platform · OPD to discharge · all departments synced</div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating overlay — desktop only */}
+              <div className="hidden md:flex absolute left-[-16px] bottom-5 bg-white border border-tp-slate-200 rounded-[14px] p-2.5 px-3 shadow-tp-md gap-2 items-start">
+                <span className="w-6 h-6 rounded-full bg-tp-blue-50 text-tp-blue-600 grid place-items-center text-[10px] flex-shrink-0 mt-0.5">●</span>
+                <div>
+                  <div className="font-display font-semibold text-[12px] text-tp-slate-900">One platform · OPD to discharge</div>
+                  <div className="text-[11px] text-tp-slate-500">All departments synced · live data</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
