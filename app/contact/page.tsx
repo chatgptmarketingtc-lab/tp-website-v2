@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { PhoneIcon, MailIcon, MessageCircleIcon, CheckCircleIcon, MapPinIcon } from '@/components/icons'
 
 const DESIGNATIONS = ['Doctor', 'Practice Manager', 'Hospital Admin', 'Other']
@@ -380,10 +381,15 @@ export default function ContactPage() {
                 <br />
                 Bengaluru, Karnataka — 560102
               </p>
-              <div className="office-map" data-placeholder="map-bengaluru" aria-hidden="true">
-                <span className="pin">
-                  <MapPinIcon size={14} /> HSR Layout
-                </span>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                <Image
+                  src="/offices/bengaluru-office.webp"
+                  alt="TatvaPractice office in HSR Layout, Bengaluru"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={false}
+                />
               </div>
               <a
                 className="office-link"
@@ -417,10 +423,15 @@ export default function ContactPage() {
                 <br />
                 Ahmedabad, Gujarat — 380058
               </p>
-              <div className="office-map" data-placeholder="map-ahmedabad" aria-hidden="true">
-                <span className="pin">
-                  <MapPinIcon size={14} /> Ambli-Bopal
-                </span>
+              <div className="relative aspect-[16/9] overflow-hidden rounded-xl">
+                <Image
+                  src="/offices/ahmedabad-office.jpeg"
+                  alt="TatvaPractice office in Ambli-Bopal, Ahmedabad"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={false}
+                />
               </div>
               <a
                 className="office-link"
