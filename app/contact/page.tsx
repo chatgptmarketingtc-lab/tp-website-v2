@@ -272,7 +272,7 @@ export default function ContactPage() {
                 >
                   +91 99740 42363
                 </p>
-                <p className="text-tp-slate-500 text-sm mt-1">Mon–Sat · 9 AM – 8 PM IST</p>
+                <p className="text-tp-slate-500 text-sm mt-1">Mon–Sat · 9 AM – 7 PM IST</p>
               </div>
 
               {/* Email */}
@@ -282,15 +282,12 @@ export default function ContactPage() {
                   <span className="text-sm font-medium uppercase tracking-wide">Email</span>
                 </div>
                 <a
-                  href="mailto:hello@tatvapractice.com"
+                  href="mailto:support@tatvacare.in"
                   className="font-display font-bold text-tp-blue-700 hover:underline"
                   style={{ fontSize: '18px', lineHeight: '26px' }}
                 >
-                  hello@tatvapractice.com
+                  support@tatvacare.in
                 </a>
-                <p className="text-tp-slate-500 text-xs mt-1.5">
-                  Support: support@tatvacare.in · Partnerships: partners@tatvapractice.com
-                </p>
               </div>
 
               {/* WhatsApp */}
