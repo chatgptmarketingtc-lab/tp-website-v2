@@ -336,14 +336,8 @@ export default async function SecurityPage() {
             Architecture, threat model, compliance reports — available under NDA on request.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="#" className="btn btn-outline btn-m">
-              Download SOC Report
-            </Link>
-            <Link href="#" className="btn btn-outline btn-m">
-              Download DPA
-            </Link>
-            <Link href="#" className="btn btn-outline btn-m">
-              Download Security Whitepaper
+            <Link href="/contact" className="btn btn-solid btn-m">
+              Request documentation <span className="arr">→</span>
             </Link>
           </div>
         </div>
