@@ -6,11 +6,19 @@ import CTABand from '@/components/CTABand'
 import { LinkedinIcon } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: "About — We're building the EMR India deserves | TatvaPractice",
+  title: "About — We're building the EMR India deserves",
   description:
     'We are building the EMR India deserves. TatvaPractice is part of TatvaCare — a healthcare technology company solving India care delivery gaps end-to-end.',
-  alternates: {
-    canonical: 'https://tatvapractice.com/company/about',
+  alternates: { canonical: 'https://tatvapractice.com/company/about' },
+  openGraph: {
+    title: "About TatvaPractice — We're building the EMR India deserves",
+    description: 'TatvaPractice is part of TatvaCare — a healthcare technology company solving India care delivery gaps end-to-end.',
+    type: 'website',
+    url: 'https://tatvapractice.com/company/about',
+  },
+  twitter: {
+    title: "About TatvaPractice",
+    description: "We're building the EMR India deserves. Part of TatvaCare.",
   },
 }
 

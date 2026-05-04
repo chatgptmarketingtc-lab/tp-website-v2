@@ -14,11 +14,19 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: "SnapRx — Photograph any prescription. We'll digitise it. | TatvaPractice",
+  title: "SnapRx — Photograph any prescription. We'll digitise it.",
   description:
     'SnapRx is a healthcare-grade OCR engine purpose-built for the messy reality of handwritten Indian prescriptions.',
-  alternates: {
-    canonical: 'https://tatvapractice.com/product/snaprx',
+  alternates: { canonical: 'https://tatvapractice.com/product/snaprx' },
+  openGraph: {
+    title: "SnapRx — Photo to digital prescription | TatvaPractice",
+    description: 'Healthcare-grade OCR for handwritten Indian prescriptions. Photograph any Rx and get a clean digital record.',
+    type: 'website',
+    url: 'https://tatvapractice.com/product/snaprx',
+  },
+  twitter: {
+    title: 'SnapRx | TatvaPractice',
+    description: 'Photograph any prescription. Get a clean digital record instantly.',
   },
 }
 
@@ -95,6 +103,21 @@ const faqItems = [
 export default async function SnapRxPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'SnapRx',
+            applicationCategory: 'HealthApplication',
+            operatingSystem: 'Web, iOS, Android',
+            description: 'SnapRx is a healthcare-grade OCR engine purpose-built for handwritten Indian prescriptions.',
+            url: 'https://tatvapractice.com/product/snaprx',
+            offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
+          }),
+        }}
+      />
       {/* Hero */}
       <section
         className="py-24 pt-20 bg-tp-slate-100 hero-spotlight text-center"

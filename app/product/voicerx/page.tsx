@@ -14,15 +14,19 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: "VoiceRx — Speak. We'll write the prescription. | TatvaPractice",
+  title: "VoiceRx — Speak. We'll write the prescription.",
   description:
     'VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages.',
-  alternates: {
-    canonical: 'https://tatvapractice.com/product/voicerx',
-  },
+  alternates: { canonical: 'https://tatvapractice.com/product/voicerx' },
   openGraph: {
-    description:
-      'VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages.',
+    title: "VoiceRx — Voice-to-prescription in 30 seconds | TatvaPractice",
+    description: 'VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages.',
+    type: 'website',
+    url: 'https://tatvapractice.com/product/voicerx',
+  },
+  twitter: {
+    title: 'VoiceRx | TatvaPractice',
+    description: 'Voice to prescription in 30 seconds. In 9 Indian languages.',
   },
 }
 
@@ -110,6 +114,21 @@ const faqItems = [
 export default async function VoiceRxPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'VoiceRx',
+            applicationCategory: 'HealthApplication',
+            operatingSystem: 'Web, iOS, Android',
+            description: 'VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages.',
+            url: 'https://tatvapractice.com/product/voicerx',
+            offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
+          }),
+        }}
+      />
       {/* Hero */}
       <section
         className="py-24 pt-20 bg-tp-slate-100 hero-spotlight text-center"

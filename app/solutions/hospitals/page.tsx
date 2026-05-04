@@ -13,9 +13,18 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'For Hospitals — Enterprise-grade. India-ready. | TatvaPractice',
-  alternates: {
-    canonical: 'https://tatvapractice.com/solutions/hospitals',
+  title: 'For Hospitals — Enterprise-grade. India-ready.',
+  description: 'TatvaPractice for hospitals and multi-location groups. Command center dashboards, multi-department OPD, ABDM integration, and volume pricing.',
+  alternates: { canonical: 'https://tatvapractice.com/solutions/hospitals' },
+  openGraph: {
+    title: 'For Hospitals & Multi-location Groups | TatvaPractice',
+    description: 'Enterprise EMR for Indian hospitals. Command center dashboards, multi-department OPD, ABDM integration.',
+    type: 'website',
+    url: 'https://tatvapractice.com/solutions/hospitals',
+  },
+  twitter: {
+    title: 'TatvaPractice for Hospitals',
+    description: 'Enterprise-grade EMR for Indian hospitals. Multi-department OPD, ABDM-certified, command center dashboards.',
   },
 }
 

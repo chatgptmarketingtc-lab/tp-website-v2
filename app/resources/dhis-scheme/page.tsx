@@ -6,15 +6,19 @@ import FAQAccordion from '@/components/FAQAccordion'
 import { UserCheckIcon, BadgeCheckIcon, ShieldCheckIcon, FileCheck2Icon } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'DHIS Scheme — Earn for going digital | TatvaPractice',
+  title: 'DHIS Scheme — Earn for going digital',
   description:
     'The Digital Health Incentives Scheme (DHIS) pays Indian doctors for every consultation digitised through an NHA-approved EMR. TatvaPractice qualifies.',
   alternates: { canonical: 'https://tatvapractice.com/resources/dhis-scheme' },
   openGraph: {
-    title: 'DHIS Scheme — Earn for going digital | TatvaPractice',
+    title: 'DHIS Scheme — Get paid for going digital | TatvaPractice',
     description: 'Get paid for going digital. TatvaPractice is NHA-approved and ABDM-certified.',
     type: 'website',
     url: 'https://tatvapractice.com/resources/dhis-scheme',
+  },
+  twitter: {
+    title: 'DHIS Scheme | TatvaPractice',
+    description: 'Get paid for digitising consultations. NHA-approved, ABDM-certified.',
   },
 }
 

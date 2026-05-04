@@ -5,9 +5,18 @@ import CTABand from '@/components/CTABand'
 import FAQAccordion from '@/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'Pricing — Simple pricing. Indian-priced. | TatvaPractice',
-  alternates: {
-    canonical: 'https://tatvapractice.com/pricing',
+  title: 'Pricing — Simple pricing. Indian-priced.',
+  description: 'Transparent pricing for solo practitioners, clinics, and hospitals. Custom plans that scale with your practice.',
+  alternates: { canonical: 'https://tatvapractice.com/pricing' },
+  openGraph: {
+    title: 'Pricing | TatvaPractice',
+    description: 'Custom plans for solo practitioners, clinics, and hospitals.',
+    type: 'website',
+    url: 'https://tatvapractice.com/pricing',
+  },
+  twitter: {
+    title: 'Pricing | TatvaPractice',
+    description: 'Custom plans for solo practitioners, clinics, and hospitals.',
   },
 }
 

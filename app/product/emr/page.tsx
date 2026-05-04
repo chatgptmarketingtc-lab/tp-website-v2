@@ -16,11 +16,19 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'Core EMR — Your complete patient record. | TatvaPractice',
+  title: 'Core EMR — Your complete patient record.',
   description:
     'Patient history, SOAP notes, vaccination, lab integration, telehealth — one connected view across every visit.',
-  alternates: {
-    canonical: 'https://tatvapractice.com/product/emr',
+  alternates: { canonical: 'https://tatvapractice.com/product/emr' },
+  openGraph: {
+    title: 'Core EMR — Complete patient records | TatvaPractice',
+    description: 'Patient history, SOAP notes, vaccination, lab integration, telehealth — one connected view across every visit.',
+    type: 'website',
+    url: 'https://tatvapractice.com/product/emr',
+  },
+  twitter: {
+    title: 'Core EMR | TatvaPractice',
+    description: 'Complete patient records. History, SOAP notes, labs, telehealth — one view.',
   },
 }
 
@@ -98,6 +106,21 @@ const faqItems = [
 export default async function CoreEMRPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'TatvaPractice Core EMR',
+            applicationCategory: 'HealthApplication',
+            operatingSystem: 'Web, iOS, Android',
+            description: 'Patient history, SOAP notes, vaccination, lab integration, telehealth — one connected view across every visit.',
+            url: 'https://tatvapractice.com/product/emr',
+            offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
+          }),
+        }}
+      />
       {/* Hero */}
       <section
         className="py-24 pt-20 bg-tp-slate-100 hero-spotlight text-center"

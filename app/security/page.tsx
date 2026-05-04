@@ -5,15 +5,19 @@ import CTABand from '@/components/CTABand'
 import { ShieldCheckIcon, ServerIcon, CheckCircleIcon } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'Security & Compliance — Your data is safe. | TatvaPractice',
+  title: 'Security & Compliance — Your data is safe.',
   description:
     'TatvaPractice is built on enterprise-grade security and full Indian regulatory compliance — NHA-approved, ABDM-certified, ISO 27001, DPDPA-compliant.',
   alternates: { canonical: 'https://tatvapractice.com/security' },
   openGraph: {
     title: 'Security & Compliance — Your data is safe. | TatvaPractice',
-    description: 'Enterprise-grade security and full Indian regulatory compliance.',
+    description: 'Enterprise-grade security and full Indian regulatory compliance. NHA-approved, ABDM-certified, ISO 27001, DPDPA-compliant.',
     type: 'website',
     url: 'https://tatvapractice.com/security',
+  },
+  twitter: {
+    title: 'Security & Compliance | TatvaPractice',
+    description: 'Enterprise-grade security. Full Indian regulatory compliance.',
   },
 }
 

@@ -13,16 +13,19 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'ABDM & ABHA — Native integration | TatvaPractice',
+  title: 'ABDM & ABHA — Native integration',
   description:
     "TatvaPractice was built on India's digital health rails from day one. ABDM-certified, ABHA-compliant, NHA-approved.",
   alternates: { canonical: 'https://tatvapractice.com/resources/abdm-abha' },
   openGraph: {
     title: 'ABDM & ABHA — Native integration | TatvaPractice',
-    description:
-      'Native ABDM. Real ABHA. Built in, not bolted on. TatvaPractice is ABDM-certified, ABHA-compliant, NHA-approved.',
+    description: 'Native ABDM. Real ABHA. Built in, not bolted on. TatvaPractice is ABDM-certified, ABHA-compliant, NHA-approved.',
     type: 'website',
     url: 'https://tatvapractice.com/resources/abdm-abha',
+  },
+  twitter: {
+    title: 'ABDM & ABHA | TatvaPractice',
+    description: 'Native ABDM. Real ABHA. Built in from day one, not bolted on.',
   },
 }
 

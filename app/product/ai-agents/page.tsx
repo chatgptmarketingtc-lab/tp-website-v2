@@ -7,11 +7,19 @@ import TestimonialCard from '@/components/TestimonialCard'
 import FAQAccordion from '@/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'AI Agents — Your clinical co-pilot. | TatvaPractice',
+  title: 'AI Agents — Your clinical co-pilot.',
   description:
-    'Amaya is your doctor\'s AI agent — DDx, drug-interaction alerts, SOAP notes, and lab interpretation. Mira is your patient\'s agent — scheduling, reminders, and WhatsApp comms.',
-  alternates: {
-    canonical: 'https://tatvapractice.com/product/ai-agents',
+    "Amaya is your doctor's AI agent — DDx, drug-interaction alerts, SOAP notes, and lab interpretation. Mira is your patient's agent — scheduling, reminders, and WhatsApp comms.",
+  alternates: { canonical: 'https://tatvapractice.com/product/ai-agents' },
+  openGraph: {
+    title: 'AI Agents — Amaya & Mira | TatvaPractice',
+    description: "Amaya handles clinical co-piloting. Mira handles patient engagement. Two AI agents built for Indian healthcare.",
+    type: 'website',
+    url: 'https://tatvapractice.com/product/ai-agents',
+  },
+  twitter: {
+    title: 'AI Agents | TatvaPractice',
+    description: 'Amaya (clinical co-pilot) and Mira (patient agent) — AI built for Indian healthcare.',
   },
 }
 
@@ -46,6 +54,21 @@ const faqItems = [
 export default async function AIAgentsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'TatvaPractice AI Agents',
+            applicationCategory: 'HealthApplication',
+            operatingSystem: 'Web, iOS, Android',
+            description: "Amaya is your doctor's AI agent — DDx, drug-interaction alerts, SOAP notes, and lab interpretation. Mira is your patient's agent — scheduling, reminders, and WhatsApp comms.",
+            url: 'https://tatvapractice.com/product/ai-agents',
+            offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
+          }),
+        }}
+      />
       {/* Hero */}
       <section
         className="py-24 pt-20 bg-tp-slate-100 hero-spotlight text-center"

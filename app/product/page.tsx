@@ -20,9 +20,18 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'Product Overview — TatvaPractice',
-  alternates: {
-    canonical: 'https://tatvapractice.com/product',
+  title: 'Product Overview',
+  description: 'VoiceRx, SmartSync, SnapRx, AI Agents, Core EMR — every tool Indian doctors need to see more patients with less effort.',
+  alternates: { canonical: 'https://tatvapractice.com/product' },
+  openGraph: {
+    title: 'Product Overview | TatvaPractice',
+    description: 'VoiceRx, SmartSync, SnapRx, AI Agents, Core EMR — every tool Indian doctors need.',
+    type: 'website',
+    url: 'https://tatvapractice.com/product',
+  },
+  twitter: {
+    title: 'Product Overview | TatvaPractice',
+    description: 'VoiceRx, SmartSync, SnapRx, AI Agents, Core EMR — every tool Indian doctors need.',
   },
 }
 

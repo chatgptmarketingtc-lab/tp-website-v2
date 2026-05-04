@@ -10,14 +10,19 @@ export const metadata: Metadata = {
   },
   description: 'Less typing. More treating. The AI-first EMR built for Indian OPD reality. ABDM-certified, 9 Indian languages, trusted by 10,000+ doctors.',
   metadataBase: new URL('https://tatvapractice.com'),
+  robots: { index: true, follow: true },
   openGraph: {
     siteName: 'TatvaPractice',
     type: 'website',
     locale: 'en_IN',
+    title: 'TatvaPractice — AI-First EMR for Indian Doctors and Hospitals',
+    description: 'Less typing. More treating. The AI-first EMR built for Indian OPD reality. ABDM-certified, 9 Indian languages, trusted by 10,000+ doctors.',
   },
   twitter: {
     card: 'summary_large_image',
     site: '@TatvaPractice',
+    title: 'TatvaPractice — AI-First EMR for Indian Doctors and Hospitals',
+    description: 'Less typing. More treating. The AI-first EMR built for Indian OPD reality.',
   },
 }
 

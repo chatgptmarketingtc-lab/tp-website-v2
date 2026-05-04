@@ -11,16 +11,19 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'TatvaPractice — AI-First EMR for Indian Doctors and Hospitals',
+  title: { absolute: 'TatvaPractice — AI-First EMR for Indian Doctors and Hospitals' },
   description: 'Less typing. More treating. The AI-first EMR built for Indian OPD reality. ABDM-certified, 9 Indian languages, trusted by 10,000+ doctors.',
   alternates: { canonical: 'https://tatvapractice.com/' },
   openGraph: {
     title: 'TatvaPractice — Less typing. More treating.',
-    description: 'The AI-first EMR built for Indian OPD reality.',
+    description: 'The AI-first EMR built for Indian OPD reality. ABDM-certified, 9 Indian languages, trusted by 10,000+ doctors.',
     type: 'website',
     url: 'https://tatvapractice.com/',
   },
-  twitter: { title: 'TatvaPractice — Less typing. More treating.', description: 'The AI-first EMR built for Indian OPD reality.' },
+  twitter: {
+    title: 'TatvaPractice — Less typing. More treating.',
+    description: 'The AI-first EMR built for Indian OPD reality. ABDM-certified, 9 Indian languages.',
+  },
 }
 
 const TESTIMONIALS = [
@@ -47,6 +50,27 @@ const TESTIMONIALS = [
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'TatvaPractice',
+            url: 'https://tatvapractice.com',
+            logo: 'https://tatvapractice.com/brand/tatvapractice-logo-white.png',
+            description: 'The AI-first EMR built for Indian OPD reality. Less typing. More treating.',
+            sameAs: [
+              'https://www.linkedin.com/company/tatvacare/',
+            ],
+            parentOrganization: {
+              '@type': 'Organization',
+              name: 'TatvaCare',
+              url: 'https://www.tatvacare.in',
+            },
+          }),
+        }}
+      />
       {/* ── HERO SPLIT ── */}
       <section className="py-24 pt-[72px]" aria-labelledby="hero-heading">
         <div className="max-w-wrap mx-auto px-6">

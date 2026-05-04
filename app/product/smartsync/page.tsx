@@ -14,11 +14,19 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'SmartSync — Write naturally. Save digitally. | TatvaPractice',
+  title: 'SmartSync — Write naturally. Save digitally.',
   description:
     'SmartSync turns your handwritten notes and prescriptions into structured digital records. Use the digital pen the way you always have — we handle the rest.',
-  alternates: {
-    canonical: 'https://tatvapractice.com/product/smartsync',
+  alternates: { canonical: 'https://tatvapractice.com/product/smartsync' },
+  openGraph: {
+    title: 'SmartSync — Handwriting to digital records | TatvaPractice',
+    description: 'SmartSync turns handwritten notes and prescriptions into structured digital records.',
+    type: 'website',
+    url: 'https://tatvapractice.com/product/smartsync',
+  },
+  twitter: {
+    title: 'SmartSync | TatvaPractice',
+    description: 'Write naturally. Prescriptions and notes go digital automatically.',
   },
 }
 
@@ -103,6 +111,21 @@ const faqItems = [
 export default async function SmartSyncPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'SmartSync',
+            applicationCategory: 'HealthApplication',
+            operatingSystem: 'Web, iOS, Android',
+            description: 'SmartSync turns handwritten notes and prescriptions into structured digital records automatically.',
+            url: 'https://tatvapractice.com/product/smartsync',
+            offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
+          }),
+        }}
+      />
       {/* Hero */}
       <section
         className="py-24 pt-20 bg-tp-slate-100 hero-spotlight text-center"

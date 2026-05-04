@@ -15,9 +15,18 @@ import {
 } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'For Clinics — Go digital from day one | TatvaPractice',
-  alternates: {
-    canonical: 'https://tatvapractice.com/solutions/clinics',
+  title: 'For Clinics — Go digital from day one',
+  description: 'TatvaPractice for clinics and solo practitioners. AI prescriptions, appointments, billing, lab integration, and patient records — without the complexity.',
+  alternates: { canonical: 'https://tatvapractice.com/solutions/clinics' },
+  openGraph: {
+    title: 'For Clinics & Solo Practitioners | TatvaPractice',
+    description: 'AI prescriptions, appointments, billing, lab integration. Everything a clinic needs — without the complexity.',
+    type: 'website',
+    url: 'https://tatvapractice.com/solutions/clinics',
+  },
+  twitter: {
+    title: 'TatvaPractice for Clinics',
+    description: 'Go digital from day one. AI prescriptions, appointments, billing — built for Indian clinics.',
   },
 }
 
