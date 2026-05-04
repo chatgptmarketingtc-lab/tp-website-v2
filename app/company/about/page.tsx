@@ -56,15 +56,6 @@ const suite = [
   { name: 'Visit Health', desc: 'Insurance + outpatient benefits for employees.' },
 ]
 
-const investors = [
-  'Sequoia India',
-  'Nexus',
-  'Elevation',
-  'Omidyar Network',
-  'HCare',
-  '3one4 Capital',
-]
-
 export default async function AboutPage() {
   return (
     <>
@@ -283,31 +274,6 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Investors */}
-      <section className="bg-tp-slate-100 py-24 text-center" aria-labelledby="investors-heading">
-        <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>Investors &amp; advisors</span>
-          <h2
-            id="investors-heading"
-            className="font-display font-bold text-tp-slate-900 mt-3.5"
-            style={{ fontSize: 'clamp(28px,3.6vw,48px)', lineHeight: 1.17, letterSpacing: '-0.02em' }}
-          >
-            Backed by the people who back Indian healthcare.
-          </h2>
-          <div className="flex flex-wrap gap-8 justify-center mt-8 opacity-60 hover:opacity-100 transition-opacity duration-200">
-            {investors.map((name) => (
-              <span
-                key={name}
-                className="investor-ph"
-                data-replace-with={`${name} logo`}
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Careers */}
       <section className="bg-white py-24" aria-labelledby="careers-heading">
         <div className="max-w-wrap mx-auto px-6">
@@ -322,6 +288,15 @@ export default async function AboutPage() {
               </h3>
               <p className="text-tp-blue-800 mt-2" style={{ fontSize: '18px', lineHeight: '28px' }}>
                 Help us build the EMR India deserves.
+              </p>
+              <p className="text-tp-blue-800 mt-2" style={{ fontSize: '18px', lineHeight: '28px' }}>
+                Send us your profile at{' '}
+                <a
+                  href="mailto:recruitment@tatvacare.in"
+                  className="text-tp-blue-600 hover:text-tp-blue-700 underline underline-offset-2"
+                >
+                  recruitment@tatvacare.in
+                </a>
               </p>
             </div>
           </div>
