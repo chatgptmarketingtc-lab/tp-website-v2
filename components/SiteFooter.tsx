@@ -15,12 +15,9 @@ const COMPLIANCE_ITEMS = [
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-tp-slate-900 text-tp-slate-300 pt-20 pb-8">
+    <footer className="bg-tp-slate-900 text-tp-slate-300 pt-20 pb-8 overflow-x-hidden">
       <div className="max-w-wrap mx-auto px-6">
-        <div
-          className="grid gap-12 pb-12 border-b border-[#2C2C35]"
-          style={{ gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr' }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-x-8 gap-y-10 pb-12 border-b border-[#2C2C35]">
           {/* Brand column */}
           <div>
             <Link href="/" aria-label="TatvaPractice home">
