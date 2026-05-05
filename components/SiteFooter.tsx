@@ -46,17 +46,17 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          {/* Product links */}
+          {/* Features links */}
           <div>
-            <h5 className="text-white text-sm font-semibold mb-3.5">Product</h5>
+            <h5 className="text-white text-sm font-semibold mb-3.5">Features</h5>
             <ul className="list-none m-0 p-0 text-sm flex flex-col">
               {[
-                { href: '/product/voicerx',   label: 'VoiceRx' },
-                { href: '/product/smartsync',  label: 'SmartSync' },
-                { href: '/product/snaprx',     label: 'SnapRx' },
-                { href: '/product/ai-agents',  label: 'AI Agents' },
-                { href: '/product/emr',        label: 'Core EMR' },
-                { href: '/product',            label: 'Overview' },
+                { href: '/features/voicerx',   label: 'VoiceRx' },
+                { href: '/features/smartsync',  label: 'SmartSync' },
+                { href: '/features/snaprx',     label: 'SnapRx' },
+                { href: '/features/ai-agents',  label: 'AI Agents' },
+                { href: '/features/emr',        label: 'Core EMR' },
+                { href: '/features',            label: 'Overview' },
               ].map(({ href, label }) => (
                 <li key={href} className="py-1.5">
                   <Link href={href} className="text-tp-slate-300 hover:text-white transition-colors">{label}</Link>

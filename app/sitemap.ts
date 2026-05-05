@@ -6,12 +6,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes: { url: string; priority: number }[] = [
     { url: '/',                         priority: 1.0 },
-    { url: '/product',                  priority: 0.9 },
-    { url: '/product/voicerx',          priority: 0.9 },
-    { url: '/product/smartsync',        priority: 0.9 },
-    { url: '/product/snaprx',           priority: 0.9 },
-    { url: '/product/ai-agents',        priority: 0.9 },
-    { url: '/product/emr',              priority: 0.9 },
+    { url: '/features',                  priority: 0.9 },
+    { url: '/features/voicerx',          priority: 0.9 },
+    { url: '/features/smartsync',        priority: 0.9 },
+    { url: '/features/snaprx',           priority: 0.9 },
+    { url: '/features/ai-agents',        priority: 0.9 },
+    { url: '/features/emr',              priority: 0.9 },
     { url: '/solutions/clinics',        priority: 0.85 },
     { url: '/solutions/hospitals',      priority: 0.85 },
     { url: '/pricing',                  priority: 0.8 },

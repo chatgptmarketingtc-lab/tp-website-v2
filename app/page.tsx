@@ -232,7 +232,7 @@ export default function HomePage() {
                 <li>Specialty-aware structure (BD, TDS, OD, SOS, HS handled)</li>
                 <li>Audit-ready Rx in 30 seconds</li>
               </ul>
-              <Link href="/product/voicerx" className="btn-link mt-4 inline-flex">Learn more about VoiceRx <span className="arr">→</span></Link>
+              <Link href="/features/voicerx" className="btn-link mt-4 inline-flex">Learn more about VoiceRx <span className="arr">→</span></Link>
             </div>
             {/* VoiceRx mock */}
             <div className="ph ph-aspect-16-10" data-placeholder="ui-screenshot" data-replace-with="VoiceRx — split view: live waveform + transcription on left, structured prescription form on right with drug-interaction badges">
@@ -364,7 +364,7 @@ export default function HomePage() {
                 <li>Multi-branch sync with conflict resolution</li>
                 <li>No learning curve — write like you wrote yesterday</li>
               </ul>
-              <Link href="/product/smartsync" className="btn-link mt-4 inline-flex">Learn more about SmartSync <span className="arr">→</span></Link>
+              <Link href="/features/smartsync" className="btn-link mt-4 inline-flex">Learn more about SmartSync <span className="arr">→</span></Link>
             </div>
           </div>
         </div>
@@ -388,7 +388,7 @@ export default function HomePage() {
                 <li>Auto-structured SOAP notes from voice or ambient capture</li>
                 <li>Front-desk reminders, WhatsApp confirmations, queue updates</li>
               </ul>
-              <Link href="/product/ai-agents" className="btn-link mt-4 inline-flex">Meet the agents <span className="arr">→</span></Link>
+              <Link href="/features/ai-agents" className="btn-link mt-4 inline-flex">Meet the agents <span className="arr">→</span></Link>
             </div>
             {/* Amaya stylized card */}
             <div className="relative pb-6">

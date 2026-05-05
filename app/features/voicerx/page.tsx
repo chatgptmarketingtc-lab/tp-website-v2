@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   title: "VoiceRx — Speak. We'll write the prescription.",
   description:
     'VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages.',
-  alternates: { canonical: 'https://tatvapractice.com/product/voicerx' },
+  alternates: { canonical: 'https://tatvapractice.com/features/voicerx' },
   openGraph: {
     title: "VoiceRx — Voice-to-prescription in 30 seconds | TatvaPractice",
     description: 'VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages.',
     type: 'website',
-    url: 'https://tatvapractice.com/product/voicerx',
+    url: 'https://tatvapractice.com/features/voicerx',
   },
   twitter: {
     title: 'VoiceRx | TatvaPractice',
@@ -124,7 +124,7 @@ export default async function VoiceRxPage() {
             applicationCategory: 'HealthApplication',
             operatingSystem: 'Web, iOS, Android',
             description: 'VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages.',
-            url: 'https://tatvapractice.com/product/voicerx',
+            url: 'https://tatvapractice.com/features/voicerx',
             offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
           }),
         }}

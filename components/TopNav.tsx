@@ -18,12 +18,12 @@ type NavDropItem = {
 }
 
 const PRODUCT_ITEMS: NavDropItem[] = [
-  { href: '/product/voicerx',    icon: MicIcon,      title: 'VoiceRx',       desc: 'Speak. We\'ll write the prescription.' },
-  { href: '/product/smartsync',  icon: PenLineIcon,  title: 'SmartSync',     desc: 'Write naturally. Save digitally.' },
-  { href: '/product/snaprx',     icon: CameraIcon,   title: 'SnapRx',        desc: 'Photograph any Rx. We digitise it.' },
-  { href: '/product/ai-agents',  icon: BrainIcon,    title: 'AI Agents',     desc: 'Amaya, Mira · two AI agents.' },
-  { href: '/product/emr',        icon: FilePenIcon,  title: 'Core EMR',      desc: 'Records, queue, billing, telehealth.' },
-  { href: '/product',            icon: GridIcon,     title: 'Full overview', desc: 'Every module, one workflow.' },
+  { href: '/features/voicerx',    icon: MicIcon,      title: 'VoiceRx',       desc: 'Speak. We\'ll write the prescription.' },
+  { href: '/features/smartsync',  icon: PenLineIcon,  title: 'SmartSync',     desc: 'Write naturally. Save digitally.' },
+  { href: '/features/snaprx',     icon: CameraIcon,   title: 'SnapRx',        desc: 'Photograph any Rx. We digitise it.' },
+  { href: '/features/ai-agents',  icon: BrainIcon,    title: 'AI Agents',     desc: 'Amaya, Mira · two AI agents.' },
+  { href: '/features/emr',        icon: FilePenIcon,  title: 'Core EMR',      desc: 'Records, queue, billing, telehealth.' },
+  { href: '/features',            icon: GridIcon,     title: 'Full overview', desc: 'Every module, one workflow.' },
 ]
 
 const SOLUTIONS_ITEMS: NavDropItem[] = [
@@ -88,13 +88,13 @@ export default function TopNav() {
 
           {/* Desktop nav — visible at xl (1280px+) to ensure single-row fit */}
           <ul className="hidden xl:flex flex-nowrap items-center list-none m-0 p-0 gap-5 ml-6" role="list">
-            {/* Product dropdown */}
+            {/* Features dropdown */}
             <li className="relative group">
               <button
-                className={`flex items-center gap-1 py-2.5 text-sm font-medium transition-colors ${isActive('/product') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}
+                className={`flex items-center gap-1 py-2.5 text-sm font-medium transition-colors ${isActive('/features') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}
                 aria-haspopup="true"
               >
-                Product
+                Features
                 <ChevronDownIcon size={14} className="opacity-60 transition-transform duration-150 group-hover:rotate-180" />
               </button>
               <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-[-4px] group-hover:translate-y-0 transition-all duration-150">
@@ -151,12 +151,12 @@ export default function TopNav() {
       {mobileOpen && (
         <div className="xl:hidden fixed inset-0 top-[72px] bg-white z-50 overflow-y-auto flex flex-col">
           <nav className="flex-1 px-6 py-6 flex flex-col gap-1">
-            {/* Product section */}
+            {/* Features section */}
             <button
               className="flex justify-between items-center py-3 text-left font-display font-semibold text-tp-slate-900"
               onClick={() => setMobileSection(mobileSection === 'product' ? null : 'product')}
             >
-              Product
+              Features
               <ChevronDownIcon size={16} className={`transition-transform ${mobileSection === 'product' ? 'rotate-180' : ''}`} />
             </button>
             {mobileSection === 'product' && (
