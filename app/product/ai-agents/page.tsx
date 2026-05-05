@@ -5,6 +5,7 @@ import CTABand from '@/components/CTABand'
 import StatementBand from '@/components/StatementBand'
 import TestimonialCard from '@/components/TestimonialCard'
 import FAQAccordion from '@/components/FAQAccordion'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'AI Agents — Your clinical co-pilot.',
@@ -75,9 +76,7 @@ export default async function AIAgentsPage() {
         aria-labelledby="agents-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            AI Clinical Agents
-          </span>
+          <EyebrowPill>AI Clinical Agents</EyebrowPill>
           <h1
             id="agents-hero-heading"
             className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px] mx-auto"
@@ -184,9 +183,7 @@ export default async function AIAgentsPage() {
       <section className="bg-white py-24" aria-labelledby="two-agents-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Two agents. One workflow.
-            </span>
+            <EyebrowPill>Two agents · one workflow</EyebrowPill>
             <h2
               id="two-agents-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -546,9 +543,7 @@ export default async function AIAgentsPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="agents-faq-heading">
         <div className="max-w-[780px] mx-auto px-6">
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              FAQs
-            </span>
+            <EyebrowPill>FAQs</EyebrowPill>
             <h2
               id="agents-faq-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

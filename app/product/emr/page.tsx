@@ -5,6 +5,7 @@ import CTABand from '@/components/CTABand'
 import TestimonialCard from '@/components/TestimonialCard'
 import FAQAccordion from '@/components/FAQAccordion'
 import {
+import EyebrowPill from '@/components/EyebrowPill'
   HistoryIcon,
   NotebookPenIcon,
   SyringeIcon,
@@ -127,9 +128,7 @@ export default async function CoreEMRPage() {
         aria-labelledby="emr-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            Core EMR
-          </span>
+          <EyebrowPill>Core EMR</EyebrowPill>
           <h1
             id="emr-hero-heading"
             className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px] mx-auto"
@@ -245,9 +244,7 @@ export default async function CoreEMRPage() {
       <section className="bg-white py-24" aria-labelledby="emr-features-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Everything in one record
-            </span>
+            <EyebrowPill>Everything in one record</EyebrowPill>
             <h2
               id="emr-features-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -287,7 +284,7 @@ export default async function CoreEMRPage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-8 md:gap-16 items-center">
             <div>
-              <span className="tp-eyebrow">Built-in analytics</span>
+              <EyebrowPill>Built-in analytics</EyebrowPill>
               <h2
                 id="emr-analytics-heading"
                 className="font-display font-bold text-tp-slate-900 mt-3.5 mb-[18px]"
@@ -422,9 +419,7 @@ export default async function CoreEMRPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="emr-faq-heading">
         <div className="max-w-[780px] mx-auto px-6">
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Questions doctors ask
-            </span>
+            <EyebrowPill>Questions doctors ask</EyebrowPill>
             <h2
               id="emr-faq-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

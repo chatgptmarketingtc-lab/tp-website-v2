@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { PhoneIcon, MailIcon, MessageCircleIcon, CheckCircleIcon, MapPinIcon } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 const DESIGNATIONS = ['Doctor', 'Practice Manager', 'Hospital Admin', 'Other']
 const PRACTICE_SIZES = ['Solo', '2–10 doctors', '11–50 doctors', '50+ doctors']
@@ -69,7 +70,7 @@ export default function ContactPage() {
       <section className="bg-white py-24 pt-20" aria-labelledby="contact-hero-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="max-w-[560px] mb-10">
-            <span className="tp-eyebrow">Contact</span>
+            <EyebrowPill>Contact</EyebrowPill>
             <h1
               id="contact-hero-heading"
               className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px]"
@@ -335,7 +336,7 @@ export default function ContactPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="offices-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>Find us</span>
+            <EyebrowPill>Find us</EyebrowPill>
             <h2
               id="offices-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

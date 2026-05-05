@@ -3,6 +3,7 @@ import Link from 'next/link'
 import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
 import { ShieldCheckIcon, ServerIcon, CheckCircleIcon } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'Security & Compliance — Your data is safe.',
@@ -131,9 +132,7 @@ export default async function SecurityPage() {
         aria-labelledby="security-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            Security &amp; Compliance
-          </span>
+          <EyebrowPill>Security &amp; Compliance</EyebrowPill>
           <h1
             id="security-hero-heading"
             className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px] mx-auto"
@@ -170,9 +169,7 @@ export default async function SecurityPage() {
       <section className="bg-white py-24" aria-labelledby="certs-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Certifications
-            </span>
+            <EyebrowPill>Certifications</EyebrowPill>
             <h2
               id="certs-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -225,9 +222,7 @@ export default async function SecurityPage() {
       <section className="bg-white py-24" aria-labelledby="security-pillars-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-12">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              How we secure your data
-            </span>
+            <EyebrowPill>How we secure your data</EyebrowPill>
             <h2
               id="security-pillars-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -285,9 +280,7 @@ export default async function SecurityPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="audit-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Audit &amp; monitoring
-            </span>
+            <EyebrowPill>Audit &amp; monitoring</EyebrowPill>
             <h3
               id="audit-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -322,9 +315,7 @@ export default async function SecurityPage() {
       {/* Documentation */}
       <section id="documentation" className="bg-white py-16" aria-labelledby="docs-heading">
         <div className="max-w-wrap mx-auto px-6 text-center">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            Documentation
-          </span>
+          <EyebrowPill>Documentation</EyebrowPill>
           <h3
             id="docs-heading"
             className="font-display font-bold text-tp-slate-900 mt-3.5 mb-3"

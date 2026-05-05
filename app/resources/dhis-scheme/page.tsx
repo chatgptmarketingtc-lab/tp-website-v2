@@ -4,6 +4,7 @@ import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
 import FAQAccordion from '@/components/FAQAccordion'
 import { UserCheckIcon, BadgeCheckIcon, ShieldCheckIcon, FileCheck2Icon } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'DHIS Scheme — Earn for going digital',
@@ -157,7 +158,7 @@ export default async function DHISPage() {
       <section className="bg-white py-24" aria-labelledby="how-dhis-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>How it works</span>
+            <EyebrowPill>How it works</EyebrowPill>
             <h2
               id="how-dhis-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -197,7 +198,7 @@ export default async function DHISPage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="tp-eyebrow">How much can you earn?</span>
+              <EyebrowPill>How much can you earn?</EyebrowPill>
               <h2
                 id="earnings-heading"
                 className="font-display font-bold text-tp-slate-900 mt-3.5 mb-[18px]"
@@ -259,9 +260,7 @@ export default async function DHISPage() {
       <section className="bg-white py-24" aria-labelledby="eligibility-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Who&apos;s eligible
-            </span>
+            <EyebrowPill>Who&apos;s eligible</EyebrowPill>
             <h2
               id="eligibility-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -297,9 +296,7 @@ export default async function DHISPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="dhis-faq-heading">
         <div className="max-w-wrap mx-auto px-6" style={{ maxWidth: '780px' }}>
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Common questions
-            </span>
+            <EyebrowPill>Common questions</EyebrowPill>
             <h2
               id="dhis-faq-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

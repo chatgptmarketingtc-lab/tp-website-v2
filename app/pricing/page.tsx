@@ -3,6 +3,7 @@ import Link from 'next/link'
 import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
 import FAQAccordion from '@/components/FAQAccordion'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'Pricing — Simple pricing. Indian-priced.',
@@ -75,9 +76,7 @@ export default function PricingPage() {
         aria-labelledby="pricing-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6 text-center">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            Pricing
-          </span>
+          <EyebrowPill>Pricing</EyebrowPill>
           <h1
             id="pricing-hero-heading"
             className="font-display font-bold text-tp-slate-900 mx-auto mt-[18px] mb-[18px]"
@@ -400,9 +399,7 @@ export default function PricingPage() {
       >
         <div className="max-w-[780px] mx-auto px-6">
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Pricing FAQs
-            </span>
+            <EyebrowPill>Pricing FAQs</EyebrowPill>
             <h2
               id="pricing-faq-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

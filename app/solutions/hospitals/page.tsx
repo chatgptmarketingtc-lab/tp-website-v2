@@ -5,6 +5,7 @@ import CTABand from '@/components/CTABand'
 import StatementBand from '@/components/StatementBand'
 import TestimonialCard from '@/components/TestimonialCard'
 import {
+import EyebrowPill from '@/components/EyebrowPill'
   CalendarCheckIcon,
   GridIcon,
   PillIcon,
@@ -77,7 +78,7 @@ export default function HospitalsPage() {
           <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-16 items-center">
             {/* Left copy */}
             <div>
-              <span className="tp-eyebrow">For Hospitals &amp; Multi-Location</span>
+              <EyebrowPill>For Hospitals &amp; Multi-Location</EyebrowPill>
               <h1
                 id="hospitals-hero-heading"
                 className="font-display font-bold text-tp-slate-900 mt-[18px] mb-5"
@@ -258,9 +259,7 @@ export default function HospitalsPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              By department
-            </span>
+            <EyebrowPill>By department</EyebrowPill>
             <h2
               id="hospitals-departments-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -299,9 +298,7 @@ export default function HospitalsPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              By stakeholder
-            </span>
+            <EyebrowPill>By stakeholder</EyebrowPill>
             <h2
               id="hospitals-stakeholders-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

@@ -6,6 +6,7 @@ import CTABand from '@/components/CTABand'
 import StatementBand from '@/components/StatementBand'
 import TestimonialCard from '@/components/TestimonialCard'
 import {
+import EyebrowPill from '@/components/EyebrowPill'
   LanguagesIcon, LayersIcon, BadgeCheckIcon, SmartphoneIcon,
   StethoscopeIcon, Building2Icon,
 } from '@/components/icons'
@@ -188,7 +189,7 @@ export default function HomePage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid gap-16 items-center md:grid-cols-2">
             <div>
-              <span className="tp-eyebrow">The reality</span>
+              <EyebrowPill>The reality</EyebrowPill>
               <h2 id="problem-heading" className="font-display font-bold text-tp-slate-900 mt-3.5 mb-[18px]" style={{ fontSize: 'clamp(36px,4.6vw,48px)', lineHeight: 1.17, letterSpacing: '-0.02em' }}>
                 The average specialist in India spends{' '}
                 <span className="text-tp-blue-600">2+ hours a day</span> on documentation.
@@ -455,7 +456,7 @@ export default function HomePage() {
       <section className="py-24 bg-tp-slate-100" aria-labelledby="india-opd-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow">Built for Indian OPD reality</span>
+            <EyebrowPill>Built for Indian OPD reality</EyebrowPill>
             <h2 id="india-opd-heading" className="font-display font-bold text-tp-slate-900 mt-3.5" style={{ fontSize: '36px', lineHeight: '44px', letterSpacing: '-0.02em' }}>
               Designed around how Indian clinics actually run.
             </h2>
@@ -493,7 +494,7 @@ export default function HomePage() {
       <section className="py-24" aria-labelledby="icp-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow">Built for your scale</span>
+            <EyebrowPill>Built for your scale</EyebrowPill>
             <h2 id="icp-heading" className="font-display font-bold text-tp-slate-900 mt-3.5" style={{ fontSize: '36px', lineHeight: '44px', letterSpacing: '-0.02em' }}>
               Whatever you run, we run it with you.
             </h2>
@@ -559,7 +560,7 @@ export default function HomePage() {
       <section className="py-24 bg-tp-slate-100" aria-labelledby="testimonials-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow">From the OPD floor</span>
+            <EyebrowPill>From the OPD floor</EyebrowPill>
             <h2 id="testimonials-heading" className="font-display font-bold text-tp-slate-900 mt-3.5" style={{ fontSize: '36px', lineHeight: '44px', letterSpacing: '-0.02em' }}>
               What doctors who&apos;ve made the switch say.
             </h2>

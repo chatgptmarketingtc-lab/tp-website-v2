@@ -6,6 +6,7 @@ import CTABand from '@/components/CTABand'
 import HowItWorksSteps from '@/components/HowItWorksSteps'
 import TestimonialCard from '@/components/TestimonialCard'
 import {
+import EyebrowPill from '@/components/EyebrowPill'
   CalendarCheckIcon,
   MicIcon,
   FolderHeartIcon,
@@ -130,7 +131,7 @@ export default function ClinicsPage() {
           >
             {/* Left copy */}
             <div>
-              <span className="tp-eyebrow">For Clinics</span>
+              <EyebrowPill>For Clinics</EyebrowPill>
               <h1
                 id="clinics-hero-heading"
                 className="font-display font-bold text-tp-slate-900 mt-[18px] mb-5"
@@ -189,9 +190,7 @@ export default function ClinicsPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Everything a clinic needs
-            </span>
+            <EyebrowPill>Everything a clinic needs</EyebrowPill>
             <h2
               id="clinics-features-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -230,9 +229,7 @@ export default function ClinicsPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Up and running in under a week
-            </span>
+            <EyebrowPill>Up and running in under a week</EyebrowPill>
             <h2
               id="clinics-how-it-works-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -256,9 +253,7 @@ export default function ClinicsPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Pricing
-            </span>
+            <EyebrowPill>Pricing</EyebrowPill>
             <h2
               id="clinics-pricing-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
