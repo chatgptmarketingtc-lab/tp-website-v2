@@ -18,7 +18,7 @@ type NavDropItem = {
 }
 
 const PRODUCT_ITEMS: NavDropItem[] = [
-  { href: '/product/voicerx',    icon: MicIcon,      title: 'VoiceRx',       desc: 'Speak. We\'ll write the prescription.' },
+  { href: '/product/voicerx',    icon: MicIcon,      title: 'VoiceRx',       desc: 'Speak and TP will transcribe the Rx.' },
   { href: '/product/smartsync',  icon: PenLineIcon,  title: 'SmartSync',     desc: 'Write naturally. Save digitally.' },
   { href: '/product/snaprx',     icon: CameraIcon,   title: 'SnapRx',        desc: 'Photograph any Rx. We digitise it.' },
   { href: '/product/ai-agents',  icon: BrainIcon,    title: 'AI Agents',     desc: 'Amaya, Mira · two AI agents.' },

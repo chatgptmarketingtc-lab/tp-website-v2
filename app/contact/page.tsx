@@ -244,11 +244,11 @@ export default function ContactPage() {
                       </span>
                     </label>
 
-                    {/* Row 7: Submit (full width) */}
+                    {/* Row 7: Submit */}
                     <div className="md:col-span-2">
                       <button
                         type="submit"
-                        className="btn btn-solid btn-l w-full"
+                        className="btn btn-solid btn-l justify-center"
                         disabled={loading}
                       >
                         {loading ? 'Sending…' : <>Send message <span className="arr">→</span></>}

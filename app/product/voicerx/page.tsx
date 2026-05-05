@@ -148,7 +148,7 @@ export default async function VoiceRxPage() {
               maxWidth: '820px',
             }}
           >
-            Speak. We&apos;ll write the prescription.
+            Speak and TatvaPractice will transcribe the prescription.
           </h1>
           <p
             className="text-tp-slate-600 mx-auto"

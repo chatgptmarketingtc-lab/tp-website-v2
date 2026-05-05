@@ -77,7 +77,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-16 items-center">
             {/* Left copy */}
             <div>
-              <span className="tp-eyebrow">AI-First EMR for India</span>
+              <span className="badge badge-violet">AI · EMR for India</span>
               <h1
                 id="hero-heading"
                 className="font-display font-extrabold text-tp-slate-900 mt-[18px] mb-5"
@@ -94,11 +94,10 @@ export default function HomePage() {
                 </Link>
                 <Link href="/contact" className="btn btn-outline btn-l">Book a Demo</Link>
               </div>
-              <p className="text-[13px] text-tp-slate-500 mt-[22px]">
-                Trusted by <strong className="text-tp-slate-800">10,000+</strong> doctors ·{' '}
-                <strong className="text-tp-slate-800">12 lakh+</strong> digital Rx ·{' '}
-                <strong className="text-tp-slate-800">200+</strong> cities · ABDM-certified
-              </p>
+              <div className="flex gap-2 flex-wrap mt-[22px]">
+                <span className="compliance">ABDM-certified</span>
+                <span className="compliance">NHA-approved</span>
+              </div>
             </div>
 
             {/* Right — product UI mock */}
@@ -221,7 +220,7 @@ export default function HomePage() {
             <div>
               <span className="badge badge-violet">AI · VoiceRx</span>
               <h2 id="voicerx-heading" className="font-display font-bold text-tp-slate-900 mt-3.5 mb-3.5" style={{ fontSize: '36px', lineHeight: '44px', letterSpacing: '-0.02em' }}>
-                Speak. We&apos;ll write the prescription.
+                Speak and TatvaPractice will transcribe the prescription.
               </h2>
               <p className="text-[18px] leading-7 text-tp-slate-600">
                 VoiceRx structures medical voice notes into clean, audit-ready prescriptions in 30 seconds. In 9 Indian languages, including Hindi-English mixed.
@@ -487,7 +486,6 @@ export default function HomePage() {
           style={{ fontSize: 'clamp(24px,3vw,40px)', lineHeight: 1.2, letterSpacing: '-0.02em' }}
         >
           10,000+ doctors. 12 lakh+ digital prescriptions. 200+ Indian cities.
-          <span className="block mt-[14px]">We didn&apos;t get here by accident.</span>
         </p>
       </StatementBand>
 
@@ -579,10 +577,10 @@ export default function HomePage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="bg-tp-blue-50 rounded-tp-hero p-12 grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { num: '22%', lbl: 'productivity ↑' },
-              { num: '38%', lbl: 'documentation time ↓' },
+              { num: '22%', lbl: 'Productivity ↑' },
+              { num: '38%', lbl: 'Documentation time ↓' },
               { num: '12%', lbl: 'OPD throughput ↑' },
-              { num: '16%', lbl: 'patient retention ↑' },
+              { num: '16%', lbl: 'Patient retention ↑' },
             ].map(({ num, lbl }) => (
               <div key={lbl} className="flex flex-col items-center gap-2">
                 <div className="stat-num">{num}</div>
@@ -590,6 +588,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          <p className="text-[12px] text-tp-slate-400 text-center mt-4">TatvaPractice case study from current deployment</p>
         </div>
       </section>
 
