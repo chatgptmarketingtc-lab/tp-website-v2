@@ -5,18 +5,18 @@ import CTABand from '@/components/CTABand'
 import { ShieldCheckIcon, ServerIcon, CheckCircleIcon } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'Security & Compliance — Your data is safe.',
+  title: 'Data Security — Your data is safe.',
   description:
     'TatvaPractice is built on enterprise-grade security and full Indian regulatory compliance — NHA-approved, ABDM-certified, ISO 27001, DPDPA-compliant.',
   alternates: { canonical: 'https://tatvapractice.com/security' },
   openGraph: {
-    title: 'Security & Compliance — Your data is safe. | TatvaPractice',
+    title: 'Data Security — Your data is safe. | TatvaPractice',
     description: 'Enterprise-grade security and full Indian regulatory compliance. NHA-approved, ABDM-certified, ISO 27001, DPDPA-compliant.',
     type: 'website',
     url: 'https://tatvapractice.com/security',
   },
   twitter: {
-    title: 'Security & Compliance | TatvaPractice',
+    title: 'Data Security | TatvaPractice',
     description: 'Enterprise-grade security. Full Indian regulatory compliance.',
   },
 }
@@ -132,7 +132,7 @@ export default async function SecurityPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            Security &amp; Compliance
+            Data Security
           </span>
           <h1
             id="security-hero-heading"
@@ -153,13 +153,52 @@ export default async function SecurityPage() {
             TatvaPractice is built on enterprise-grade security and full Indian regulatory
             compliance.
           </p>
-          <div className="flex gap-3 justify-center flex-wrap">
+          <div className="flex gap-3 justify-center flex-wrap mb-12">
             <Link href="/contact" className="btn btn-solid btn-l">
               Talk to our security team <span className="arr">→</span>
             </Link>
-            <Link href="#documentation" className="btn btn-outline btn-l">
-              Download security overview
-            </Link>
+          </div>
+
+          {/* Compliance & Audit card */}
+          <div className="max-w-[720px] mx-auto bg-white border border-tp-slate-200 rounded-[20px] p-8 shadow-tp-lg text-left">
+            <p className="text-[11px] font-display font-semibold tracking-[0.08em] uppercase text-tp-slate-400 mb-5">
+              Compliance &amp; Audit
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {[
+                { pill: 'NHA-Approved',   bg: '#1D4ED8' },
+                { pill: 'ABDM-Certified', bg: '#16A34A' },
+                { pill: 'ABHA-Compliant', bg: '#6D28D9' },
+                { pill: 'ISO 27001',      bg: '#0F172A' },
+                { pill: 'DPDPA-Compliant', bg: '#B45309' },
+                { pill: 'HIPAA-Aligned',  bg: '#0EA5E9' },
+              ].map(({ pill, bg }) => (
+                <span
+                  key={pill}
+                  className="inline-flex items-center gap-2 py-2 px-4 rounded-full font-body font-semibold text-sm"
+                  style={{ background: bg, color: '#fff' }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={13}
+                    height={13}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {pill}
+                </span>
+              ))}
+            </div>
+            <p className="text-[13px] text-tp-slate-500 mt-5 leading-5">
+              Annual third-party audited. Architecture and compliance reports available under NDA on request.
+            </p>
           </div>
         </div>
       </section>
@@ -350,7 +389,6 @@ export default async function SecurityPage() {
       <CTABand
         heading="Talk to our security team."
         primaryLabel="Book a Security Call"
-        secondaryLabel="Download Overview"
       />
     </>
   )

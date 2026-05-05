@@ -103,7 +103,7 @@ const modules = [
     Icon: MessageSquareIcon,
   },
   {
-    name: 'Security & Compliance',
+    name: 'Data Security',
     desc: 'DPDPA, ABDM, and role-based access built in by default.',
     href: '/security',
     Icon: ShieldAlertIcon,
