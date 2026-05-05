@@ -18,6 +18,7 @@ import {
   MessageSquareIcon,
   ShieldAlertIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'Product Overview',
@@ -146,9 +147,7 @@ export default async function ProductPage() {
         aria-labelledby="product-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            Product overview
-          </span>
+          <EyebrowPill>Product overview</EyebrowPill>
           <h1
             id="product-hero-heading"
             className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px] mx-auto"
@@ -270,9 +269,7 @@ export default async function ProductPage() {
       <section className="py-24 bg-white" aria-labelledby="modules-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-12">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              20+ modules
-            </span>
+            <EyebrowPill>20+ modules</EyebrowPill>
             <h2
               id="modules-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -336,9 +333,7 @@ export default async function ProductPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              How it works together
-            </span>
+            <EyebrowPill>How it works together</EyebrowPill>
             <h2
               id="how-it-works-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

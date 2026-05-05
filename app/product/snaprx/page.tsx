@@ -12,6 +12,7 @@ import {
   FileTextIcon,
   BadgeCheckIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: "SnapRx — Photograph any prescription. We'll digitise it.",
@@ -124,9 +125,7 @@ export default async function SnapRxPage() {
         aria-labelledby="snaprx-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            AI OCR Mode
-          </span>
+          <EyebrowPill>AI OCR Mode</EyebrowPill>
           <h1
             id="snaprx-hero-heading"
             className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px] mx-auto"
@@ -235,7 +234,7 @@ export default async function SnapRxPage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
-              <span className="tp-eyebrow">The problem</span>
+              <EyebrowPill>The problem</EyebrowPill>
               <h2
                 id="snaprx-problem-heading"
                 className="font-display font-bold text-tp-slate-900 mt-3.5 mb-[18px]"
@@ -287,9 +286,7 @@ export default async function SnapRxPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="snaprx-features-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              What SnapRx solves
-            </span>
+            <EyebrowPill>What SnapRx solves</EyebrowPill>
             <h2
               id="snaprx-features-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -328,9 +325,7 @@ export default async function SnapRxPage() {
       <section className="bg-white py-24" aria-labelledby="snaprx-how-it-works-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              How it works
-            </span>
+            <EyebrowPill>How it works</EyebrowPill>
             <h2
               id="snaprx-how-it-works-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -421,9 +416,7 @@ export default async function SnapRxPage() {
       <section className="bg-white py-24" aria-labelledby="snaprx-faq-heading">
         <div className="max-w-[780px] mx-auto px-6">
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Questions doctors ask
-            </span>
+            <EyebrowPill>Questions doctors ask</EyebrowPill>
             <h2
               id="snaprx-faq-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

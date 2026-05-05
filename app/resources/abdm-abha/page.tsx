@@ -11,6 +11,7 @@ import {
   FileCheck2Icon,
   CheckCircleIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'ABDM & ABHA — Native integration',
@@ -196,7 +197,7 @@ export default async function ABDMABHAPage() {
       <section className="bg-white py-24" aria-labelledby="definitions-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>Definitions</span>
+            <EyebrowPill>Definitions</EyebrowPill>
             <h2
               id="definitions-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -229,7 +230,7 @@ export default async function ABDMABHAPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="supported-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[720px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>Native support</span>
+            <EyebrowPill>Native support</EyebrowPill>
             <h2
               id="supported-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -268,7 +269,7 @@ export default async function ABDMABHAPage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="tp-eyebrow">Why this matters</span>
+              <EyebrowPill>Why this matters</EyebrowPill>
               <h2
                 id="hospitals-heading"
                 className="font-display font-bold text-tp-slate-900 mt-3.5 mb-[18px]"
@@ -313,9 +314,7 @@ export default async function ABDMABHAPage() {
       <section className="bg-tp-slate-100 py-16" aria-labelledby="abdm-compliance-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Compliance certifications
-            </span>
+            <EyebrowPill>Compliance certifications</EyebrowPill>
             <h2
               id="abdm-compliance-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -347,9 +346,7 @@ export default async function ABDMABHAPage() {
       <section className="bg-white py-24" aria-labelledby="abdm-faq-heading">
         <div className="max-w-wrap mx-auto px-6" style={{ maxWidth: '780px' }}>
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Common questions
-            </span>
+            <EyebrowPill>Common questions</EyebrowPill>
             <h2
               id="abdm-faq-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

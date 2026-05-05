@@ -12,6 +12,7 @@ import {
   PillIcon,
   ShieldAlertIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: "VoiceRx — Speak. We'll write the prescription.",
@@ -135,9 +136,7 @@ export default async function VoiceRxPage() {
         aria-labelledby="voicerx-hero-heading"
       >
         <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-            AI Prescription Mode
-          </span>
+          <EyebrowPill>AI Prescription Mode</EyebrowPill>
           <h1
             id="voicerx-hero-heading"
             className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px] mx-auto"
@@ -242,7 +241,7 @@ export default async function VoiceRxPage() {
         <div className="max-w-wrap mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
-              <span className="tp-eyebrow">The problem</span>
+              <EyebrowPill>The problem</EyebrowPill>
               <h2
                 id="voicerx-problem-heading"
                 className="font-display font-bold text-tp-slate-900 mt-3.5 mb-[18px]"
@@ -294,9 +293,7 @@ export default async function VoiceRxPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="voicerx-features-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              What VoiceRx solves
-            </span>
+            <EyebrowPill>What VoiceRx solves</EyebrowPill>
             <h2
               id="voicerx-features-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -335,9 +332,7 @@ export default async function VoiceRxPage() {
       <section className="bg-white py-24" aria-labelledby="voicerx-how-it-works-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              How it works
-            </span>
+            <EyebrowPill>How it works</EyebrowPill>
             <h2
               id="voicerx-how-it-works-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -374,9 +369,7 @@ export default async function VoiceRxPage() {
       >
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Designed for every specialty
-            </span>
+            <EyebrowPill>Designed for every specialty</EyebrowPill>
             <h2
               id="voicerx-specialties-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -413,9 +406,7 @@ export default async function VoiceRxPage() {
       <section className="bg-white py-24" aria-labelledby="voicerx-faq-heading">
         <div className="max-w-[780px] mx-auto px-6">
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>
-              Questions doctors ask
-            </span>
+            <EyebrowPill>Questions doctors ask</EyebrowPill>
             <h2
               id="voicerx-faq-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"

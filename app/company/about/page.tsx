@@ -4,6 +4,7 @@ import Link from 'next/link'
 import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
 import { LinkedinIcon } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: "About — We're building the EMR India deserves",
@@ -77,7 +78,7 @@ export default async function AboutPage() {
       {/* Hero */}
       <section className="bg-white py-24 pt-20 text-center" aria-labelledby="about-hero-heading">
         <div className="max-w-wrap mx-auto px-6">
-          <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>About</span>
+          <EyebrowPill>About</EyebrowPill>
           <h1
             id="about-hero-heading"
             className="font-display font-bold text-tp-slate-900 mt-[18px] mb-[18px] mx-auto"
@@ -100,7 +101,7 @@ export default async function AboutPage() {
       <section className="bg-white py-24" aria-labelledby="leadership-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[760px] mx-auto mb-12">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>Leadership @ TatvaCare</span>
+            <EyebrowPill>Leadership @ TatvaCare</EyebrowPill>
             <h2
               id="leadership-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -152,7 +153,7 @@ export default async function AboutPage() {
       <section className="bg-tp-slate-100 py-16" aria-labelledby="directors-heading">
         <div className="max-w-wrap mx-auto px-6" style={{ maxWidth: '880px' }}>
           <div className="text-center mb-8">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>Board</span>
+            <EyebrowPill>Board</EyebrowPill>
             <h3
               id="directors-heading"
               className="font-display font-bold text-tp-slate-900 mt-2.5"
@@ -207,7 +208,7 @@ export default async function AboutPage() {
       {/* Our Story */}
       <section className="bg-white py-24" aria-labelledby="story-heading">
         <div className="max-w-wrap mx-auto px-6" style={{ maxWidth: '780px' }}>
-          <span className="tp-eyebrow">Our story</span>
+          <EyebrowPill>Our story</EyebrowPill>
           <h2
             id="story-heading"
             className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -228,7 +229,7 @@ export default async function AboutPage() {
       <section className="bg-tp-slate-100 py-24" aria-labelledby="values-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>Our values</span>
+            <EyebrowPill>Our values</EyebrowPill>
             <h2
               id="values-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
@@ -252,7 +253,7 @@ export default async function AboutPage() {
       <section className="bg-white py-24" aria-labelledby="suite-heading">
         <div className="max-w-wrap mx-auto px-6">
           <div className="text-center max-w-[680px] mx-auto mb-10">
-            <span className="tp-eyebrow" style={{ justifyContent: 'center' }}>The TatvaCare suite</span>
+            <EyebrowPill>The TatvaCare suite</EyebrowPill>
             <h2
               id="suite-heading"
               className="font-display font-bold text-tp-slate-900 mt-3.5"
