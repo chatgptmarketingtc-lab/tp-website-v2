@@ -87,7 +87,7 @@ export default function SiteFooter() {
               {[
                 { href: '/company/about', label: 'About' },
                 { href: '/pricing',       label: 'Pricing' },
-                { href: '/security',      label: 'Security' },
+                { href: '/security',      label: 'Data Security' },
                 { href: '/contact',       label: 'Contact' },
               ].map(({ href, label }) => (
                 <li key={href} className="py-1.5">

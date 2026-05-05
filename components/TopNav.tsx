@@ -123,7 +123,7 @@ export default function TopNav() {
             </li>
             <li>
               <Link href="/security" className={`py-2.5 text-sm font-medium transition-colors ${isActive('/security') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}>
-                Security
+                Data Security
               </Link>
             </li>
           </ul>
@@ -189,7 +189,7 @@ export default function TopNav() {
 
             {[
               { href: '/pricing', label: 'Pricing' },
-              { href: '/security', label: 'Security' },
+              { href: '/security', label: 'Data Security' },
             ].map(({ href, label }) => (
               <Link key={href} href={href} className="py-3 font-display font-semibold text-tp-slate-900" onClick={() => setMobileOpen(false)}>
                 {label}
