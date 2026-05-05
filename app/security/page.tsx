@@ -158,46 +158,127 @@ export default async function SecurityPage() {
             </Link>
           </div>
 
-          {/* Compliance & Audit card */}
-          <div className="max-w-[720px] mx-auto bg-white border border-tp-slate-200 rounded-[20px] p-8 shadow-tp-lg text-left">
-            <p className="text-[11px] font-display font-semibold tracking-[0.08em] uppercase text-tp-slate-400 mb-5">
-              Compliance &amp; Audit
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {[
-                { pill: 'NHA-Approved',   bg: '#1D4ED8' },
-                { pill: 'ABDM-Certified', bg: '#16A34A' },
-                { pill: 'ABHA-Compliant', bg: '#6D28D9' },
-                { pill: 'ISO 27001',      bg: '#0F172A' },
-                { pill: 'DPDPA-Compliant', bg: '#B45309' },
-                { pill: 'HIPAA-Aligned',  bg: '#0EA5E9' },
-              ].map(({ pill, bg }) => (
-                <span
-                  key={pill}
-                  className="inline-flex items-center gap-2 py-2 px-4 rounded-full font-body font-semibold text-sm"
-                  style={{ background: bg, color: '#fff' }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={13}
-                    height={13}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
+          {/* Compliance & Audit dashboard card */}
+          <div className="relative mt-12 max-w-[820px] mx-auto pb-8 text-left">
+            <div className="rounded-[20px] border border-tp-slate-200 bg-white shadow-tp-lg overflow-hidden flex flex-col md:flex-row">
+
+              {/* Mobile pill bar — top strip, visible only on mobile */}
+              <div className="md:hidden flex overflow-x-auto gap-1.5 px-4 py-3 flex-shrink-0" style={{ background: '#1E1B4B' }}>
+                {['Dashboard', 'Audit log', 'Permissions', 'Compliance', 'Reports'].map((label) => (
+                  <span
+                    key={label}
+                    className="flex-shrink-0 text-[11px] font-display font-medium px-2.5 py-1 rounded-full"
+                    style={label === 'Compliance'
+                      ? { background: 'rgba(255,255,255,0.15)', color: '#fff' }
+                      : { color: 'rgba(255,255,255,0.45)' }
+                    }
                   >
-                    <polyline points="20 6 9 17 4 12" />
+                    {label}
+                  </span>
+                ))}
+              </div>
+
+              {/* Sidebar — desktop only */}
+              <div className="hidden md:flex w-[148px] flex-shrink-0 flex-col py-5 px-3" style={{ background: '#1E1B4B' }}>
+                {/* Logo mark */}
+                <div className="flex items-center gap-1.5 px-2 mb-6">
+                  <div className="w-5 h-5 rounded-[4px] grid place-items-center flex-shrink-0" style={{ background: '#7C3AED' }}>
+                    <span className="text-white font-bold text-[8px] font-display">TP</span>
+                  </div>
+                  <span className="text-white font-display font-semibold text-[10px] leading-tight">TatvaPractice</span>
+                </div>
+                {/* Nav items */}
+                {[
+                  { label: 'Dashboard' },
+                  { label: 'Audit log' },
+                  { label: 'Permissions' },
+                  { label: 'Compliance', active: true },
+                  { label: 'Reports' },
+                ].map(({ label, active }) => (
+                  <div
+                    key={label}
+                    className={`flex items-center gap-2 px-2.5 py-[7px] rounded-[8px] mb-0.5 text-[11px] font-display font-medium cursor-default ${
+                      active ? 'text-white' : 'text-white/40'
+                    }`}
+                    style={active ? { background: 'rgba(255,255,255,0.12)' } : undefined}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${active ? 'bg-violet-300' : 'bg-white/20'}`} />
+                    {label}
+                  </div>
+                ))}
+              </div>
+
+              {/* Main panel */}
+              <div className="flex-1 p-5 min-w-0">
+
+                {/* Header row */}
+                <div className="flex items-start justify-between gap-2 mb-4">
+                  <div>
+                    <div className="font-display font-bold text-tp-slate-900 text-[13px]">TatvaPractice · Compliance Center</div>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                      <span className="text-[11px] text-emerald-700 font-medium">Live · all systems compliant</span>
+                    </div>
+                  </div>
+                  <span className="badge badge-violet flex-shrink-0" style={{ fontSize: '10px', height: '22px' }}>Compliance · live</span>
+                </div>
+
+                {/* Status row — 4 mini cards */}
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  {[
+                    { label: 'ABDM-certified',  note: 'verified · 02 May 2026' },
+                    { label: 'ISO 27001',       note: 'verified · audit Q2 2026' },
+                    { label: 'DPDPA-compliant', note: 'verified · India residency' },
+                    { label: 'HIPAA-aligned',   note: 'verified · BAA available' },
+                  ].map(({ label, note }) => (
+                    <div key={label} className="bg-tp-slate-50 border border-tp-slate-100 rounded-[10px] px-3 py-2">
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <svg width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <span className="font-display font-semibold text-[11px] text-tp-slate-900">{label}</span>
+                      </div>
+                      <div className="text-[10px] text-tp-slate-500 ml-[14px]">{note}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Audit log */}
+                <div className="border border-tp-slate-100 rounded-[12px] overflow-hidden mb-3">
+                  <div className="px-3 py-1.5 bg-tp-slate-50 border-b border-tp-slate-100">
+                    <span className="text-[10px] font-display font-semibold tracking-[0.08em] uppercase text-tp-slate-400">Recent activity</span>
+                  </div>
+                  {[
+                    { dot: '#6366F1', text: "Dr. Rao accessed Mr. Patel's record", meta: '11:42 AM · clinic terminal' },
+                    { dot: '#22C55E', text: 'Pharmacy synced Rx for Mrs. Iyer',    meta: '11:38 AM · audit trail logged' },
+                    { dot: '#3B82F6', text: 'Login: Dr. Mehta · MFA verified',     meta: '11:35 AM · Bengaluru IP' },
+                  ].map(({ dot, text, meta }, i) => (
+                    <div key={i} className="flex items-center gap-2.5 px-3 py-2 border-b border-tp-slate-50 last:border-0">
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: dot }} />
+                      <span className="flex-1 text-[11px] text-tp-slate-700 leading-tight">{text}</span>
+                      <span className="text-[10px] text-tp-slate-400 flex-shrink-0 hidden sm:block">{meta}</span>
+                    </div>
+                  ))}
+                  <div className="px-3 py-1.5 bg-tp-slate-50 border-t border-tp-slate-100">
+                    <span className="text-[10px] text-tp-slate-400">Every access auditable by timestamp, user, and action</span>
+                  </div>
+                </div>
+
+                {/* Data residency badge */}
+                <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-100 text-emerald-700 text-[11px] font-medium px-2.5 py-1 rounded-full">
+                  <svg width={9} height={9} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                   </svg>
-                  {pill}
+                  India · Azure India region · zero offshore data movement
                 </span>
-              ))}
+
+              </div>
             </div>
-            <p className="text-[13px] text-tp-slate-500 mt-5 leading-5">
-              Annual third-party audited. Architecture and compliance reports available under NDA on request.
-            </p>
+
+            {/* Floating overlay */}
+            <div className="absolute bottom-0 left-4 md:left-[164px] bg-tp-slate-900 text-white text-[11px] font-display font-medium px-3 py-2 rounded-[10px] shadow-tp-lg whitespace-nowrap">
+              Every action logged · auditable in 1&nbsp;click
+            </div>
           </div>
         </div>
       </section>
