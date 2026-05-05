@@ -4,7 +4,6 @@ import TrustBar from '@/components/TrustBar'
 import CTABand from '@/components/CTABand'
 import FAQAccordion from '@/components/FAQAccordion'
 import {
-import EyebrowPill from '@/components/EyebrowPill'
   ShieldCheckIcon,
   BadgeCheckIcon,
   UserCheckIcon,
@@ -12,6 +11,7 @@ import EyebrowPill from '@/components/EyebrowPill'
   FileCheck2Icon,
   CheckCircleIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'ABDM & ABHA — Native integration',

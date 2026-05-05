@@ -6,7 +6,6 @@ import CTABand from '@/components/CTABand'
 import HowItWorksSteps from '@/components/HowItWorksSteps'
 import TestimonialCard from '@/components/TestimonialCard'
 import {
-import EyebrowPill from '@/components/EyebrowPill'
   CalendarCheckIcon,
   MicIcon,
   FolderHeartIcon,
@@ -14,6 +13,7 @@ import EyebrowPill from '@/components/EyebrowPill'
   MicroscopeIcon,
   MessageSquareIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'For Clinics — Go digital from day one',

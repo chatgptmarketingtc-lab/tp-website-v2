@@ -6,10 +6,10 @@ import CTABand from '@/components/CTABand'
 import StatementBand from '@/components/StatementBand'
 import TestimonialCard from '@/components/TestimonialCard'
 import {
-import EyebrowPill from '@/components/EyebrowPill'
   LanguagesIcon, LayersIcon, BadgeCheckIcon, SmartphoneIcon,
   StethoscopeIcon, Building2Icon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: { absolute: 'TatvaPractice — AI-First EMR for Indian Doctors and Hospitals' },

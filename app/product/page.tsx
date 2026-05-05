@@ -6,7 +6,6 @@ import StatementBand from '@/components/StatementBand'
 import HowItWorksSteps from '@/components/HowItWorksSteps'
 import TestimonialCard from '@/components/TestimonialCard'
 import {
-import EyebrowPill from '@/components/EyebrowPill'
   GridIcon,
   MicIcon,
   PenLineIcon,
@@ -19,6 +18,7 @@ import EyebrowPill from '@/components/EyebrowPill'
   MessageSquareIcon,
   ShieldAlertIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'Product Overview',

@@ -7,12 +7,12 @@ import HowItWorksSteps from '@/components/HowItWorksSteps'
 import TestimonialCard from '@/components/TestimonialCard'
 import FAQAccordion from '@/components/FAQAccordion'
 import {
-import EyebrowPill from '@/components/EyebrowPill'
   KeyboardIcon,
   LanguagesIcon,
   PillIcon,
   ShieldAlertIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: "VoiceRx — Speak. We'll write the prescription.",

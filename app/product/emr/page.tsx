@@ -5,7 +5,6 @@ import CTABand from '@/components/CTABand'
 import TestimonialCard from '@/components/TestimonialCard'
 import FAQAccordion from '@/components/FAQAccordion'
 import {
-import EyebrowPill from '@/components/EyebrowPill'
   HistoryIcon,
   NotebookPenIcon,
   SyringeIcon,
@@ -15,6 +14,7 @@ import EyebrowPill from '@/components/EyebrowPill'
   VideoIcon,
   BarChart3Icon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'Core EMR — Your complete patient record.',

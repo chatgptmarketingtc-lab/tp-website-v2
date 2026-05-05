@@ -5,13 +5,13 @@ import CTABand from '@/components/CTABand'
 import StatementBand from '@/components/StatementBand'
 import TestimonialCard from '@/components/TestimonialCard'
 import {
-import EyebrowPill from '@/components/EyebrowPill'
   CalendarCheckIcon,
   GridIcon,
   PillIcon,
   ReceiptIcon,
   MicroscopeIcon,
 } from '@/components/icons'
+import EyebrowPill from '@/components/EyebrowPill'
 
 export const metadata: Metadata = {
   title: 'For Hospitals — Enterprise-grade. India-ready.',
