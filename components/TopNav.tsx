@@ -87,7 +87,7 @@ export default function TopNav() {
           </Link>
 
           {/* Desktop nav — visible at xl (1280px+) to ensure single-row fit */}
-          <ul className="hidden xl:flex flex-nowrap items-center list-none m-0 p-0 gap-5" role="list">
+          <ul className="hidden xl:flex flex-nowrap items-center list-none m-0 p-0 gap-5 ml-6" role="list">
             {/* Product dropdown */}
             <li className="relative group">
               <button
@@ -126,18 +126,12 @@ export default function TopNav() {
                 Security
               </Link>
             </li>
-            <li>
-              <Link href="/company/about" className={`py-2.5 text-sm font-medium transition-colors ${isActive('/company') ? 'text-tp-slate-900' : 'text-tp-slate-600 hover:text-tp-slate-900'}`}>
-                Company
-              </Link>
-            </li>
           </ul>
 
           {/* CTA group */}
           <div className="ml-auto hidden xl:flex flex-nowrap flex-shrink-0 gap-2 items-center">
             <Link href="https://health.tatvacare.in/login" className="btn btn-ghost btn-m">Sign in</Link>
             <Link href="/contact" className="btn btn-outline btn-m">Book a Demo</Link>
-            <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-m">Start Free Trial</Link>
           </div>
 
           {/* Hamburger */}
@@ -196,21 +190,26 @@ export default function TopNav() {
             {[
               { href: '/pricing', label: 'Pricing' },
               { href: '/security', label: 'Security' },
-              { href: '/company/about', label: 'Company' },
             ].map(({ href, label }) => (
               <Link key={href} href={href} className="py-3 font-display font-semibold text-tp-slate-900" onClick={() => setMobileOpen(false)}>
                 {label}
               </Link>
             ))}
+
+            <div className="mt-2 pt-4 border-t border-tp-slate-100">
+              <Link href="/company/about" className="py-2 text-sm text-tp-slate-500 hover:text-tp-slate-700 transition-colors" onClick={() => setMobileOpen(false)}>
+                About
+              </Link>
+            </div>
           </nav>
 
           {/* Mobile CTA bar */}
           <div className="px-6 py-6 border-t border-tp-slate-200 flex flex-col gap-3">
-            <Link href="https://health.tatvacare.in/login" className="btn btn-solid btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
-              Start Free Trial
-            </Link>
-            <Link href="/contact" className="btn btn-outline btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
+            <Link href="/contact" className="btn btn-solid btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
               Book a Demo
+            </Link>
+            <Link href="https://health.tatvacare.in/login" className="btn btn-outline btn-l w-full justify-center" onClick={() => setMobileOpen(false)}>
+              Sign in
             </Link>
           </div>
         </div>

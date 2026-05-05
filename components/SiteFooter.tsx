@@ -80,9 +80,9 @@ export default function SiteFooter() {
             </ul>
           </div>
 
-          {/* Company links */}
+          {/* About links */}
           <div>
-            <h5 className="text-white text-sm font-semibold mb-3.5">Company</h5>
+            <h5 className="text-white text-sm font-semibold mb-3.5">About</h5>
             <ul className="list-none m-0 p-0 text-sm flex flex-col">
               {[
                 { href: '/company/about', label: 'About' },
