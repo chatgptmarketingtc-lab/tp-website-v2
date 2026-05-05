@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   title: 'AI Agents — Your clinical co-pilot.',
   description:
     "Amaya is your doctor's AI agent — DDx, drug-interaction alerts, SOAP notes, and lab interpretation. Mira is your patient's agent — scheduling, reminders, and WhatsApp comms.",
-  alternates: { canonical: 'https://tatvapractice.com/product/ai-agents' },
+  alternates: { canonical: 'https://tatvapractice.com/features/ai-agents' },
   openGraph: {
     title: 'AI Agents — Amaya & Mira | TatvaPractice',
     description: "Amaya handles clinical co-piloting. Mira handles patient engagement. Two AI agents built for Indian healthcare.",
     type: 'website',
-    url: 'https://tatvapractice.com/product/ai-agents',
+    url: 'https://tatvapractice.com/features/ai-agents',
   },
   twitter: {
     title: 'AI Agents | TatvaPractice',
@@ -65,7 +65,7 @@ export default async function AIAgentsPage() {
             applicationCategory: 'HealthApplication',
             operatingSystem: 'Web, iOS, Android',
             description: "Amaya is your doctor's AI agent — DDx, drug-interaction alerts, SOAP notes, and lab interpretation. Mira is your patient's agent — scheduling, reminders, and WhatsApp comms.",
-            url: 'https://tatvapractice.com/product/ai-agents',
+            url: 'https://tatvapractice.com/features/ai-agents',
             offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
           }),
         }}

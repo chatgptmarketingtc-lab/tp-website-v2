@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   title: "SnapRx — Photograph any prescription. We'll digitise it.",
   description:
     'SnapRx is a healthcare-grade OCR engine purpose-built for the messy reality of handwritten Indian prescriptions.',
-  alternates: { canonical: 'https://tatvapractice.com/product/snaprx' },
+  alternates: { canonical: 'https://tatvapractice.com/features/snaprx' },
   openGraph: {
     title: "SnapRx — Photo to digital prescription | TatvaPractice",
     description: 'Healthcare-grade OCR for handwritten Indian prescriptions. Photograph any Rx and get a clean digital record.',
     type: 'website',
-    url: 'https://tatvapractice.com/product/snaprx',
+    url: 'https://tatvapractice.com/features/snaprx',
   },
   twitter: {
     title: 'SnapRx | TatvaPractice',
@@ -114,7 +114,7 @@ export default async function SnapRxPage() {
             applicationCategory: 'HealthApplication',
             operatingSystem: 'Web, iOS, Android',
             description: 'SnapRx is a healthcare-grade OCR engine purpose-built for handwritten Indian prescriptions.',
-            url: 'https://tatvapractice.com/product/snaprx',
+            url: 'https://tatvapractice.com/features/snaprx',
             offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
           }),
         }}

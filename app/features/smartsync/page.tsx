@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   title: 'SmartSync — Write naturally. Save digitally.',
   description:
     'SmartSync turns your handwritten notes and prescriptions into structured digital records. Use the digital pen the way you always have — we handle the rest.',
-  alternates: { canonical: 'https://tatvapractice.com/product/smartsync' },
+  alternates: { canonical: 'https://tatvapractice.com/features/smartsync' },
   openGraph: {
     title: 'SmartSync — Handwriting to digital records | TatvaPractice',
     description: 'SmartSync turns handwritten notes and prescriptions into structured digital records.',
     type: 'website',
-    url: 'https://tatvapractice.com/product/smartsync',
+    url: 'https://tatvapractice.com/features/smartsync',
   },
   twitter: {
     title: 'SmartSync | TatvaPractice',
@@ -122,7 +122,7 @@ export default async function SmartSyncPage() {
             applicationCategory: 'HealthApplication',
             operatingSystem: 'Web, iOS, Android',
             description: 'SmartSync turns handwritten notes and prescriptions into structured digital records automatically.',
-            url: 'https://tatvapractice.com/product/smartsync',
+            url: 'https://tatvapractice.com/features/smartsync',
             offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
           }),
         }}

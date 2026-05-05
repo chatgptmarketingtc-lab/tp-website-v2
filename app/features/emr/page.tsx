@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   title: 'Core EMR — Your complete patient record.',
   description:
     'Patient history, SOAP notes, vaccination, lab integration, telehealth — one connected view across every visit.',
-  alternates: { canonical: 'https://tatvapractice.com/product/emr' },
+  alternates: { canonical: 'https://tatvapractice.com/features/emr' },
   openGraph: {
     title: 'Core EMR — Complete patient records | TatvaPractice',
     description: 'Patient history, SOAP notes, vaccination, lab integration, telehealth — one connected view across every visit.',
     type: 'website',
-    url: 'https://tatvapractice.com/product/emr',
+    url: 'https://tatvapractice.com/features/emr',
   },
   twitter: {
     title: 'Core EMR | TatvaPractice',
@@ -117,7 +117,7 @@ export default async function CoreEMRPage() {
             applicationCategory: 'HealthApplication',
             operatingSystem: 'Web, iOS, Android',
             description: 'Patient history, SOAP notes, vaccination, lab integration, telehealth — one connected view across every visit.',
-            url: 'https://tatvapractice.com/product/emr',
+            url: 'https://tatvapractice.com/features/emr',
             offers: { '@type': 'Offer', priceCurrency: 'INR', price: '0' },
           }),
         }}
