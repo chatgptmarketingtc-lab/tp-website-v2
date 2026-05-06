@@ -95,9 +95,21 @@ export default function HomePage() {
                 </Link>
                 <Link href="/contact" className="btn btn-outline btn-l">Book a Demo</Link>
               </div>
-              <div className="flex gap-2 flex-wrap mt-[22px]">
-                <span className="compliance">ABDM-certified</span>
-                <span className="compliance">NHA-approved</span>
+              <div className="flex items-center gap-8 mt-8 opacity-80">
+                <Image
+                  src="/ABDM.svg"
+                  alt="ABDM-certified"
+                  width={52}
+                  height={48}
+                  className="h-12 w-auto object-contain"
+                />
+                <Image
+                  src="/NHA.png"
+                  alt="NHA-approved"
+                  width={110}
+                  height={48}
+                  className="h-12 w-auto object-contain"
+                />
               </div>
             </div>
 
