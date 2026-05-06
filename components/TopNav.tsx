@@ -219,7 +219,7 @@ export default function TopNav() {
       {!mobileOpen && (
         <Link
           href="/contact"
-          className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex items-center justify-center h-16 bg-tp-blue-500 hover:bg-tp-blue-600 text-white font-display font-semibold text-[15px] tracking-[-0.01em] shadow-[0_-4px_12px_rgba(0,0,0,0.08)] transition-colors"
+          className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex items-center justify-center h-12 bg-tp-blue-500 hover:bg-tp-blue-600 text-white font-display font-semibold text-[15px] tracking-[-0.01em] shadow-[0_-4px_12px_rgba(0,0,0,0.08)] transition-colors"
         >
           Book a Demo
         </Link>
