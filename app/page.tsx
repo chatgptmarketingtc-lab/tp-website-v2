@@ -29,22 +29,22 @@ export const metadata: Metadata = {
 
 const TESTIMONIALS = [
   {
-    quote: "TatvaPractice has cut our prescription time by 70%. The VoiceRx feature alone has transformed how we manage OPD.",
-    name: "Dr. Rajesh Patel",
-    role: "Cardiologist · HeartCare Clinic, Ahmedabad",
-    initials: "RP",
+    quote: "Using TatvaPractice has been a great experience for me as a practicing doctor. It's incredibly convenient and user-friendly, making my work easier.",
+    name: "Dr. Pankaj Khatana",
+    role: "General Practitioner · Delhi",
+    initials: "PK",
   },
   {
-    quote: "We moved 3 clinics to TatvaPractice in under a week. The onboarding was seamless and the team is incredibly responsive.",
-    name: "Dr. Priya Sharma",
-    role: "Clinic Director · Wellness First, Mumbai",
-    initials: "PS",
+    quote: "Previously, I relied on manual methods for managing my practice, but since using TatvaPractice, it has been the most exceptional experience for streamlining the process.",
+    name: "Dr. Ajit Priyam",
+    role: "General Practitioner · Delhi",
+    initials: "AP",
   },
   {
-    quote: "The DDx Engine has been a game-changer for my residents. It helps them think through differentials more systematically.",
-    name: "Dr. Anand Kumar",
-    role: "HOD Medicine · City General Hospital, Delhi",
-    initials: "AK",
+    quote: "TatvaPractice has helped me manage patient records and prescriptions more efficiently. The platform is simple to use and saves valuable time during daily consultations.",
+    name: "Dr. Kumar Satyam",
+    role: "General Practitioner · Delhi",
+    initials: "KS",
   },
 ]
 
