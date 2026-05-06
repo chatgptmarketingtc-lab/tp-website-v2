@@ -402,10 +402,9 @@ export default function HospitalsPage() {
               </div>
             ))}
           </div>
+          <p className="text-[12px] text-tp-slate-400 text-center mt-4">TatvaPractice case study from current deployment</p>
         </div>
       </section>
-
-      {/* Section 6 — StatementBand */}
       <StatementBand>
         <p
           className="font-display font-bold text-white"

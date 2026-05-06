@@ -249,7 +249,7 @@ export default function ContactPage() {
                     <div className="md:col-span-2">
                       <button
                         type="submit"
-                        className="btn btn-solid btn-l justify-center"
+                        className="btn btn-solid btn-l w-auto justify-center"
                         disabled={loading}
                       >
                         {loading ? 'Sending…' : <>Send message <span className="arr">→</span></>}
